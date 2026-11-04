@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Chapter 0 — The Cold Coffee Cart | The 9% Club"
+  },
+  "site": {
+    "name": "The 9% Club",
+    "tagline": "Most traders lose money. Here's the arithmetic.",
+    "disclaimer": "Everything on this site is education. Nothing is advice.",
+    "hudTokens": "2 of 100 tokens",
+    "toggleTheme": "Toggle theme",
+    "toggleLang": "Switch to Hindi",
+    "hudLabel": "Your money"
+  },
+  "ch00": {
+    "ch": "Chapter 00",
+    "title": "You have ₹2,000.<br></br>Let's buy a business.",
+    "tagline": "Before any of the trading, charts or jargon: what are you actually buying when you buy a share? Start here. It takes four minutes.",
+    "scrollCue": "Scroll",
+    "cupsSold": "cups sold",
+    "nextUp": "What happens next",
+    "outroH": "That is all a share is.",
+    "outroP": "A share is a slice of a real business. Not a lottery ticket, not a number on a screen. When the business does well your slice is worth more. When it does badly, your slice is worth less. You carry both.",
+    "handoffQ": "So you want your ₹2,000 back. Who buys your tokens?",
+    "handoffP": "You have to find a person, agree a price, and trust them to pay. That problem is the entire reason stock exchanges exist. That is Chapter 01.",
+    "beats": [
+      {
+        "tag": "The idea",
+        "tone": "gold",
+        "h": "Two friends, one cart.",
+        "p": "Aarti and Imran want to run a cold coffee cart outside the station, where four thousand students walk past every evening."
+      },
+      {
+        "tag": "The problem",
+        "tone": "gold",
+        "h": "It costs ₹1,00,000.",
+        "p": "An espresso machine, a commercial blender, the cart itself, and a month of beans and milk. They have ₹40,000 between them."
+      },
+      {
+        "tag": "The idea",
+        "tone": "gold",
+        "h": "So they split the cart into 100 pieces.",
+        "p": "One hundred tokens, ₹1,000 each. Buy a token and you own one hundredth of the business. Not a loan. Ownership."
+      },
+      {
+        "tag": "Your move",
+        "tone": "teal",
+        "h": "You buy 2 tokens.",
+        "p": "Your ₹2,000 becomes 2% of a coffee cart. That is it. That is the whole idea behind owning a share."
+      },
+      {
+        "tag": "Building",
+        "tone": "gold",
+        "h": "The money becomes a real thing.",
+        "p": "Your ₹2,000 is not sitting in an app. It is a wheel, a steel counter, part of an espresso machine. Shares are claims on real objects and real work."
+      },
+      {
+        "tag": "Summer",
+        "tone": "teal",
+        "h": "April. It is 38 degrees.",
+        "p": "They sell 240 cups a day at ₹80. After beans, milk, ice and the pitch fee, the cart clears about ₹2,20,000 over the season."
+      },
+      {
+        "tag": "Your share",
+        "tone": "teal",
+        "h": "2% of the profit is yours.",
+        "p": "You did not make a single cup. You own 2% of the business, so you own 2% of what it earned. Your ₹2,000 is now worth about ₹4,400."
+      },
+      {
+        "tag": "Monsoon",
+        "tone": "brick",
+        "h": "June. It rains for nine days straight.",
+        "p": "Nobody queues for cold coffee in the rain. Sales fall to 30 cups a day. Milk spoils. The rent on the pitch is due anyway."
+      },
+      {
+        "tag": "Both ways",
+        "tone": "brick",
+        "h": "You own 2% of that too.",
+        "p": "This is the part the reels leave out. Ownership is not a one way street. The same 2% that earned you the summer carries the monsoon."
+      },
+      {
+        "tag": "The truth",
+        "tone": "gold",
+        "h": "You own a business, not a bet.",
+        "p": "Over a year the cart made money. Not every month, and not without two months that genuinely hurt. Your slice followed it the whole way, up and down."
+      }
+    ],
+    "cartAlt": "An isometric coffee cart assembling itself",
+    "gridAlt": "One hundred ownership tokens, two of them yours"
+  }
+}
