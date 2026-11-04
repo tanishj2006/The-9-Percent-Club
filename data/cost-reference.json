@@ -1,0 +1,244 @@
+{
+ "_note": "Reference values generated from nse-backtester/backtester/costs.py. The TypeScript port in src/lib/costs.ts MUST reproduce these exactly. Treat as a test fixture.",
+ "broker": "Groww (conservative reading)",
+ "segment": "delivery",
+ "rates": {
+  "stt_delivery": 0.001,
+  "exchange_txn_nse": 3.07e-05,
+  "sebi_turnover": 1e-06,
+  "stamp_delivery_buy": 0.00015,
+  "gst_rate": 0.18,
+  "brokerage_flat": 20.0,
+  "brokerage_pct": 0.001,
+  "brokerage_min": 5.0,
+  "dp_charge_per_sell": 23.6
+ },
+ "cases": [
+  {
+   "qty": 10,
+   "price": 100.0,
+   "buy": {
+    "turnover": 1000.0,
+    "brokerage": 5.0,
+    "stt": 1.0,
+    "exchange_txn": 0.0307,
+    "sebi_fee": 0.001,
+    "stamp_duty": 0.15,
+    "gst": 0.905706,
+    "dp_charge": 0.0,
+    "total": 7.087406
+   },
+   "sell": {
+    "turnover": 1000.0,
+    "brokerage": 5.0,
+    "stt": 1.0,
+    "exchange_txn": 0.0307,
+    "sebi_fee": 0.001,
+    "stamp_duty": 0.0,
+    "gst": 0.905706,
+    "dp_charge": 23.6,
+    "total": 30.537406
+   },
+   "round_trip_total": 37.624812
+  },
+  {
+   "qty": 1,
+   "price": 1563.17,
+   "buy": {
+    "turnover": 1563.17,
+    "brokerage": 5.0,
+    "stt": 1.56317,
+    "exchange_txn": 0.047989,
+    "sebi_fee": 0.001563,
+    "stamp_duty": 0.234476,
+    "gst": 0.908919,
+    "dp_charge": 0.0,
+    "total": 7.756117
+   },
+   "sell": {
+    "turnover": 1563.17,
+    "brokerage": 5.0,
+    "stt": 1.56317,
+    "exchange_txn": 0.047989,
+    "sebi_fee": 0.001563,
+    "stamp_duty": 0.0,
+    "gst": 0.908919,
+    "dp_charge": 23.6,
+    "total": 31.121642
+   },
+   "round_trip_total": 38.877759
+  },
+  {
+   "qty": 2,
+   "price": 1000.0,
+   "buy": {
+    "turnover": 2000.0,
+    "brokerage": 5.0,
+    "stt": 2.0,
+    "exchange_txn": 0.0614,
+    "sebi_fee": 0.002,
+    "stamp_duty": 0.3,
+    "gst": 0.911412,
+    "dp_charge": 0.0,
+    "total": 8.274812
+   },
+   "sell": {
+    "turnover": 2000.0,
+    "brokerage": 5.0,
+    "stt": 2.0,
+    "exchange_txn": 0.0614,
+    "sebi_fee": 0.002,
+    "stamp_duty": 0.0,
+    "gst": 0.911412,
+    "dp_charge": 23.6,
+    "total": 31.574812
+   },
+   "round_trip_total": 39.849624
+  },
+  {
+   "qty": 3,
+   "price": 490.71,
+   "buy": {
+    "turnover": 1472.13,
+    "brokerage": 5.0,
+    "stt": 1.47213,
+    "exchange_txn": 0.045194,
+    "sebi_fee": 0.001472,
+    "stamp_duty": 0.220819,
+    "gst": 0.9084,
+    "dp_charge": 0.0,
+    "total": 7.648016
+   },
+   "sell": {
+    "turnover": 1472.13,
+    "brokerage": 5.0,
+    "stt": 1.47213,
+    "exchange_txn": 0.045194,
+    "sebi_fee": 0.001472,
+    "stamp_duty": 0.0,
+    "gst": 0.9084,
+    "dp_charge": 23.6,
+    "total": 31.027196
+   },
+   "round_trip_total": 38.675212
+  },
+  {
+   "qty": 63,
+   "price": 1563.17,
+   "buy": {
+    "turnover": 98479.71,
+    "brokerage": 20.0,
+    "stt": 98.47971,
+    "exchange_txn": 3.023327,
+    "sebi_fee": 0.09848,
+    "stamp_duty": 14.771956,
+    "gst": 4.161925,
+    "dp_charge": 0.0,
+    "total": 140.535399
+   },
+   "sell": {
+    "turnover": 98479.71,
+    "brokerage": 20.0,
+    "stt": 98.47971,
+    "exchange_txn": 3.023327,
+    "sebi_fee": 0.09848,
+    "stamp_duty": 0.0,
+    "gst": 4.161925,
+    "dp_charge": 23.6,
+    "total": 149.363442
+   },
+   "round_trip_total": 289.898841
+  },
+  {
+   "qty": 100,
+   "price": 1000.0,
+   "buy": {
+    "turnover": 100000.0,
+    "brokerage": 20.0,
+    "stt": 100.0,
+    "exchange_txn": 3.07,
+    "sebi_fee": 0.1,
+    "stamp_duty": 15.0,
+    "gst": 4.1706,
+    "dp_charge": 0.0,
+    "total": 142.3406
+   },
+   "sell": {
+    "turnover": 100000.0,
+    "brokerage": 20.0,
+    "stt": 100.0,
+    "exchange_txn": 3.07,
+    "sebi_fee": 0.1,
+    "stamp_duty": 0.0,
+    "gst": 4.1706,
+    "dp_charge": 23.6,
+    "total": 150.9406
+   },
+   "round_trip_total": 293.2812
+  },
+  {
+   "qty": 5,
+   "price": 250.0,
+   "buy": {
+    "turnover": 1250.0,
+    "brokerage": 5.0,
+    "stt": 1.25,
+    "exchange_txn": 0.038375,
+    "sebi_fee": 0.00125,
+    "stamp_duty": 0.1875,
+    "gst": 0.907133,
+    "dp_charge": 0.0,
+    "total": 7.384258
+   },
+   "sell": {
+    "turnover": 1250.0,
+    "brokerage": 5.0,
+    "stt": 1.25,
+    "exchange_txn": 0.038375,
+    "sebi_fee": 0.00125,
+    "stamp_duty": 0.0,
+    "gst": 0.907133,
+    "dp_charge": 23.6,
+    "total": 30.796758
+   },
+   "round_trip_total": 38.181015
+  }
+ ],
+ "breakeven": [
+  {
+   "capital": 2000,
+   "shares_of_1000": 2,
+   "breakeven_move": 0.019925
+  },
+  {
+   "capital": 5000,
+   "shares_of_1000": 5,
+   "breakeven_move": 0.009305
+  },
+  {
+   "capital": 10000,
+   "shares_of_1000": 10,
+   "breakeven_move": 0.006945
+  },
+  {
+   "capital": 25000,
+   "shares_of_1000": 25,
+   "breakeven_move": 0.005057
+  },
+  {
+   "capital": 50000,
+   "shares_of_1000": 50,
+   "breakeven_move": 0.003641
+  },
+  {
+   "capital": 100000,
+   "shares_of_1000": 100,
+   "breakeven_move": 0.002933
+  },
+  {
+   "capital": 500000,
+   "shares_of_1000": 500,
+   "breakeven_move": 0.002366
+  }
+ ]
+}
