@@ -1,0 +1,478 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THE 9% CLUB — design tokens
+   Three blocks, so the toggle wins in both directions: the bare
+   :root, prefers-color-scheme guarded by not([data-theme=light]),
+   and [data-theme=dark].
+   ============================================================ */
+:root {
+  /* light = warm paper */
+  --bg: #faf7f2;
+  --bg-raise: #ffffff;
+  --ink: #1a1a1f;
+  --ink-soft: #585560;
+  --ink-faint: #918c99;
+  --rule: #e4ded4;
+
+  --marigold: #e08c1a; /* money, the business, what is at stake */
+  --marigold-d: #b36c0c;
+  --teal: #0f766e; /* your share, what you keep */
+  --teal-d: #0b5a54;
+  --brick: #b03a2b; /* what costs and losses take */
+
+  --wash-gold: #fdf1dd;
+  --wash-teal: #e2f1ef;
+  --wash-brick: #f9e8e5;
+
+  --f-display: var(--font-instrument), Georgia, serif;
+  --f-body: var(--font-mukta), system-ui, -apple-system, sans-serif;
+  --f-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+  /* Small caps-style labels. See the Hindi overrides below. */
+  --f-label: var(--f-mono);
+  --label-track: 1;
+
+  --col: 36rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131316;
+    --bg-raise: #1b1b20;
+    --ink: #f0ede8;
+    --ink-soft: #a9a4b0;
+    --ink-faint: #746f7d;
+    --rule: #2c2c33;
+    --marigold: #f0a73c;
+    --marigold-d: #c98422;
+    --teal: #4fd1c0;
+    --teal-d: #2aa394;
+    --brick: #e5796a;
+    --wash-gold: #2a2012;
+    --wash-teal: #112926;
+    --wash-brick: #2b1a17;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131316;
+  --bg-raise: #1b1b20;
+  --ink: #f0ede8;
+  --ink-soft: #a9a4b0;
+  --ink-faint: #746f7d;
+  --rule: #2c2c33;
+  --marigold: #f0a73c;
+  --marigold-d: #c98422;
+  --teal: #4fd1c0;
+  --teal-d: #2aa394;
+  --brick: #e5796a;
+  --wash-gold: #2a2012;
+  --wash-teal: #112926;
+  --wash-brick: #2b1a17;
+  color-scheme: dark;
+}
+
+/* Instrument Serif and IBM Plex Mono have no Devanagari. Left alone, Hindi
+   would fall through to whatever the phone ships, so Mukta takes over, and
+   letter-spacing comes off because it pulls Devanagari conjuncts apart. */
+:root:lang(hi) {
+  --f-display: var(--font-mukta), system-ui, sans-serif;
+  --f-label: var(--font-mukta), system-ui, sans-serif;
+  --label-track: 0;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raise: var(--bg-raise);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-marigold: var(--marigold);
+  --color-marigold-d: var(--marigold-d);
+  --color-teal: var(--teal);
+  --color-teal-d: var(--teal-d);
+  --color-brick: var(--brick);
+  --color-wash-gold: var(--wash-gold);
+  --color-wash-teal: var(--wash-teal);
+  --color-wash-brick: var(--wash-brick);
+
+  --font-display: var(--f-display);
+  --font-body: var(--f-body);
+  --font-mono: var(--f-mono);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    line-height: 0.98;
+    margin: 0;
+  }
+  h2 {
+    font-size: clamp(1.9rem, 5.5vw, 3.1rem);
+    line-height: 1.05;
+    margin: 0;
+  }
+  /* Matras sit above and below the line, so Devanagari needs the extra lead. */
+  :lang(hi) h1,
+  :lang(hi) h2 {
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.22;
+  }
+  :lang(hi) h1 {
+    font-size: clamp(2.3rem, 8vw, 4.8rem);
+  }
+  :lang(hi) h2 {
+    font-size: clamp(1.6rem, 4.8vw, 2.7rem);
+  }
+  p {
+    margin: 0 0 1.1rem;
+    max-width: var(--col);
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .gutter {
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+  }
+  .eyebrow {
+    font-family: var(--f-label);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: calc(0.18em * var(--label-track));
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* money HUD */
+  .hud {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: max(14px, env(safe-area-inset-right, 0px));
+    z-index: 60;
+    background: var(--bg-raise);
+    border: 1px solid var(--rule);
+    border-radius: 1.3rem;
+    padding: 0.5rem 0.9rem;
+    box-shadow: 0 2px 14px rgb(0 0 0 / 0.07);
+    transition: border-color 0.35s ease;
+  }
+  .hud[data-tone="up"] {
+    border-color: var(--teal);
+  }
+  .hud[data-tone="down"] {
+    border-color: var(--brick);
+  }
+  .hud-label {
+    font-family: var(--f-label);
+    font-size: 0.58rem;
+    letter-spacing: calc(0.13em * var(--label-track));
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.1;
+  }
+  .hud-value {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .hud[data-tone="up"] .hud-value {
+    color: var(--teal);
+  }
+  .hud[data-tone="down"] .hud-value {
+    color: var(--brick);
+  }
+  .hud-sub {
+    font-family: var(--f-label);
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+  .hud-sub:empty {
+    display: none;
+  }
+
+  /* controls */
+  .topbar {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top, 0px));
+    left: max(14px, env(safe-area-inset-left, 0px));
+    z-index: 60;
+    display: flex;
+    gap: 0.4rem;
+  }
+  .ctl {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.45rem 0.6rem;
+    background: var(--bg-raise);
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+  }
+  .ctl:hover {
+    color: var(--ink);
+  }
+  .ctl:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+  }
+  .ctl[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* intro */
+  .intro {
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 5rem 3rem;
+  }
+  .scroll-cue {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--f-label);
+    font-size: 0.7rem;
+    letter-spacing: calc(0.14em * var(--label-track));
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .scroll-cue-bar {
+    width: 2px;
+    height: 34px;
+    background: linear-gradient(var(--marigold), transparent);
+  }
+
+  /* Pinned scene. The section must be TALLER than the viewport so the sticky
+     child has something to pin against: that extra height is the scroll budget
+     ScrollTrigger measures progress from. Without it, span is zero, nothing
+     animates, and a screenshot still looks perfect. Height lives in CSS, not in
+     a GSAP pin-spacer, so it is reserved before the scene chunk arrives. */
+  .scene {
+    position: relative;
+    --beats: 10;
+    height: calc(var(--beats) * 88svh);
+  }
+  .scene-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    overflow: hidden;
+  }
+  .stage {
+    min-height: 0;
+    padding-top: 4.75rem;
+    padding-bottom: 0.5rem;
+  }
+  .stage-inner {
+    height: 100%;
+    width: 100%;
+    max-width: 54rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .cart-wrap {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+  .grid-wrap {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .stage svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .caption {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding-bottom: 2.2rem;
+    min-height: 9.5rem;
+    display: grid;
+  }
+  .beat {
+    grid-area: 1 / 1;
+  }
+  .beat h2 {
+    margin-bottom: 0.5rem;
+  }
+  .beat p {
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    max-width: 34rem;
+  }
+  .beat-tag {
+    display: inline-block;
+    font-family: var(--f-label);
+    font-size: 0.64rem;
+    letter-spacing: calc(0.14em * var(--label-track));
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid currentColor;
+    margin-bottom: 0.7rem;
+  }
+  .beat-tag[data-tone="gold"] {
+    color: var(--marigold-d);
+  }
+  .beat-tag[data-tone="teal"] {
+    color: var(--teal);
+  }
+  .beat-tag[data-tone="brick"] {
+    color: var(--brick);
+  }
+
+  .rail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 2px;
+    width: 100%;
+    z-index: 55;
+    background: var(--marigold);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  /* tokens: GSAP flips data-state, CSS owns the colour, so a theme toggle
+     repaints them without touching the timeline */
+  .tok {
+    fill: var(--bg-raise);
+    stroke: var(--rule);
+    stroke-width: 1;
+    transition:
+      fill 0.25s ease,
+      stroke 0.25s ease;
+  }
+  .tok[data-state="gold"] {
+    fill: var(--wash-gold);
+    stroke: var(--marigold);
+  }
+  .tok[data-state="mine"] {
+    fill: var(--teal);
+    stroke: var(--teal);
+  }
+
+  .cups {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-top: 0.3rem;
+    font-family: var(--f-mono);
+    visibility: hidden;
+  }
+  .cups-n {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.3;
+  }
+  .cups-l {
+    font-family: var(--f-label);
+    font-size: 0.68rem;
+    letter-spacing: calc(0.12em * var(--label-track));
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* outro */
+  .outro {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 5rem 7rem;
+  }
+  .handoff {
+    margin-top: 2.5rem;
+    border-left: 2px solid var(--marigold);
+    padding: 0.3rem 0 0.3rem 1.2rem;
+  }
+
+  @media (max-width: 780px) {
+    .stage-inner {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 0.5rem;
+    }
+    .caption {
+      min-height: 11rem;
+      padding-bottom: 1.4rem;
+    }
+  }
+
+  /* Reduced motion: the scene sits at its final state and the beats read as
+     plain text. The content stays; only the timeline goes. */
+  @media (prefers-reduced-motion: reduce) {
+    .scene {
+      height: auto;
+    }
+    .scene-sticky {
+      position: static;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+    .stage-inner {
+      height: min(70svh, 34rem);
+    }
+    .caption {
+      display: block;
+    }
+    .beat {
+      margin-top: 2.5rem;
+    }
+    .rail {
+      display: none;
+    }
+    * {
+      transition: none !important;
+    }
+  }
+}
