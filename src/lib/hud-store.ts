@@ -7,13 +7,17 @@
 export const STARTING_MONEY = 2000;
 
 /** Which `site.*` strings the HUD may show. Keys, so a language swap just works. */
-export type HudLabel = "hudLabel" | "hudTrade";
+export type HudLabel = "hudLabel" | "hudTrade" | "hudSip";
 export type HudNote =
   | "hudTokens"
   | "hudFresh"
   | "hudOfWallet"
   | "hudUnmoved"
-  | "hudTenTrips";
+  | "hudTenTrips"
+  | "hudSoldAt"
+  | "hudHeldAt"
+  | "hudLostCount"
+  | "hudPutIn";
 
 export interface HudState {
   /** What the HUD shows. Ticks through intermediate values while animating. */
@@ -22,6 +26,8 @@ export interface HudState {
   settled: number;
   /** Line under the number explaining what it currently is. */
   note: HudNote | null;
+  /** Fills {amount} in the note, for notes that carry a live figure. */
+  noteValue?: string;
   /** Top line. Defaults to "Your money". */
   label?: HudLabel;
   /** Show paise. Costs need them; ₹962 is not ₹962.38. */
@@ -51,6 +57,7 @@ export const hudStore = {
       next.money === state.money &&
       next.settled === state.settled &&
       next.note === state.note &&
+      next.noteValue === state.noteValue &&
       next.label === state.label &&
       next.paise === state.paise
     ) {

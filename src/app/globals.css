@@ -224,13 +224,58 @@
     left: max(14px, env(safe-area-inset-left, 0px));
     z-index: 60;
     display: flex;
-    flex-wrap: wrap;
     gap: 0.4rem;
-    max-width: 7.5rem; /* the switcher drops to a second row, clear of the HUD */
   }
-  @media (min-width: 640px) {
-    .topbar {
-      max-width: none;
+  /* Six pills fit beside the HUD on a laptop, not on a phone. There they collapse
+     into a menu that also has room for chapter titles. */
+  .chapter-switcher {
+    position: relative;
+  }
+  .chapter-list {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .chapter-title,
+  .chapter-toggle {
+    display: none;
+  }
+  @media (max-width: 639px) {
+    .chapter-toggle {
+      display: block;
+    }
+    .chapter-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: -5.5rem;
+      width: min(19rem, calc(100vw - 28px));
+      flex-direction: column;
+      background: var(--bg-raise);
+      border: 1px solid var(--rule);
+      border-radius: 0.75rem;
+      padding: 0.35rem;
+      box-shadow: 0 6px 24px rgb(0 0 0 / 0.14);
+    }
+    .chapter-switcher[data-open="true"] .chapter-list {
+      display: flex;
+    }
+    .chapter-list .ctl {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      min-height: 2.75rem;
+      border: 0;
+      border-radius: 0.5rem;
+    }
+    .chapter-title {
+      display: inline;
+      font-family: var(--f-body);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0;
     }
   }
   .ctl {
@@ -445,8 +490,22 @@
   }
 
   @media (max-width: 639px) {
-    .stage {
-      padding-top: 5.4rem; /* clears the switcher's second row */
+    .stage-inner.stage-crowd {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 0.3rem;
+    }
+    .crowd-side {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 0 0.6rem;
+    }
+    .crowd-label {
+      margin: 0;
+    }
+    .loss-figure {
+      grid-column: 1 / -1;
     }
   }
   @media (max-width: 780px) {
@@ -663,6 +722,208 @@
     color: var(--brick);
   }
 
+  /* chapter 06: the real curve, the gate, and the two tracks */
+  .stage-curve {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    max-width: 44rem;
+  }
+  .curve-charts,
+  .curve-foot {
+    display: grid;
+    min-height: 0;
+  }
+  .curve-charts {
+    height: 100%;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .curve-charts > *,
+  .curve-foot > * {
+    grid-area: 1 / 1;
+    min-height: 0;
+  }
+  .curve-ref {
+    stroke: var(--ink-faint);
+    stroke-dasharray: 4 5;
+    stroke-width: 1;
+  }
+  .curve-label {
+    font-family: var(--f-mono);
+    font-size: 17px;
+    fill: var(--ink-soft);
+  }
+  .curve-line {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .curve-fall,
+  .curve-sold {
+    stroke: var(--brick);
+  }
+  .curve-held {
+    stroke: var(--teal);
+  }
+  .curve-line[data-chosen="true"] {
+    stroke-width: 4;
+  }
+  .gate {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .gate-button {
+    min-height: 3rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border: 2px solid currentColor;
+    border-radius: 0.6rem;
+    background: var(--bg-raise);
+  }
+  .gate-button[data-kind="sold"] {
+    color: var(--brick);
+  }
+  .gate-button[data-kind="held"] {
+    color: var(--teal);
+  }
+  .gate-button[aria-pressed="true"] {
+    background: var(--wash-gold);
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  .gate-button:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+  }
+  .tracks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin: 0;
+  }
+  .tracks dt {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+  .tracks dd {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .tracks [data-kind="sold"] dd {
+    color: var(--brick);
+  }
+  .tracks [data-kind="held"] dd {
+    color: var(--teal);
+  }
+
+  /* chapter 07: one hundred traders */
+  .stage-crowd {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 1.5rem;
+    max-width: 46rem;
+  }
+  .figure {
+    fill: var(--marigold);
+    transition:
+      fill 0.25s ease,
+      opacity 0.25s ease;
+  }
+  .figure[data-state="lost"] {
+    fill: var(--brick);
+    opacity: 0.32;
+  }
+  .figure[data-state="kept"] {
+    fill: var(--teal);
+  }
+  .crowd-side {
+    min-width: 0;
+  }
+  .crowd-count {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 5vw, 2.6rem);
+    line-height: 1.1;
+    color: var(--brick);
+  }
+  .crowd-label {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+  .loss-figure {
+    display: block;
+  }
+  .loss-amount {
+    display: block;
+    font-family: var(--f-mono);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 3.6vw, 1.7rem);
+    line-height: 1.15;
+    color: var(--brick);
+  }
+  .loss-label {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+
+  /* chapter 08: a two-layer area, and a calculator with its disclaimer */
+  .sip-principal {
+    fill: var(--ink-faint);
+    opacity: 0.35;
+  }
+  .sip-growth {
+    fill: var(--teal);
+  }
+  .gap-chart svg text.sip-tick {
+    font-size: 13px;
+  }
+  .readout-sip {
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.8rem;
+  }
+  .readout-put {
+    color: var(--ink-soft);
+  }
+  .readout-total {
+    color: var(--teal);
+    font-size: 1.2rem;
+  }
+  .calc-tight .calc-slider {
+    height: 2.75rem;
+    margin-block: -0.2rem;
+  }
+  .calc-tight .calc-capital {
+    font-size: 1.05rem;
+  }
+  .calc-tight .calc-grid dd {
+    font-size: clamp(0.76rem, 3.2vw, 1.1rem); /* ₹2,07,xx,xxx has to fit a third of a phone */
+  }
+  .calc-grid dd[data-key="sip"] {
+    color: var(--teal);
+  }
+  .calc-disclaimer {
+    margin: 0.5rem 0 0;
+    max-width: none;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    color: var(--ink-soft);
+  }
+
   /* chapter pager */
   .chapter-nav {
     max-width: 62rem;
@@ -733,8 +994,25 @@
     .calc {
       margin-top: 1rem;
     }
-    .readout {
+    .readout:not(.readout-sip) {
       display: none;
+    }
+    .stage-inner.stage-curve,
+    .stage-inner.stage-crowd {
+      height: auto;
+    }
+    .curve-charts svg {
+      grid-area: auto;
+      height: min(50svh, 20rem);
+    }
+    .curve-charts svg[data-testid="crash-chart"] {
+      display: none;
+    }
+    .curve-foot {
+      gap: 0.8rem;
+    }
+    .curve-foot > * {
+      grid-area: auto;
     }
     * {
       transition: none !important;

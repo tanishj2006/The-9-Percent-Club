@@ -1,5 +1,6 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import type { ReactNode } from "react";
+import { CHAPTERS } from "@/lib/chapters";
 
 /**
  * Hands client components only this chapter's copy, so a reader on chapter 00
@@ -9,7 +10,7 @@ export function ChapterMessages({
   chapter,
   children,
 }: {
-  chapter: "ch00" | "ch04" | "ch05";
+  chapter: (typeof CHAPTERS)[number]["titleKey"];
   children: ReactNode;
 }) {
   const { site, nav, [chapter]: copy } = useMessages();

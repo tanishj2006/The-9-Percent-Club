@@ -31,3 +31,14 @@ export function resolveBeats(t: Translate, values: Record<string, string>): Beat
     p: t(`beats.${i}.p`, values),
   }));
 }
+
+/** Just the first beat, for placeholders: later beats may need figures from a scene's data. */
+export function firstBeat(t: Translate, values: Record<string, string>): BeatCopy {
+  const [beat] = t.raw("beats") as BeatCopy[];
+  return {
+    ...beat,
+    tag: t("beats.0.tag", values),
+    h: t("beats.0.h", values),
+    p: t("beats.0.p", values),
+  };
+}

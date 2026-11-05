@@ -53,7 +53,7 @@ export default function ChapterFive({ params }: Props) {
         <p className="mt-8 text-sm text-ink-faint">{t("assumptions")}</p>
       </section>
 
-      <ChapterNav current="05" note="endNote" />
+      <ChapterNav current="05" />
     </main>
   );
 }
