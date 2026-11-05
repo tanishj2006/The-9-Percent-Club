@@ -12,15 +12,7 @@ from a blog post.
 
 ## Status
 
-| Chapter | State |
-|---|---|
-| 00 The cold coffee cart | Built and verified |
-| 01 to 03 | Not started |
-| 04 What a trade really costs | Built and verified |
-| 05 Why Rs 2,000 cannot trade | Built and verified |
-| 06 What losing looks like | Built and verified |
-| 07 The 91% number | Built and verified |
-| 08 What actually works | Built and verified |
+All nine chapters, 00 to 08, are built and verified.
 
 Hindi copy is awaiting review before launch.
 
@@ -29,7 +21,7 @@ Hindi copy is awaiting review before launch.
     npm install
     npm run dev           # http://localhost:3000, redirects to /en or /hi
 
-Chapters live at `/en`, `/en/04` to `/en/08`, with the same paths under `/hi`.
+Chapters live at `/en`, `/en/01` to `/en/08`, with the same paths under `/hi`.
 
     npm test              # cost engine and copy checks (vitest)
     npx playwright install chromium   # once
@@ -52,7 +44,7 @@ child does the pinning, and ScrollTrigger only measures progress across the
 section. It does not use `pin: true`: keeping the height in CSS reserves it
 before the scene's chunk arrives, so the page cannot shift when it loads.
 
-Scene figures come from `src/lib/costs.ts`, a port of the `nse-backtester` cost
+Cost figures come from `src/lib/costs.ts`, a port of the `nse-backtester` cost
 engine tested against `data/cost-reference.json`. Copy takes those figures as
 values, so a number cannot drift from the engine.
 

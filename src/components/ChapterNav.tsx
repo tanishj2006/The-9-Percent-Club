@@ -2,13 +2,13 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CHAPTERS, type ChapterNumber } from "@/lib/chapters";
 
-/** Previous / next at the foot of a chapter. `note` explains a gap in the numbering. */
+/** Previous / next at the foot of a chapter. `note` closes the course. */
 export function ChapterNav({
   current,
   note,
 }: {
   current: ChapterNumber;
-  note?: "skipNote" | "endNote";
+  note?: "endNote";
 }) {
   const t = useTranslations("nav");
   const i = CHAPTERS.findIndex((c) => c.number === current);

@@ -48,7 +48,7 @@ export default function ChapterZero({ params }: Props) {
         </div>
       </section>
 
-      <ChapterNav current="00" note="skipNote" />
+      <ChapterNav current="00" />
     </main>
   );
 }

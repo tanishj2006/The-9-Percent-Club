@@ -9,10 +9,16 @@ import { hudStore, STARTING_MONEY, type HudNote } from "@/lib/hud-store";
  * scene chunk is still loading. Sits before the scene in the tree, so a scene
  * restoring a mid-page scroll position still has the last word.
  */
-export function ChapterStart({ note = null }: { note?: HudNote | null }) {
+export function ChapterStart({
+  note = null,
+  noteValue,
+}: {
+  note?: HudNote | null;
+  noteValue?: string;
+}) {
   useLayoutEffect(() => {
-    hudStore.set({ money: STARTING_MONEY, settled: STARTING_MONEY, note });
-  }, [note]);
+    hudStore.set({ money: STARTING_MONEY, settled: STARTING_MONEY, note, noteValue });
+  }, [note, noteValue]);
 
   return null;
 }

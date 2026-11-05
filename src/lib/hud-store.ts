@@ -17,7 +17,13 @@ export type HudNote =
   | "hudSoldAt"
   | "hudHeldAt"
   | "hudLostCount"
-  | "hudPutIn";
+  | "hudPutIn"
+  | "hudAtBank"
+  | "hudAtBroker"
+  | "hudAtExchange"
+  | "hudInDemat"
+  | "hudInShares"
+  | "hudSharesAt";
 
 export interface HudState {
   /** What the HUD shows. Ticks through intermediate values while animating. */

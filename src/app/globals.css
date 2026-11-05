@@ -226,7 +226,7 @@
     display: flex;
     gap: 0.4rem;
   }
-  /* Six pills fit beside the HUD on a laptop, not on a phone. There they collapse
+  /* Nine pills fit beside the HUD on a laptop, not on a phone or small tablet. There they collapse
      into a menu that also has room for chapter titles. */
   .chapter-switcher {
     position: relative;
@@ -242,7 +242,7 @@
   .chapter-toggle {
     display: none;
   }
-  @media (max-width: 639px) {
+  @media (max-width: 767px) {
     .chapter-toggle {
       display: block;
     }
@@ -924,6 +924,150 @@
     color: var(--ink-soft);
   }
 
+  /* chapter 01: four stops on a loop */
+  .stage-single {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    max-width: 40rem;
+  }
+  .plumb-box {
+    fill: var(--bg-raise);
+    stroke: var(--rule);
+    stroke-width: 1.5;
+    transition:
+      fill 0.25s ease,
+      stroke 0.25s ease;
+  }
+  [data-node][data-state="lit"] .plumb-box {
+    fill: var(--wash-gold);
+    stroke: var(--marigold);
+    stroke-width: 2.5;
+  }
+  [data-node="demat"][data-state="lit"] .plumb-box {
+    fill: var(--wash-teal);
+    stroke: var(--teal);
+  }
+  .plumb-title {
+    font-family: var(--f-body);
+    font-size: 18px;
+    font-weight: 700;
+    fill: var(--ink);
+    text-anchor: middle;
+  }
+  .plumb-sub {
+    font-family: var(--f-mono);
+    font-size: 13px;
+    fill: var(--ink-soft);
+    text-anchor: middle;
+  }
+  .plumb-leg {
+    fill: none;
+    stroke: var(--marigold);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .plumb-leg[data-leg="share"] {
+    stroke: var(--teal);
+  }
+  .plumb-glyph {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    font-weight: 600;
+    fill: var(--bg-raise);
+    text-anchor: middle;
+  }
+
+  /* chapter 02: the order book */
+  .book-chart {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    min-height: 0;
+    height: 100%;
+  }
+  .book-stat {
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .book-ltp {
+    font-size: 1.35rem;
+    color: var(--ink);
+  }
+  .book-price {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    fill: var(--ink);
+  }
+  .book-head {
+    font-family: var(--f-body);
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--ink-soft);
+  }
+  .book-who {
+    font-family: var(--f-body);
+    font-size: 13px;
+    fill: var(--ink-soft);
+  }
+  .book-bid {
+    fill: var(--teal);
+  }
+  .book-ask {
+    fill: var(--brick);
+  }
+  .book-spread {
+    stroke: var(--ink-faint);
+    stroke-dasharray: 4 5;
+  }
+
+  /* chapter 03: one day, one candle, then many */
+  .day-line {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .day-open {
+    stroke: var(--ink-faint);
+    stroke-dasharray: 4 5;
+  }
+  .candle-up {
+    fill: var(--teal);
+    stroke: var(--teal);
+  }
+  .candle-down {
+    fill: var(--brick);
+    stroke: var(--brick);
+  }
+  .candle-wick {
+    stroke-width: 2.5;
+  }
+  .candle-last {
+    stroke: var(--marigold);
+    stroke-width: 2;
+    fill: none;
+  }
+  .ohlc {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin: 0;
+  }
+  .ohlc dt {
+    font-size: 0.78rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+  .ohlc dd {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
   /* chapter pager */
   .chapter-nav {
     max-width: 62rem;
@@ -994,7 +1138,7 @@
     .calc {
       margin-top: 1rem;
     }
-    .readout:not(.readout-sip) {
+    .readout:not(.readout-sip, .readout-book) {
       display: none;
     }
     .stage-inner.stage-curve,
