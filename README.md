@@ -14,28 +14,51 @@ from a blog post.
 
 | Chapter | State |
 |---|---|
-| 00 The cold coffee cart | Prototype built and verified |
-| 01 Who buys your token? | Not started |
-| 04 What a trade really costs | Data ready (cost engine verified) |
-| 05 Why Rs 2,000 cannot trade | Data ready |
+| 00 The cold coffee cart | Built and verified |
+| 01 to 03 | Not started |
+| 04 What a trade really costs | Built and verified |
+| 05 Why Rs 2,000 cannot trade | Built and verified |
 | 06 What losing looks like | Data ready (real 2020 drawdown curve) |
+| 07 and 08 | Not started |
+
+Wave 1 is chapters 00, 04 and 05. Hindi copy is awaiting review before launch.
 
 ## Running it
 
-The prototype is plain HTML with no build step. Open it directly:
+    npm install
+    npm run dev           # http://localhost:3000, redirects to /en or /hi
 
-    open prototype/chapter-00.html
+Chapters live at `/en`, `/en/04` and `/en/05`, with the same paths under `/hi`.
+
+    npm test              # cost engine and copy checks (vitest)
+    npx playwright install chromium   # once
+    npm run test:e2e      # browser tests against a production build
+    E2E_DEV=1 npm run test:e2e        # the same, under next dev and strict mode
+    npm run analyze       # bundle report in .next/analyze
+
+`prototype/chapter-00.html` is the original standalone reference, kept as it
+was. Its summer profit still reads Rs 2,20,000; the site's copy is Rs 1,20,000.
 
 ## Approach
 
-Scroll scenes are vanilla JS, not GSAP. A pinned section gets explicit extra
-height (`--beats * 88svh`); scroll position within it becomes a 0..1 progress
-value that drives every element in the scene. That keeps the payload small,
-which matters because the audience is on Indian mobile data.
+Scroll scenes use GSAP ScrollTrigger through `useGSAP`, with Lenis for smooth
+scrolling. Each scene is loaded with `next/dynamic` and `ssr: false`, so GSAP
+stays out of the initial bundle, which matters because the audience is on
+Indian mobile data.
 
-The persistent money HUD is the narrative spine. It starts at Rs 2,000 in
-chapter 00 and carries through every chapter, so the reader watches their
-money move rather than reading about it.
+Every scene shares one pattern, in `src/scenes/shared/useScene.ts`. The section
+gets explicit extra height in CSS (`--beats * 88svh`), a `position: sticky`
+child does the pinning, and ScrollTrigger only measures progress across the
+section. It does not use `pin: true`: keeping the height in CSS reserves it
+before the scene's chunk arrives, so the page cannot shift when it loads.
+
+Scene figures come from `src/lib/costs.ts`, a port of the `nse-backtester` cost
+engine tested against `data/cost-reference.json`. Copy takes those figures as
+values, so a number cannot drift from the engine.
+
+The persistent money HUD is the narrative spine. It carries through every
+chapter, so the reader watches their money move rather than reading about it.
+Each chapter sets its own starting point and labels what the number means.
 
 ## Content rules
 

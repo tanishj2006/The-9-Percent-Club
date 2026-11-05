@@ -1,625 +1,973 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Chapter 0 — The Cold Coffee Cart | The 9% Club</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Mukta:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<style>
-/* ============================================================
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Chapter 0 — The Cold Coffee Cart | The 9% Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Mukta:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" />
+    <style>
+      /* ============================================================
    THE 9% CLUB — design tokens
    Layout: full-bleed pinned scroll scenes; narrative in a
    measured column; a persistent money HUD threads every chapter.
    ============================================================ */
-:root {
-  /* light = warm paper */
-  --bg:         #faf7f2;
-  --bg-raise:   #ffffff;
-  --ink:        #1a1a1f;
-  --ink-soft:   #585560;
-  --ink-faint:  #918c99;
-  --rule:       #e4ded4;
+      :root {
+        /* light = warm paper */
+        --bg: #faf7f2;
+        --bg-raise: #ffffff;
+        --ink: #1a1a1f;
+        --ink-soft: #585560;
+        --ink-faint: #918c99;
+        --rule: #e4ded4;
 
-  --marigold:   #e08c1a;   /* money, the business, what is at stake */
-  --marigold-d: #b36c0c;
-  --teal:       #0f766e;   /* your share, what you keep */
-  --teal-d:     #0b5a54;
-  --brick:      #b03a2b;   /* what costs and losses take */
+        --marigold: #e08c1a; /* money, the business, what is at stake */
+        --marigold-d: #b36c0c;
+        --teal: #0f766e; /* your share, what you keep */
+        --teal-d: #0b5a54;
+        --brick: #b03a2b; /* what costs and losses take */
 
-  --wash-gold:  #fdf1dd;
-  --wash-teal:  #e2f1ef;
-  --wash-brick: #f9e8e5;
+        --wash-gold: #fdf1dd;
+        --wash-teal: #e2f1ef;
+        --wash-brick: #f9e8e5;
 
-  --f-display: "Instrument Serif", Georgia, serif;
-  --f-body:    "Mukta", system-ui, -apple-system, sans-serif;
-  --f-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+        --f-display: "Instrument Serif", Georgia, serif;
+        --f-body: "Mukta", system-ui, -apple-system, sans-serif;
+        --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 
-  --col: 36rem;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg:         #131316;
-    --bg-raise:   #1b1b20;
-    --ink:        #f0ede8;
-    --ink-soft:   #a9a4b0;
-    --ink-faint:  #746f7d;
-    --rule:       #2c2c33;
-    --marigold:   #f0a73c;
-    --marigold-d: #c98422;
-    --teal:       #4fd1c0;
-    --teal-d:     #2aa394;
-    --brick:      #e5796a;
-    --wash-gold:  #2a2012;
-    --wash-teal:  #112926;
-    --wash-brick: #2b1a17;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg:         #131316;
-  --bg-raise:   #1b1b20;
-  --ink:        #f0ede8;
-  --ink-soft:   #a9a4b0;
-  --ink-faint:  #746f7d;
-  --rule:       #2c2c33;
-  --marigold:   #f0a73c;
-  --marigold-d: #c98422;
-  --teal:       #4fd1c0;
-  --teal-d:     #2aa394;
-  --brick:      #e5796a;
-  --wash-gold:  #2a2012;
-  --wash-teal:  #112926;
-  --wash-brick: #2b1a17;
-  color-scheme: dark;
-}
+        --col: 36rem;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #131316;
+          --bg-raise: #1b1b20;
+          --ink: #f0ede8;
+          --ink-soft: #a9a4b0;
+          --ink-faint: #746f7d;
+          --rule: #2c2c33;
+          --marigold: #f0a73c;
+          --marigold-d: #c98422;
+          --teal: #4fd1c0;
+          --teal-d: #2aa394;
+          --brick: #e5796a;
+          --wash-gold: #2a2012;
+          --wash-teal: #112926;
+          --wash-brick: #2b1a17;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #131316;
+        --bg-raise: #1b1b20;
+        --ink: #f0ede8;
+        --ink-soft: #a9a4b0;
+        --ink-faint: #746f7d;
+        --rule: #2c2c33;
+        --marigold: #f0a73c;
+        --marigold-d: #c98422;
+        --teal: #4fd1c0;
+        --teal-d: #2aa394;
+        --brick: #e5796a;
+        --wash-gold: #2a2012;
+        --wash-teal: #112926;
+        --wash-brick: #2b1a17;
+        color-scheme: dark;
+      }
 
-* { box-sizing: border-box }
-html { scroll-behavior: smooth }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--f-body);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-.gutter {
-  padding-left: max(18px, env(safe-area-inset-left, 0px));
-  padding-right: max(18px, env(safe-area-inset-right, 0px));
-}
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--f-body);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      .gutter {
+        padding-left: max(18px, env(safe-area-inset-left, 0px));
+        padding-right: max(18px, env(safe-area-inset-right, 0px));
+      }
 
-h1, h2, .display { font-family: var(--f-display); font-weight: 400; letter-spacing: -0.01em }
-h1 { font-size: clamp(2.6rem, 9vw, 5.5rem); line-height: .98; margin: 0; text-wrap: balance }
-h2 { font-size: clamp(1.9rem, 5.5vw, 3.1rem); line-height: 1.05; margin: 0; text-wrap: balance }
-p  { margin: 0 0 1.1rem; max-width: var(--col) }
-.eyebrow {
-  font-family: var(--f-mono); font-size: .7rem; font-weight: 600;
-  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint);
-}
-.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums }
+      h1,
+      h2,
+      .display {
+        font-family: var(--f-display);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+      h1 {
+        font-size: clamp(2.6rem, 9vw, 5.5rem);
+        line-height: 0.98;
+        margin: 0;
+        text-wrap: balance;
+      }
+      h2 {
+        font-size: clamp(1.9rem, 5.5vw, 3.1rem);
+        line-height: 1.05;
+        margin: 0;
+        text-wrap: balance;
+      }
+      p {
+        margin: 0 0 1.1rem;
+        max-width: var(--col);
+      }
+      .eyebrow {
+        font-family: var(--f-mono);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+      .num {
+        font-family: var(--f-mono);
+        font-variant-numeric: tabular-nums;
+      }
 
-/* ---------- money HUD ---------- */
-#hud {
-  position: fixed;
-  top: max(12px, env(safe-area-inset-top, 0px));
-  right: max(14px, env(safe-area-inset-right, 0px));
-  z-index: 60;
-  background: var(--bg-raise);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: .5rem .9rem;
-  display: flex; align-items: center; gap: .6rem;
-  box-shadow: 0 2px 14px rgba(0,0,0,.07);
-  transition: border-color .35s ease;
-}
-#hud.up   { border-color: var(--teal) }
-#hud.down { border-color: var(--brick) }
-#hud .lbl {
-  font-family: var(--f-mono); font-size: .58rem; letter-spacing: .13em;
-  text-transform: uppercase; color: var(--ink-faint); line-height: 1;
-}
-#hud .val {
-  font-family: var(--f-mono); font-variant-numeric: tabular-nums;
-  font-size: 1.05rem; font-weight: 600; line-height: 1;
-}
-#hud .val.up   { color: var(--teal) }
-#hud .val.down { color: var(--brick) }
-#hud .sub {
-  font-family: var(--f-mono); font-size: .62rem; color: var(--ink-faint);
-  line-height: 1; margin-top: .2rem;
-}
+      /* ---------- money HUD ---------- */
+      #hud {
+        position: fixed;
+        top: max(12px, env(safe-area-inset-top, 0px));
+        right: max(14px, env(safe-area-inset-right, 0px));
+        z-index: 60;
+        background: var(--bg-raise);
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        padding: 0.5rem 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+        transition: border-color 0.35s ease;
+      }
+      #hud.up {
+        border-color: var(--teal);
+      }
+      #hud.down {
+        border-color: var(--brick);
+      }
+      #hud .lbl {
+        font-family: var(--f-mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        line-height: 1;
+      }
+      #hud .val {
+        font-family: var(--f-mono);
+        font-variant-numeric: tabular-nums;
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1;
+      }
+      #hud .val.up {
+        color: var(--teal);
+      }
+      #hud .val.down {
+        color: var(--brick);
+      }
+      #hud .sub {
+        font-family: var(--f-mono);
+        font-size: 0.62rem;
+        color: var(--ink-faint);
+        line-height: 1;
+        margin-top: 0.2rem;
+      }
 
-/* ---------- controls ---------- */
-.topbar {
-  position: fixed; top: max(12px, env(safe-area-inset-top, 0px));
-  left: max(14px, env(safe-area-inset-left, 0px)); z-index: 60;
-  display: flex; gap: .4rem;
-}
-.ctl {
-  font-family: var(--f-mono); font-size: .68rem; font-weight: 600;
-  letter-spacing: .06em; padding: .45rem .6rem;
-  background: var(--bg-raise); color: var(--ink-soft);
-  border: 1px solid var(--rule); border-radius: 999px; cursor: pointer;
-}
-.ctl:hover { color: var(--ink) }
-.ctl:focus-visible { outline: 2px solid var(--marigold); outline-offset: 2px }
-.ctl[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+      /* ---------- controls ---------- */
+      .topbar {
+        position: fixed;
+        top: max(12px, env(safe-area-inset-top, 0px));
+        left: max(14px, env(safe-area-inset-left, 0px));
+        z-index: 60;
+        display: flex;
+        gap: 0.4rem;
+      }
+      .ctl {
+        font-family: var(--f-mono);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 0.45rem 0.6rem;
+        background: var(--bg-raise);
+        color: var(--ink-soft);
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .ctl:hover {
+        color: var(--ink);
+      }
+      .ctl:focus-visible {
+        outline: 2px solid var(--marigold);
+        outline-offset: 2px;
+      }
+      .ctl[aria-pressed="true"] {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
 
-/* ---------- intro ---------- */
-.intro {
-  min-height: 86vh; display: flex; flex-direction: column; justify-content: center;
-  max-width: 62rem; margin: 0 auto; padding-block: 5rem 3rem;
-}
-.intro .tagline {
-  font-size: 1.25rem; color: var(--ink-soft); max-width: 30rem; margin-top: 1.4rem;
-}
-.scroll-cue {
-  margin-top: 3rem; display: flex; align-items: center; gap: .6rem;
-  font-family: var(--f-mono); font-size: .7rem; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--ink-faint);
-}
-.scroll-cue .bar {
-  width: 2px; height: 34px; background: linear-gradient(var(--marigold), transparent);
-}
+      /* ---------- intro ---------- */
+      .intro {
+        min-height: 86vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 62rem;
+        margin: 0 auto;
+        padding-block: 5rem 3rem;
+      }
+      .intro .tagline {
+        font-size: 1.25rem;
+        color: var(--ink-soft);
+        max-width: 30rem;
+        margin-top: 1.4rem;
+      }
+      .scroll-cue {
+        margin-top: 3rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--f-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+      .scroll-cue .bar {
+        width: 2px;
+        height: 34px;
+        background: linear-gradient(var(--marigold), transparent);
+      }
 
-/* ---------- pinned scene ----------
+      /* ---------- pinned scene ----------
    The section must be TALLER than the viewport so the sticky child has
    something to pin against. That extra height is the scroll budget the
    scene's progress is measured from: roughly one screen per story beat. */
-.scene {
-  position: relative;
-  --beats: 10;
-  height: calc(var(--beats) * 88svh);
-}
-.scene-sticky {
-  position: sticky; top: 0; height: 100svh;
-  display: grid; grid-template-rows: 1fr auto;
-  overflow: hidden;
-}
-.stage {
-  display: grid; place-items: center; min-height: 0;
-  padding-top: 4.5rem; padding-bottom: .5rem;
-}
-.stage-inner {
-  width: 100%; max-width: 54rem; display: grid;
-  grid-template-columns: 1.15fr .85fr; gap: 1.5rem; align-items: center;
-}
-.cart-wrap, .grid-wrap { min-width: 0 }
-svg { display: block; width: 100%; height: auto; overflow: visible }
+      .scene {
+        position: relative;
+        --beats: 10;
+        height: calc(var(--beats) * 88svh);
+      }
+      .scene-sticky {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        overflow: hidden;
+      }
+      .stage {
+        display: grid;
+        place-items: center;
+        min-height: 0;
+        padding-top: 4.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .stage-inner {
+        width: 100%;
+        max-width: 54rem;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .cart-wrap,
+      .grid-wrap {
+        min-width: 0;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
 
-.caption {
-  max-width: 40rem; margin: 0 auto; padding-bottom: 2.2rem;
-  min-height: 9.5rem;
-}
-.beat { display: none }
-.beat.on { display: block }
-.beat h2 { margin-bottom: .5rem }
-.beat p { color: var(--ink-soft); margin-bottom: 0; max-width: 34rem }
-.beat .tag {
-  display: inline-block; font-family: var(--f-mono); font-size: .64rem;
-  letter-spacing: .14em; text-transform: uppercase; padding: .2rem .5rem;
-  border: 1px solid currentColor; margin-bottom: .7rem;
-}
-.tag.gold  { color: var(--marigold-d) }
-.tag.teal  { color: var(--teal) }
-.tag.brick { color: var(--brick) }
+      .caption {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding-bottom: 2.2rem;
+        min-height: 9.5rem;
+      }
+      .beat {
+        display: none;
+      }
+      .beat.on {
+        display: block;
+      }
+      .beat h2 {
+        margin-bottom: 0.5rem;
+      }
+      .beat p {
+        color: var(--ink-soft);
+        margin-bottom: 0;
+        max-width: 34rem;
+      }
+      .beat .tag {
+        display: inline-block;
+        font-family: var(--f-mono);
+        font-size: 0.64rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid currentColor;
+        margin-bottom: 0.7rem;
+      }
+      .tag.gold {
+        color: var(--marigold-d);
+      }
+      .tag.teal {
+        color: var(--teal);
+      }
+      .tag.brick {
+        color: var(--brick);
+      }
 
-/* progress rail */
-.rail {
-  position: fixed; left: 0; top: 0; height: 2px; z-index: 55;
-  background: var(--marigold); width: 0%;
-}
+      /* progress rail */
+      .rail {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 2px;
+        z-index: 55;
+        background: var(--marigold);
+        width: 0%;
+      }
 
-/* token grid */
-.tok { transition: fill .25s ease, opacity .25s ease }
+      /* token grid */
+      .tok {
+        transition:
+          fill 0.25s ease,
+          opacity 0.25s ease;
+      }
 
-/* cup counter */
-.cups {
-  display: flex; align-items: baseline; gap: .45rem; justify-content: center;
-  margin-top: .7rem; font-family: var(--f-mono);
-}
-.cups .n { font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums }
-.cups .l { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint) }
+      /* cup counter */
+      .cups {
+        display: flex;
+        align-items: baseline;
+        gap: 0.45rem;
+        justify-content: center;
+        margin-top: 0.7rem;
+        font-family: var(--f-mono);
+      }
+      .cups .n {
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+      .cups .l {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
 
-/* ---------- outro ---------- */
-.outro { max-width: 62rem; margin: 0 auto; padding-block: 5rem 7rem }
-.outro h2 { margin-bottom: 1.2rem }
-.lead { font-size: 1.2rem; color: var(--ink-soft); max-width: 34rem }
-.handoff {
-  margin-top: 2.5rem; border-left: 2px solid var(--marigold);
-  padding: .3rem 0 .3rem 1.2rem;
-}
-.handoff .q { font-family: var(--f-display); font-size: 1.7rem; line-height: 1.2 }
+      /* ---------- outro ---------- */
+      .outro {
+        max-width: 62rem;
+        margin: 0 auto;
+        padding-block: 5rem 7rem;
+      }
+      .outro h2 {
+        margin-bottom: 1.2rem;
+      }
+      .lead {
+        font-size: 1.2rem;
+        color: var(--ink-soft);
+        max-width: 34rem;
+      }
+      .handoff {
+        margin-top: 2.5rem;
+        border-left: 2px solid var(--marigold);
+        padding: 0.3rem 0 0.3rem 1.2rem;
+      }
+      .handoff .q {
+        font-family: var(--f-display);
+        font-size: 1.7rem;
+        line-height: 1.2;
+      }
 
-@media (max-width: 780px) {
-  .stage-inner { grid-template-columns: 1fr; gap: .8rem }
-  .grid-wrap { max-width: 17rem; margin: 0 auto }
-  .caption { min-height: 11rem; padding-bottom: 1.4rem }
-  .stage { padding-top: 4rem }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto }
-  * { transition: none !important }
-}
-</style>
-</head>
-<body>
+      @media (max-width: 780px) {
+        .stage-inner {
+          grid-template-columns: 1fr;
+          gap: 0.8rem;
+        }
+        .grid-wrap {
+          max-width: 17rem;
+          margin: 0 auto;
+        }
+        .caption {
+          min-height: 11rem;
+          padding-bottom: 1.4rem;
+        }
+        .stage {
+          padding-top: 4rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rail" id="rail"></div>
 
-<div class="rail" id="rail"></div>
+    <div class="topbar">
+      <button class="ctl" id="theme" type="button" aria-label="Toggle theme">
+        ◐
+      </button>
+      <button class="ctl" id="lang" type="button" aria-pressed="false">
+        EN
+      </button>
+    </div>
 
-<div class="topbar">
-  <button class="ctl" id="theme" type="button" aria-label="Toggle theme">◐</button>
-  <button class="ctl" id="lang" type="button" aria-pressed="false">EN</button>
-</div>
-
-<div id="hud" aria-live="polite">
-  <div>
-    <div class="lbl" data-t="hudLabel">Your money</div>
-    <div class="val num" id="hudVal">₹2,000</div>
-    <div class="sub" id="hudSub"></div>
-  </div>
-</div>
-
-<!-- ============ INTRO ============ -->
-<section class="intro gutter">
-  <div class="eyebrow" data-t="ch">Chapter 00</div>
-  <h1 data-t="title">You have ₹2,000.<br>Let's buy a business.</h1>
-  <p class="tagline" data-t="tagline">
-    Before any of the trading, charts or jargon: what are you actually buying
-    when you buy a share? Start here. It takes four minutes.
-  </p>
-  <div class="scroll-cue"><span class="bar"></span><span data-t="scrollCue">Scroll</span></div>
-</section>
-
-<!-- ============ SCENE ============ -->
-<section class="scene" id="scene">
-  <div class="scene-sticky">
-    <div class="stage gutter">
-      <div class="stage-inner">
-        <div class="cart-wrap">
-          <svg id="cart" viewBox="0 0 420 300" role="img" aria-labelledby="cartTitle">
-            <title id="cartTitle">An isometric coffee cart assembling itself</title>
-          </svg>
-          <div class="cups" id="cupWrap" style="opacity:0">
-            <span class="n" id="cupN">0</span>
-            <span class="l" data-t="cupsSold">cups sold</span>
-          </div>
-        </div>
-        <div class="grid-wrap">
-          <svg id="grid" viewBox="0 0 220 220" role="img" aria-labelledby="gridTitle">
-            <title id="gridTitle">One hundred ownership tokens, two of them yours</title>
-          </svg>
-        </div>
+    <div id="hud" aria-live="polite">
+      <div>
+        <div class="lbl" data-t="hudLabel">Your money</div>
+        <div class="val num" id="hudVal">₹2,000</div>
+        <div class="sub" id="hudSub"></div>
       </div>
     </div>
 
-    <div class="caption gutter" id="caption"></div>
-  </div>
-</section>
+    <!-- ============ INTRO ============ -->
+    <section class="intro gutter">
+      <div class="eyebrow" data-t="ch">Chapter 00</div>
+      <h1 data-t="title">You have ₹2,000.<br />Let's buy a business.</h1>
+      <p class="tagline" data-t="tagline">
+        Before any of the trading, charts or jargon: what are you actually
+        buying when you buy a share? Start here. It takes four minutes.
+      </p>
+      <div class="scroll-cue">
+        <span class="bar"></span><span data-t="scrollCue">Scroll</span>
+      </div>
+    </section>
 
-<!-- ============ OUTRO ============ -->
-<section class="outro gutter">
-  <div class="eyebrow" data-t="nextUp">What happens next</div>
-  <h2 data-t="outroH">That is all a share is.</h2>
-  <p class="lead" data-t="outroP">
-    A share is a slice of a real business. Not a lottery ticket, not a number
-    on a screen. When the business does well your slice is worth more. When it
-    does badly, your slice is worth less. You carry both.
-  </p>
-  <div class="handoff">
-    <div class="q" data-t="handoffQ">So you want your ₹2,000 back. Who buys your tokens?</div>
-    <p style="margin-top:.8rem;color:var(--ink-soft)" data-t="handoffP">
-      You have to find a person, agree a price, and trust them to pay. That
-      problem is the entire reason stock exchanges exist. That is Chapter 01.
-    </p>
-  </div>
-</section>
+    <!-- ============ SCENE ============ -->
+    <section class="scene" id="scene">
+      <div class="scene-sticky">
+        <div class="stage gutter">
+          <div class="stage-inner">
+            <div class="cart-wrap">
+              <svg
+                id="cart"
+                viewBox="0 0 420 300"
+                role="img"
+                aria-labelledby="cartTitle">
+                <title id="cartTitle">
+                  An isometric coffee cart assembling itself
+                </title>
+              </svg>
+              <div class="cups" id="cupWrap" style="opacity: 0">
+                <span class="n" id="cupN">0</span>
+                <span class="l" data-t="cupsSold">cups sold</span>
+              </div>
+            </div>
+            <div class="grid-wrap">
+              <svg
+                id="grid"
+                viewBox="0 0 220 220"
+                role="img"
+                aria-labelledby="gridTitle">
+                <title id="gridTitle">
+                  One hundred ownership tokens, two of them yours
+                </title>
+              </svg>
+            </div>
+          </div>
+        </div>
 
-<script>
-(function () {
-  "use strict";
+        <div class="caption gutter" id="caption"></div>
+      </div>
+    </section>
 
-  /* ================= content, both languages =================
+    <!-- ============ OUTRO ============ -->
+    <section class="outro gutter">
+      <div class="eyebrow" data-t="nextUp">What happens next</div>
+      <h2 data-t="outroH">That is all a share is.</h2>
+      <p class="lead" data-t="outroP">
+        A share is a slice of a real business. Not a lottery ticket, not a
+        number on a screen. When the business does well your slice is worth
+        more. When it does badly, your slice is worth less. You carry both.
+      </p>
+      <div class="handoff">
+        <div class="q" data-t="handoffQ">
+          So you want your ₹2,000 back. Who buys your tokens?
+        </div>
+        <p style="margin-top: 0.8rem; color: var(--ink-soft)" data-t="handoffP">
+          You have to find a person, agree a price, and trust them to pay. That
+          problem is the entire reason stock exchanges exist. That is Chapter
+          01.
+        </p>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ================= content, both languages =================
      Hindi keeps English finance words (token, profit, business)
      because that is how people actually talk about money. Pure
      शुद्ध हिंदी would read as a translation, not an explanation. */
-  const T = {
-    en: {
-      ch: "Chapter 00",
-      title: "You have ₹2,000.<br>Let's buy a business.",
-      tagline: "Before any of the trading, charts or jargon: what are you actually buying when you buy a share? Start here. It takes four minutes.",
-      scrollCue: "Scroll",
-      hudLabel: "Your money",
-      cupsSold: "cups sold",
-      nextUp: "What happens next",
-      outroH: "That is all a share is.",
-      outroP: "A share is a slice of a real business. Not a lottery ticket, not a number on a screen. When the business does well your slice is worth more. When it does badly, your slice is worth less. You carry both.",
-      handoffQ: "So you want your ₹2,000 back. Who buys your tokens?",
-      handoffP: "You have to find a person, agree a price, and trust them to pay. That problem is the entire reason stock exchanges exist. That is Chapter 01.",
-      beats: [
-        { tag: "The idea", tagc: "gold", h: "Two friends, one cart.",
-          p: "Aarti and Imran want to run a cold coffee cart outside the station, where four thousand students walk past every evening." },
-        { tag: "The problem", tagc: "gold", h: "It costs ₹1,00,000.",
-          p: "An espresso machine, a commercial blender, the cart itself, and a month of beans and milk. They have ₹40,000 between them." },
-        { tag: "The idea", tagc: "gold", h: "So they split the cart into 100 pieces.",
-          p: "One hundred tokens, ₹1,000 each. Buy a token and you own one hundredth of the business. Not a loan. Ownership." },
-        { tag: "Your move", tagc: "teal", h: "You buy 2 tokens.",
-          p: "Your ₹2,000 becomes 2% of a coffee cart. That is it. That is the whole idea behind owning a share." },
-        { tag: "Building", tagc: "gold", h: "The money becomes a real thing.",
-          p: "Your ₹2,000 is not sitting in an app. It is a wheel, a steel counter, part of an espresso machine. Shares are claims on real objects and real work." },
-        { tag: "Summer", tagc: "teal", h: "April. It is 38 degrees.",
-          p: "They sell 240 cups a day at ₹80. After beans, milk, ice and the pitch fee, the cart clears about ₹2,20,000 over the season." },
-        { tag: "Your share", tagc: "teal", h: "2% of the profit is yours.",
-          p: "You did not make a single cup. You own 2% of the business, so you own 2% of what it earned. Your ₹2,000 is now worth about ₹4,400." },
-        { tag: "Monsoon", tagc: "brick", h: "June. It rains for nine days straight.",
-          p: "Nobody queues for cold coffee in the rain. Sales fall to 30 cups a day. Milk spoils. The rent on the pitch is due anyway." },
-        { tag: "Both ways", tagc: "brick", h: "You own 2% of that too.",
-          p: "This is the part the reels leave out. Ownership is not a one way street. The same 2% that earned you the summer carries the monsoon." },
-        { tag: "The truth", tagc: "gold", h: "You own a business, not a bet.",
-          p: "Over a year the cart made money. Not every month, and not without two months that genuinely hurt. Your slice followed it the whole way, up and down." }
-      ]
-    },
-    hi: {
-      ch: "अध्याय 00",
-      title: "आपके पास ₹2,000 हैं।<br>चलिए एक business खरीदते हैं।",
-      tagline: "Trading, charts और भारी-भरकम शब्दों से पहले एक सवाल: जब आप share खरीदते हैं, असल में खरीदते क्या हैं? यहाँ से शुरू करें। चार मिनट लगेंगे।",
-      scrollCue: "स्क्रॉल करें",
-      hudLabel: "आपके पैसे",
-      cupsSold: "कप बिके",
-      nextUp: "आगे क्या",
-      outroH: "Share बस इतना ही है।",
-      outroP: "Share यानी एक असली business का छोटा सा हिस्सा। न lottery ticket, न स्क्रीन पर दिखता कोई number। Business अच्छा चले तो आपका हिस्सा बढ़ता है। खराब चले तो घटता है। दोनों आपके हैं।",
-      handoffQ: "अब आपको अपने ₹2,000 वापस चाहिए। आपके token कौन खरीदेगा?",
-      handoffP: "आपको कोई खरीदार ढूँढना होगा, कीमत तय करनी होगी, और भरोसा करना होगा कि वो पैसे देगा। इसी दिक्कत को हल करने के लिए stock exchange बना है। वही है अध्याय 01।",
-      beats: [
-        { tag: "आइडिया", tagc: "gold", h: "दो दोस्त, एक cart।",
-          p: "आरती और इमरान station के बाहर cold coffee का cart लगाना चाहते हैं, जहाँ हर शाम चार हज़ार students गुज़रते हैं।" },
-        { tag: "दिक्कत", tagc: "gold", h: "खर्चा ₹1,00,000 है।",
-          p: "Espresso machine, commercial blender, खुद का cart, और एक महीने की coffee और दूध। उन दोनों के पास मिलाकर ₹40,000 हैं।" },
-        { tag: "आइडिया", tagc: "gold", h: "तो cart को 100 हिस्सों में बाँट दिया।",
-          p: "सौ token, हर एक ₹1,000 का। एक token खरीदिए और business का सौवाँ हिस्सा आपका। यह loan नहीं है। यह मालिकाना हक़ है।" },
-        { tag: "आपकी बारी", tagc: "teal", h: "आपने 2 token खरीदे।",
-          p: "आपके ₹2,000 अब एक coffee cart का 2% हैं। बस इतना ही। Share खरीदने का पूरा मतलब यही है।" },
-        { tag: "बन रहा है", tagc: "gold", h: "पैसा अब एक असली चीज़ बन गया।",
-          p: "आपके ₹2,000 किसी app में नहीं पड़े हैं। वो एक पहिया हैं, steel का counter हैं, espresso machine का हिस्सा हैं। Share असली चीज़ों और असली मेहनत पर हक़ है।" },
-        { tag: "गर्मी", tagc: "teal", h: "अप्रैल। 38 डिग्री।",
-          p: "रोज़ 240 कप, ₹80 के भाव। Coffee, दूध, बर्फ़ और जगह का किराया निकालकर पूरे season में लगभग ₹2,20,000 बचे।" },
-        { tag: "आपका हिस्सा", tagc: "teal", h: "Profit का 2% आपका है।",
-          p: "आपने एक कप भी नहीं बनाया। Business का 2% आपका है, तो कमाई का भी 2% आपका। आपके ₹2,000 अब लगभग ₹4,400 के हैं।" },
-        { tag: "बारिश", tagc: "brick", h: "जून। नौ दिन लगातार बारिश।",
-          p: "बारिश में cold coffee की line कौन लगाए। बिक्री गिरकर 30 कप रोज़ रह गई। दूध खराब हुआ। जगह का किराया फिर भी देना पड़ा।" },
-        { tag: "दोनों तरफ़", tagc: "brick", h: "इसका 2% भी आपका ही है।",
-          p: "यही बात reels में नहीं बताई जाती। मालिकाना हक़ एकतरफ़ा नहीं होता। जिस 2% ने गर्मी में कमाया, वही 2% बारिश भी झेलता है।" },
-        { tag: "सच", tagc: "gold", h: "आपके पास एक business है, कोई satta नहीं।",
-          p: "पूरे साल में cart ने पैसे बनाए। हर महीने नहीं, और दो महीने ऐसे भी गए जो सच में चुभे। आपका हिस्सा ऊपर भी गया और नीचे भी, पूरे रास्ते साथ रहा।" }
-      ]
-    }
-  };
+        const T = {
+          en: {
+            ch: "Chapter 00",
+            title: "You have ₹2,000.<br>Let's buy a business.",
+            tagline:
+              "Before any of the trading, charts or jargon: what are you actually buying when you buy a share? Start here. It takes four minutes.",
+            scrollCue: "Scroll",
+            hudLabel: "Your money",
+            cupsSold: "cups sold",
+            nextUp: "What happens next",
+            outroH: "That is all a share is.",
+            outroP:
+              "A share is a slice of a real business. Not a lottery ticket, not a number on a screen. When the business does well your slice is worth more. When it does badly, your slice is worth less. You carry both.",
+            handoffQ: "So you want your ₹2,000 back. Who buys your tokens?",
+            handoffP:
+              "You have to find a person, agree a price, and trust them to pay. That problem is the entire reason stock exchanges exist. That is Chapter 01.",
+            beats: [
+              {
+                tag: "The idea",
+                tagc: "gold",
+                h: "Two friends, one cart.",
+                p: "Aarti and Imran want to run a cold coffee cart outside the station, where four thousand students walk past every evening.",
+              },
+              {
+                tag: "The problem",
+                tagc: "gold",
+                h: "It costs ₹1,00,000.",
+                p: "An espresso machine, a commercial blender, the cart itself, and a month of beans and milk. They have ₹40,000 between them.",
+              },
+              {
+                tag: "The idea",
+                tagc: "gold",
+                h: "So they split the cart into 100 pieces.",
+                p: "One hundred tokens, ₹1,000 each. Buy a token and you own one hundredth of the business. Not a loan. Ownership.",
+              },
+              {
+                tag: "Your move",
+                tagc: "teal",
+                h: "You buy 2 tokens.",
+                p: "Your ₹2,000 becomes 2% of a coffee cart. That is it. That is the whole idea behind owning a share.",
+              },
+              {
+                tag: "Building",
+                tagc: "gold",
+                h: "The money becomes a real thing.",
+                p: "Your ₹2,000 is not sitting in an app. It is a wheel, a steel counter, part of an espresso machine. Shares are claims on real objects and real work.",
+              },
+              {
+                tag: "Summer",
+                tagc: "teal",
+                h: "April. It is 38 degrees.",
+                p: "They sell 240 cups a day at ₹80. After beans, milk, ice and the pitch fee, the cart clears about ₹2,20,000 over the season.",
+              },
+              {
+                tag: "Your share",
+                tagc: "teal",
+                h: "2% of the profit is yours.",
+                p: "You did not make a single cup. You own 2% of the business, so you own 2% of what it earned. Your ₹2,000 is now worth about ₹4,400.",
+              },
+              {
+                tag: "Monsoon",
+                tagc: "brick",
+                h: "June. It rains for nine days straight.",
+                p: "Nobody queues for cold coffee in the rain. Sales fall to 30 cups a day. Milk spoils. The rent on the pitch is due anyway.",
+              },
+              {
+                tag: "Both ways",
+                tagc: "brick",
+                h: "You own 2% of that too.",
+                p: "This is the part the reels leave out. Ownership is not a one way street. The same 2% that earned you the summer carries the monsoon.",
+              },
+              {
+                tag: "The truth",
+                tagc: "gold",
+                h: "You own a business, not a bet.",
+                p: "Over a year the cart made money. Not every month, and not without two months that genuinely hurt. Your slice followed it the whole way, up and down.",
+              },
+            ],
+          },
+          hi: {
+            ch: "अध्याय 00",
+            title: "आपके पास ₹2,000 हैं।<br>चलिए एक business खरीदते हैं।",
+            tagline:
+              "Trading, charts और भारी-भरकम शब्दों से पहले एक सवाल: जब आप share खरीदते हैं, असल में खरीदते क्या हैं? यहाँ से शुरू करें। चार मिनट लगेंगे।",
+            scrollCue: "स्क्रॉल करें",
+            hudLabel: "आपके पैसे",
+            cupsSold: "कप बिके",
+            nextUp: "आगे क्या",
+            outroH: "Share बस इतना ही है।",
+            outroP:
+              "Share यानी एक असली business का छोटा सा हिस्सा। न lottery ticket, न स्क्रीन पर दिखता कोई number। Business अच्छा चले तो आपका हिस्सा बढ़ता है। खराब चले तो घटता है। दोनों आपके हैं।",
+            handoffQ: "अब आपको अपने ₹2,000 वापस चाहिए। आपके token कौन खरीदेगा?",
+            handoffP:
+              "आपको कोई खरीदार ढूँढना होगा, कीमत तय करनी होगी, और भरोसा करना होगा कि वो पैसे देगा। इसी दिक्कत को हल करने के लिए stock exchange बना है। वही है अध्याय 01।",
+            beats: [
+              {
+                tag: "आइडिया",
+                tagc: "gold",
+                h: "दो दोस्त, एक cart।",
+                p: "आरती और इमरान station के बाहर cold coffee का cart लगाना चाहते हैं, जहाँ हर शाम चार हज़ार students गुज़रते हैं।",
+              },
+              {
+                tag: "दिक्कत",
+                tagc: "gold",
+                h: "खर्चा ₹1,00,000 है।",
+                p: "Espresso machine, commercial blender, खुद का cart, और एक महीने की coffee और दूध। उन दोनों के पास मिलाकर ₹40,000 हैं।",
+              },
+              {
+                tag: "आइडिया",
+                tagc: "gold",
+                h: "तो cart को 100 हिस्सों में बाँट दिया।",
+                p: "सौ token, हर एक ₹1,000 का। एक token खरीदिए और business का सौवाँ हिस्सा आपका। यह loan नहीं है। यह मालिकाना हक़ है।",
+              },
+              {
+                tag: "आपकी बारी",
+                tagc: "teal",
+                h: "आपने 2 token खरीदे।",
+                p: "आपके ₹2,000 अब एक coffee cart का 2% हैं। बस इतना ही। Share खरीदने का पूरा मतलब यही है।",
+              },
+              {
+                tag: "बन रहा है",
+                tagc: "gold",
+                h: "पैसा अब एक असली चीज़ बन गया।",
+                p: "आपके ₹2,000 किसी app में नहीं पड़े हैं। वो एक पहिया हैं, steel का counter हैं, espresso machine का हिस्सा हैं। Share असली चीज़ों और असली मेहनत पर हक़ है।",
+              },
+              {
+                tag: "गर्मी",
+                tagc: "teal",
+                h: "अप्रैल। 38 डिग्री।",
+                p: "रोज़ 240 कप, ₹80 के भाव। Coffee, दूध, बर्फ़ और जगह का किराया निकालकर पूरे season में लगभग ₹2,20,000 बचे।",
+              },
+              {
+                tag: "आपका हिस्सा",
+                tagc: "teal",
+                h: "Profit का 2% आपका है।",
+                p: "आपने एक कप भी नहीं बनाया। Business का 2% आपका है, तो कमाई का भी 2% आपका। आपके ₹2,000 अब लगभग ₹4,400 के हैं।",
+              },
+              {
+                tag: "बारिश",
+                tagc: "brick",
+                h: "जून। नौ दिन लगातार बारिश।",
+                p: "बारिश में cold coffee की line कौन लगाए। बिक्री गिरकर 30 कप रोज़ रह गई। दूध खराब हुआ। जगह का किराया फिर भी देना पड़ा।",
+              },
+              {
+                tag: "दोनों तरफ़",
+                tagc: "brick",
+                h: "इसका 2% भी आपका ही है।",
+                p: "यही बात reels में नहीं बताई जाती। मालिकाना हक़ एकतरफ़ा नहीं होता। जिस 2% ने गर्मी में कमाया, वही 2% बारिश भी झेलता है।",
+              },
+              {
+                tag: "सच",
+                tagc: "gold",
+                h: "आपके पास एक business है, कोई satta नहीं।",
+                p: "पूरे साल में cart ने पैसे बनाए। हर महीने नहीं, और दो महीने ऐसे भी गए जो सच में चुभे। आपका हिस्सा ऊपर भी गया और नीचे भी, पूरे रास्ते साथ रहा।",
+              },
+            ],
+          },
+        };
 
-  let lang = "en";
-  const $ = s => document.querySelector(s);
+        let lang = "en";
+        const $ = (s) => document.querySelector(s);
 
-  /* ================= isometric cart ================= */
-  // Project a 3D point to 2D. Classic 2:1-ish isometric.
-  const ISO = { ox: 210, oy: 196, sx: 1.45, sy: 0.80, sz: 1.42 };
-  function iso(x, y, z) {
-    return [
-      ISO.ox + (x - y) * ISO.sx,
-      ISO.oy + (x + y) * ISO.sy - z * ISO.sz
-    ];
-  }
-  function pts(arr) { return arr.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "); }
+        /* ================= isometric cart ================= */
+        // Project a 3D point to 2D. Classic 2:1-ish isometric.
+        const ISO = { ox: 210, oy: 196, sx: 1.45, sy: 0.8, sz: 1.42 };
+        function iso(x, y, z) {
+          return [
+            ISO.ox + (x - y) * ISO.sx,
+            ISO.oy + (x + y) * ISO.sy - z * ISO.sz,
+          ];
+        }
+        function pts(arr) {
+          return arr
+            .map((p) => p[0].toFixed(1) + "," + p[1].toFixed(1))
+            .join(" ");
+        }
 
-  // A box drawn as its three visible faces: top, left, right.
-  function box(x, y, z, w, d, h) {
-    const t = [iso(x, y, z + h), iso(x + w, y, z + h), iso(x + w, y + d, z + h), iso(x, y + d, z + h)];
-    const l = [iso(x, y + d, z + h), iso(x + w, y + d, z + h), iso(x + w, y + d, z), iso(x, y + d, z)];
-    const r = [iso(x + w, y, z + h), iso(x + w, y + d, z + h), iso(x + w, y + d, z), iso(x + w, y, z)];
-    return { top: pts(t), left: pts(l), right: pts(r) };
-  }
+        // A box drawn as its three visible faces: top, left, right.
+        function box(x, y, z, w, d, h) {
+          const t = [
+            iso(x, y, z + h),
+            iso(x + w, y, z + h),
+            iso(x + w, y + d, z + h),
+            iso(x, y + d, z + h),
+          ];
+          const l = [
+            iso(x, y + d, z + h),
+            iso(x + w, y + d, z + h),
+            iso(x + w, y + d, z),
+            iso(x, y + d, z),
+          ];
+          const r = [
+            iso(x + w, y, z + h),
+            iso(x + w, y + d, z + h),
+            iso(x + w, y + d, z),
+            iso(x + w, y, z),
+          ];
+          return { top: pts(t), left: pts(l), right: pts(r) };
+        }
 
-  // Parts in build order. Each appears as the grid fills.
-  const PARTS = [
-    { id: "wheelA", b: box(-34, 14, 0, 10, 10, 10) },
-    { id: "wheelB", b: box(22, 14, 0, 10, 10, 10) },
-    { id: "body",   b: box(-38, -16, 10, 74, 34, 30) },
-    { id: "counter",b: box(-42, -20, 40, 82, 42, 5) },
-    { id: "machine",b: box(-30, -10, 45, 26, 20, 22) },
-    { id: "blender",b: box(6, -8, 45, 13, 13, 18) },
-    { id: "postA",  b: box(-40, -18, 45, 3, 3, 46) },
-    { id: "postB",  b: box(31, -18, 45, 3, 3, 46) },
-    { id: "roof",   b: box(-46, -24, 91, 90, 50, 4) },
-    { id: "sign",   b: box(-18, -22, 58, 34, 2, 14) }
-  ];
+        // Parts in build order. Each appears as the grid fills.
+        const PARTS = [
+          { id: "wheelA", b: box(-34, 14, 0, 10, 10, 10) },
+          { id: "wheelB", b: box(22, 14, 0, 10, 10, 10) },
+          { id: "body", b: box(-38, -16, 10, 74, 34, 30) },
+          { id: "counter", b: box(-42, -20, 40, 82, 42, 5) },
+          { id: "machine", b: box(-30, -10, 45, 26, 20, 22) },
+          { id: "blender", b: box(6, -8, 45, 13, 13, 18) },
+          { id: "postA", b: box(-40, -18, 45, 3, 3, 46) },
+          { id: "postB", b: box(31, -18, 45, 3, 3, 46) },
+          { id: "roof", b: box(-46, -24, 91, 90, 50, 4) },
+          { id: "sign", b: box(-18, -22, 58, 34, 2, 14) },
+        ];
 
-  function buildCart() {
-    const svg = $("#cart");
-    const NS = "http://www.w3.org/2000/svg";
-    PARTS.forEach((p, i) => {
-      const g = document.createElementNS(NS, "g");
-      g.setAttribute("id", p.id);
-      g.setAttribute("opacity", "0");
-      const faces = [
-        ["top",   "var(--wash-gold)"],
-        ["left",  "var(--bg-raise)"],
-        ["right", "var(--bg)"]
-      ];
-      faces.forEach(([k, fill]) => {
-        const poly = document.createElementNS(NS, "polygon");
-        poly.setAttribute("points", p.b[k]);
-        poly.setAttribute("fill", fill);
-        poly.setAttribute("stroke", "var(--ink)");
-        poly.setAttribute("stroke-width", "1.3");
-        poly.setAttribute("stroke-linejoin", "round");
-        g.appendChild(poly);
-      });
-      svg.appendChild(g);
-    });
-    // ground line, drawn behind everything
-    const line = document.createElementNS(NS, "line");
-    const a = iso(-70, 60, 0), b2 = iso(70, -40, 0);
-    line.setAttribute("x1", a[0]); line.setAttribute("y1", a[1]);
-    line.setAttribute("x2", b2[0]); line.setAttribute("y2", b2[1]);
-    line.setAttribute("stroke", "var(--rule)");
-    line.setAttribute("stroke-width", "1.5");
-    svg.insertBefore(line, svg.firstChild.nextSibling);
-  }
+        function buildCart() {
+          const svg = $("#cart");
+          const NS = "http://www.w3.org/2000/svg";
+          PARTS.forEach((p, i) => {
+            const g = document.createElementNS(NS, "g");
+            g.setAttribute("id", p.id);
+            g.setAttribute("opacity", "0");
+            const faces = [
+              ["top", "var(--wash-gold)"],
+              ["left", "var(--bg-raise)"],
+              ["right", "var(--bg)"],
+            ];
+            faces.forEach(([k, fill]) => {
+              const poly = document.createElementNS(NS, "polygon");
+              poly.setAttribute("points", p.b[k]);
+              poly.setAttribute("fill", fill);
+              poly.setAttribute("stroke", "var(--ink)");
+              poly.setAttribute("stroke-width", "1.3");
+              poly.setAttribute("stroke-linejoin", "round");
+              g.appendChild(poly);
+            });
+            svg.appendChild(g);
+          });
+          // ground line, drawn behind everything
+          const line = document.createElementNS(NS, "line");
+          const a = iso(-70, 60, 0),
+            b2 = iso(70, -40, 0);
+          line.setAttribute("x1", a[0]);
+          line.setAttribute("y1", a[1]);
+          line.setAttribute("x2", b2[0]);
+          line.setAttribute("y2", b2[1]);
+          line.setAttribute("stroke", "var(--rule)");
+          line.setAttribute("stroke-width", "1.5");
+          svg.insertBefore(line, svg.firstChild.nextSibling);
+        }
 
-  /* ================= token grid ================= */
-  const YOURS = [44, 45]; // two adjacent tokens, 2% of 100
-  function buildGrid() {
-    const svg = $("#grid");
-    const NS = "http://www.w3.org/2000/svg";
-    const cell = 19, gap = 2.6, pad = 6;
-    for (let i = 0; i < 100; i++) {
-      const r = Math.floor(i / 10), c = i % 10;
-      const rect = document.createElementNS(NS, "rect");
-      rect.setAttribute("x", (pad + c * (cell + gap)).toFixed(1));
-      rect.setAttribute("y", (pad + r * (cell + gap)).toFixed(1));
-      rect.setAttribute("width", cell); rect.setAttribute("height", cell);
-      rect.setAttribute("rx", "2.5");
-      rect.setAttribute("fill", "var(--bg-raise)");
-      rect.setAttribute("stroke", "var(--rule)");
-      rect.setAttribute("stroke-width", "1");
-      rect.setAttribute("class", "tok");
-      rect.dataset.i = i;
-      svg.appendChild(rect);
-    }
-  }
+        /* ================= token grid ================= */
+        const YOURS = [44, 45]; // two adjacent tokens, 2% of 100
+        function buildGrid() {
+          const svg = $("#grid");
+          const NS = "http://www.w3.org/2000/svg";
+          const cell = 19,
+            gap = 2.6,
+            pad = 6;
+          for (let i = 0; i < 100; i++) {
+            const r = Math.floor(i / 10),
+              c = i % 10;
+            const rect = document.createElementNS(NS, "rect");
+            rect.setAttribute("x", (pad + c * (cell + gap)).toFixed(1));
+            rect.setAttribute("y", (pad + r * (cell + gap)).toFixed(1));
+            rect.setAttribute("width", cell);
+            rect.setAttribute("height", cell);
+            rect.setAttribute("rx", "2.5");
+            rect.setAttribute("fill", "var(--bg-raise)");
+            rect.setAttribute("stroke", "var(--rule)");
+            rect.setAttribute("stroke-width", "1");
+            rect.setAttribute("class", "tok");
+            rect.dataset.i = i;
+            svg.appendChild(rect);
+          }
+        }
 
-  /* ================= beats ================= */
-  function renderCaption() {
-    const cap = $("#caption");
-    cap.innerHTML = "";
-    T[lang].beats.forEach((b, i) => {
-      const d = document.createElement("div");
-      d.className = "beat" + (i === 0 ? " on" : "");
-      d.dataset.i = i;
-      d.innerHTML =
-        '<span class="tag ' + b.tagc + '">' + b.tag + "</span>" +
-        "<h2>" + b.h + "</h2><p>" + b.p + "</p>";
-      cap.appendChild(d);
-    });
-  }
+        /* ================= beats ================= */
+        function renderCaption() {
+          const cap = $("#caption");
+          cap.innerHTML = "";
+          T[lang].beats.forEach((b, i) => {
+            const d = document.createElement("div");
+            d.className = "beat" + (i === 0 ? " on" : "");
+            d.dataset.i = i;
+            d.innerHTML =
+              '<span class="tag ' +
+              b.tagc +
+              '">' +
+              b.tag +
+              "</span>" +
+              "<h2>" +
+              b.h +
+              "</h2><p>" +
+              b.p +
+              "</p>";
+            cap.appendChild(d);
+          });
+        }
 
-  function applyStatic() {
-    document.querySelectorAll("[data-t]").forEach(el => {
-      const v = T[lang][el.dataset.t];
-      if (v != null) el.innerHTML = v;
-    });
-    document.documentElement.lang = lang;
-  }
+        function applyStatic() {
+          document.querySelectorAll("[data-t]").forEach((el) => {
+            const v = T[lang][el.dataset.t];
+            if (v != null) el.innerHTML = v;
+          });
+          document.documentElement.lang = lang;
+        }
 
-  /* ================= scroll driver ================= */
-  const N = T.en.beats.length;
-  const rupee = n => "₹" + Math.round(n).toLocaleString("en-IN");
+        /* ================= scroll driver ================= */
+        const N = T.en.beats.length;
+        const rupee = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
 
-  // Money through the story. Index matches the beat index.
-  // Stays 2000 until the summer, peaks, then the monsoon takes some back.
-  const MONEY = [2000, 2000, 2000, 2000, 2000, 2000, 4400, 4400, 3150, 3400];
-  const CUPS  = [0, 0, 0, 0, 0, 240, 240, 30, 30, 0];
+        // Money through the story. Index matches the beat index.
+        // Stays 2000 until the summer, peaks, then the monsoon takes some back.
+        const MONEY = [
+          2000, 2000, 2000, 2000, 2000, 2000, 4400, 4400, 3150, 3400,
+        ];
+        const CUPS = [0, 0, 0, 0, 0, 240, 240, 30, 30, 0];
 
-  let lastBeat = -1;
-  function update() {
-    const scene = $("#scene");
-    const top = scene.offsetTop;
-    const span = scene.offsetHeight - window.innerHeight;
-    const raw = (window.scrollY - top) / Math.max(span, 1);
-    const p = Math.min(Math.max(raw, 0), 1);
+        let lastBeat = -1;
+        function update() {
+          const scene = $("#scene");
+          const top = scene.offsetTop;
+          const span = scene.offsetHeight - window.innerHeight;
+          const raw = (window.scrollY - top) / Math.max(span, 1);
+          const p = Math.min(Math.max(raw, 0), 1);
 
-    $("#rail").style.width = (p * 100).toFixed(2) + "%";
+          $("#rail").style.width = (p * 100).toFixed(2) + "%";
 
-    // Which beat are we on
-    const bi = Math.min(Math.floor(p * N), N - 1);
-    if (bi !== lastBeat) {
-      document.querySelectorAll(".beat").forEach(el =>
-        el.classList.toggle("on", +el.dataset.i === bi));
-      lastBeat = bi;
-    }
+          // Which beat are we on
+          const bi = Math.min(Math.floor(p * N), N - 1);
+          if (bi !== lastBeat) {
+            document
+              .querySelectorAll(".beat")
+              .forEach((el) => el.classList.toggle("on", +el.dataset.i === bi));
+            lastBeat = bi;
+          }
 
-    // Cart assembles across beats 0..4, complete by the time money moves
-    const buildP = Math.min(p / 0.5, 1);
-    PARTS.forEach((part, i) => {
-      const on = buildP > (i / PARTS.length) * 0.96;
-      const g = document.getElementById(part.id);
-      g.setAttribute("opacity", on ? "1" : "0");
-      g.style.transition = "opacity .4s ease";
-    });
+          // Cart assembles across beats 0..4, complete by the time money moves
+          const buildP = Math.min(p / 0.5, 1);
+          PARTS.forEach((part, i) => {
+            const on = buildP > (i / PARTS.length) * 0.96;
+            const g = document.getElementById(part.id);
+            g.setAttribute("opacity", on ? "1" : "0");
+            g.style.transition = "opacity .4s ease";
+          });
 
-    // Grid fills with marigold alongside the build; your two glow teal
-    const filled = Math.round(Math.min(p / 0.42, 1) * 100);
-    document.querySelectorAll(".tok").forEach(r => {
-      const i = +r.dataset.i;
-      const mine = YOURS.includes(i) && p > 0.30;
-      if (mine) {
-        r.setAttribute("fill", "var(--teal)");
-        r.setAttribute("stroke", "var(--teal)");
-      } else if (i < filled) {
-        r.setAttribute("fill", "var(--wash-gold)");
-        r.setAttribute("stroke", "var(--marigold)");
-      } else {
-        r.setAttribute("fill", "var(--bg-raise)");
-        r.setAttribute("stroke", "var(--rule)");
-      }
-    });
+          // Grid fills with marigold alongside the build; your two glow teal
+          const filled = Math.round(Math.min(p / 0.42, 1) * 100);
+          document.querySelectorAll(".tok").forEach((r) => {
+            const i = +r.dataset.i;
+            const mine = YOURS.includes(i) && p > 0.3;
+            if (mine) {
+              r.setAttribute("fill", "var(--teal)");
+              r.setAttribute("stroke", "var(--teal)");
+            } else if (i < filled) {
+              r.setAttribute("fill", "var(--wash-gold)");
+              r.setAttribute("stroke", "var(--marigold)");
+            } else {
+              r.setAttribute("fill", "var(--bg-raise)");
+              r.setAttribute("stroke", "var(--rule)");
+            }
+          });
 
-    // Cup counter
-    const cw = $("#cupWrap");
-    cw.style.opacity = CUPS[bi] > 0 ? "1" : "0";
-    cw.style.transition = "opacity .4s ease";
-    $("#cupN").textContent = CUPS[bi];
+          // Cup counter
+          const cw = $("#cupWrap");
+          cw.style.opacity = CUPS[bi] > 0 ? "1" : "0";
+          cw.style.transition = "opacity .4s ease";
+          $("#cupN").textContent = CUPS[bi];
 
-    // HUD
-    const money = MONEY[bi];
-    const hv = $("#hudVal"), hs = $("#hudSub"), hud = $("#hud");
-    hv.textContent = rupee(money);
-    hv.className = "val num" + (money > 2000 ? " up" : money < 2000 ? " down" : "");
-    hud.className = money > 2000 ? "up" : money < 2000 ? "down" : "";
-    hs.textContent = p > 0.30 ? (lang === "en" ? "2 of 100 tokens" : "100 में से 2 token") : "";
-  }
+          // HUD
+          const money = MONEY[bi];
+          const hv = $("#hudVal"),
+            hs = $("#hudSub"),
+            hud = $("#hud");
+          hv.textContent = rupee(money);
+          hv.className =
+            "val num" + (money > 2000 ? " up" : money < 2000 ? " down" : "");
+          hud.className = money > 2000 ? "up" : money < 2000 ? "down" : "";
+          hs.textContent =
+            p > 0.3
+              ? lang === "en"
+                ? "2 of 100 tokens"
+                : "100 में से 2 token"
+              : "";
+        }
 
-  /* ================= boot ================= */
-  buildCart();
-  buildGrid();
-  applyStatic();
-  renderCaption();
+        /* ================= boot ================= */
+        buildCart();
+        buildGrid();
+        applyStatic();
+        renderCaption();
 
-  let ticking = false;
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => { update(); ticking = false; });
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  update();
+        let ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            update();
+            ticking = false;
+          });
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        update();
 
-  $("#lang").addEventListener("click", e => {
-    lang = lang === "en" ? "hi" : "en";
-    e.currentTarget.textContent = lang === "en" ? "EN" : "हिं";
-    e.currentTarget.setAttribute("aria-pressed", String(lang === "hi"));
-    applyStatic(); renderCaption(); lastBeat = -1; update();
-  });
+        $("#lang").addEventListener("click", (e) => {
+          lang = lang === "en" ? "hi" : "en";
+          e.currentTarget.textContent = lang === "en" ? "EN" : "हिं";
+          e.currentTarget.setAttribute("aria-pressed", String(lang === "hi"));
+          applyStatic();
+          renderCaption();
+          lastBeat = -1;
+          update();
+        });
 
-  $("#theme").addEventListener("click", () => {
-    const cur = document.documentElement.getAttribute("data-theme");
-    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const next = cur ? (cur === "dark" ? "light" : "dark") : (sysDark ? "light" : "dark");
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("npc-theme", next); } catch (e) {}
-  });
-  try {
-    const saved = localStorage.getItem("npc-theme");
-    if (saved) document.documentElement.setAttribute("data-theme", saved);
-  } catch (e) {}
+        $("#theme").addEventListener("click", () => {
+          const cur = document.documentElement.getAttribute("data-theme");
+          const sysDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const next = cur
+            ? cur === "dark"
+              ? "light"
+              : "dark"
+            : sysDark
+              ? "light"
+              : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          try {
+            localStorage.setItem("npc-theme", next);
+          } catch (e) {}
+        });
+        try {
+          const saved = localStorage.getItem("npc-theme");
+          if (saved) document.documentElement.setAttribute("data-theme", saved);
+        } catch (e) {}
 
-  // Expose for the verification harness
-  window.__npc = { update, beats: N };
-})();
-</script>
-</body>
+        // Expose for the verification harness
+        window.__npc = { update, beats: N };
+      })();
+    </script>
+  </body>
 </html>
