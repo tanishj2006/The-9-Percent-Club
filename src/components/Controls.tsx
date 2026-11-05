@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { ChapterSwitcher } from "./ChapterSwitcher";
 
 export function Controls() {
   const t = useTranslations("site");
@@ -44,6 +45,7 @@ export function Controls() {
       >
         {isHindi ? "हिं" : "EN"}
       </button>
+      <ChapterSwitcher />
     </div>
   );
 }

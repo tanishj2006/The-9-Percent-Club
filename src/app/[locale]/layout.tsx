@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Serif, IBM_Plex_Mono, Mukta } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
 import { Controls } from "@/components/Controls";
 import { Footer } from "@/components/Footer";
@@ -47,6 +47,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
+  // Chapter copy reaches the client through ChapterMessages, one chapter at a time.
+  const { site, nav } = await getMessages();
+
   return (
     <html
       lang={locale}
@@ -55,7 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body>
         <ThemeProvider>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider messages={{ site, nav }}>
             <Controls />
             <MoneyHud />
             {children}

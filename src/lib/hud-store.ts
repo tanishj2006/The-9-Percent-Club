@@ -6,19 +6,32 @@
 
 export const STARTING_MONEY = 2000;
 
+/** Which `site.*` strings the HUD may show. Keys, so a language swap just works. */
+export type HudLabel = "hudLabel" | "hudTrade";
+export type HudNote =
+  | "hudTokens"
+  | "hudFresh"
+  | "hudOfWallet"
+  | "hudUnmoved"
+  | "hudTenTrips";
+
 export interface HudState {
   /** What the HUD shows. Ticks through intermediate values while animating. */
   money: number;
   /** Where the story has landed. Announced to screen readers instead of every tick. */
   settled: number;
-  /** Whether the reader owns tokens yet. */
-  owned: boolean;
+  /** Line under the number explaining what it currently is. */
+  note: HudNote | null;
+  /** Top line. Defaults to "Your money". */
+  label?: HudLabel;
+  /** Show paise. Costs need them; ₹962 is not ₹962.38. */
+  paise?: boolean;
 }
 
 const initial: HudState = {
   money: STARTING_MONEY,
   settled: STARTING_MONEY,
-  owned: false,
+  note: null,
 };
 
 let state = initial;
@@ -37,7 +50,9 @@ export const hudStore = {
     if (
       next.money === state.money &&
       next.settled === state.settled &&
-      next.owned === state.owned
+      next.note === state.note &&
+      next.label === state.label &&
+      next.paise === state.paise
     ) {
       return;
     }
@@ -46,5 +61,13 @@ export const hudStore = {
   },
 };
 
-export const formatRupees = (n: number) =>
-  "₹" + Math.round(n).toLocaleString("en-IN");
+export const formatRupees = (n: number, paise = false) =>
+  "₹" +
+  n.toLocaleString("en-IN", {
+    minimumFractionDigits: paise ? 2 : 0,
+    maximumFractionDigits: paise ? 2 : 0,
+  });
+
+/** Costs under a paisa exist (the SEBI fee on ₹1,000 is ₹0.002). Don't show ₹0.00. */
+export const formatCost = (n: number) =>
+  n > 0 && n < 0.01 ? `₹${n.toFixed(3)}` : formatRupees(n, true);

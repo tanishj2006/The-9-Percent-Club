@@ -224,7 +224,14 @@
     left: max(14px, env(safe-area-inset-left, 0px));
     z-index: 60;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.4rem;
+    max-width: 7.5rem; /* the switcher drops to a second row, clear of the HUD */
+  }
+  @media (min-width: 640px) {
+    .topbar {
+      max-width: none;
+    }
   }
   .ctl {
     font-family: var(--f-mono);
@@ -236,6 +243,7 @@
     color: var(--ink-soft);
     border: 1px solid var(--rule);
     border-radius: 999px;
+    line-height: 1.2;
   }
   .ctl:hover {
     color: var(--ink);
@@ -244,7 +252,8 @@
     outline: 2px solid var(--marigold);
     outline-offset: 2px;
   }
-  .ctl[aria-pressed="true"] {
+  .ctl[aria-pressed="true"],
+  .ctl[aria-current="page"] {
     background: var(--ink);
     color: var(--bg);
     border-color: var(--ink);
@@ -435,6 +444,11 @@
     padding: 0.3rem 0 0.3rem 1.2rem;
   }
 
+  @media (max-width: 639px) {
+    .stage {
+      padding-top: 5.4rem; /* clears the switcher's second row */
+    }
+  }
   @media (max-width: 780px) {
     .stage-inner {
       grid-template-columns: minmax(0, 1fr);
@@ -445,6 +459,240 @@
       min-height: 11rem;
       padding-bottom: 1.4rem;
     }
+  }
+
+  /* chapter 04: a to-scale note above a zoomed receipt */
+  .stage-stack {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 0.8rem;
+    max-width: 40rem;
+    align-items: start;
+  }
+  .note-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 0.3rem;
+  }
+  .stage svg.note {
+    height: clamp(3rem, 11svh, 5.5rem);
+  }
+  .note-bar {
+    fill: var(--marigold);
+    transition: fill 0.25s ease;
+  }
+  .note-bar[data-state="kept"] {
+    fill: var(--teal);
+  }
+  .note-slice {
+    fill: var(--brick);
+  }
+  .receipt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.25;
+  }
+  .receipt-row {
+    display: grid;
+    grid-template-columns: 7.2rem minmax(0, 1fr) 4.6rem;
+    gap: 0.6rem;
+    align-items: center;
+    padding-block: 0.12rem;
+  }
+  .receipt-bar {
+    display: block;
+    height: 0.55rem;
+    min-width: 2px;
+    background: var(--brick);
+  }
+  .receipt-amount {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .receipt-row[data-row="dp"] {
+    font-weight: 700;
+  }
+  .receipt-row[data-row="total"] {
+    border-top: 1px solid var(--ink);
+    margin-top: 0.2rem;
+    padding-top: 0.25rem;
+    font-weight: 700;
+    color: var(--brick);
+  }
+  .receipt-zoom {
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    margin: 0.2rem 0 0;
+    max-width: none;
+  }
+  @media (max-height: 700px) {
+    .stage-stack {
+      gap: 0.3rem;
+    }
+    .stage svg.note {
+      height: 2.6rem;
+    }
+    .receipt {
+      font-size: 0.78rem;
+      line-height: 1.15;
+    }
+    .receipt-row {
+      padding-block: 0.05rem;
+    }
+    .receipt-zoom {
+      font-size: 0.66rem;
+      line-height: 1.15;
+    }
+  }
+
+  /* chapter 05: the gap chart, then the calculator in the same spot */
+  .stage-gap {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    max-width: 40rem;
+  }
+  .readout {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    min-height: 1.9rem;
+  }
+  .readout-pct {
+    color: var(--brick);
+    font-size: 1.35rem;
+  }
+  .gap-stage {
+    position: relative;
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .gap-stage > * {
+    grid-area: 1 / 1;
+    min-height: 0;
+  }
+  .gap-chart {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    min-height: 0;
+  }
+  .gap-chart svg text {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    fill: var(--ink-soft);
+    text-anchor: middle;
+  }
+  .gap-chart svg text[data-yours="true"] {
+    fill: var(--teal);
+    font-weight: 600;
+  }
+  .gap-dp {
+    fill: var(--brick);
+  }
+  .gap-rest {
+    fill: var(--wash-brick);
+    stroke: var(--brick);
+    stroke-width: 1;
+  }
+  .calc {
+    align-self: center;
+    background: var(--bg-raise);
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    padding: 0.9rem 1rem;
+  }
+  .calc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .calc-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .calc-capital {
+    font-family: var(--f-mono);
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+  .calc-slider {
+    width: 100%;
+    height: 2.75rem; /* touch target */
+    accent-color: var(--marigold);
+    touch-action: pan-y;
+    cursor: pointer;
+    display: block;
+  }
+  .calc-slider:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+  }
+  .calc-grid dt {
+    font-size: 0.78rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+  .calc-grid dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .calc-grid dd[data-key="gap"] {
+    color: var(--brick);
+  }
+
+  /* chapter pager */
+  .chapter-nav {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 0 4rem;
+  }
+  .chapter-nav-note {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .chapter-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .chapter-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    background: var(--bg-raise);
+  }
+  .chapter-link:hover {
+    border-color: var(--marigold);
+  }
+  .chapter-link:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
   }
 
   /* Reduced motion: the scene sits at its final state and the beats read as
@@ -469,6 +717,23 @@
       margin-top: 2.5rem;
     }
     .rail {
+      display: none;
+    }
+    .stage-inner.stage-stack,
+    .stage-inner.stage-gap {
+      height: auto;
+    }
+    .gap-stage {
+      height: auto;
+      display: block;
+    }
+    .gap-chart svg {
+      height: min(50svh, 22rem);
+    }
+    .calc {
+      margin-top: 1rem;
+    }
+    .readout {
       display: none;
     }
     * {

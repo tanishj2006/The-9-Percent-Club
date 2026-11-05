@@ -2,6 +2,9 @@ import { hasLocale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
+import { ChapterMessages } from "@/components/ChapterMessages";
+import { ChapterNav } from "@/components/ChapterNav";
+import { ChapterStart } from "@/components/ChapterStart";
 import { routing } from "@/i18n/routing";
 import { CoffeeCartSceneLoader } from "@/scenes/chapter-00/CoffeeCartSceneLoader";
 
@@ -16,6 +19,7 @@ export default function ChapterZero({ params }: Props) {
 
   return (
     <main>
+      <ChapterStart />
       <section className="intro gutter">
         <div className="eyebrow">{t("ch")}</div>
         <h1>{t.rich("title", { br: () => <br /> })}</h1>
@@ -28,7 +32,9 @@ export default function ChapterZero({ params }: Props) {
         </div>
       </section>
 
-      <CoffeeCartSceneLoader />
+      <ChapterMessages chapter="ch00">
+        <CoffeeCartSceneLoader />
+      </ChapterMessages>
 
       <section className="outro gutter">
         <div className="eyebrow">{t("nextUp")}</div>
@@ -41,6 +47,8 @@ export default function ChapterZero({ params }: Props) {
           <p className="mt-[.8rem] text-ink-soft">{t("handoffP")}</p>
         </div>
       </section>
+
+      <ChapterNav current="00" note="skipNote" />
     </main>
   );
 }
