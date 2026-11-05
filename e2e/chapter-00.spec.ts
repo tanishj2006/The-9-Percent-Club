@@ -36,6 +36,20 @@ test.describe("the five stops", () => {
     });
   }
 
+  for (const [locale, line] of [
+    ["en", "the cart clears about ₹1,20,000 over the season"],
+    ["hi", "लगभग ₹1,20,000 बचे"],
+  ] as const) {
+    test(`${locale}: the summer profit reads ₹1,20,000, and only that`, async ({ page }) => {
+      await open(page, `/${locale}`);
+      await scrollToPct(page, 55);
+      const beat = page.getByTestId("beat").filter({ hasText: "₹1,20,000" });
+      await expect(beat).toBeVisible();
+      await expect(beat).toContainText(line);
+      await expect(page.locator("body")).not.toContainText("₹2,20,000");
+    });
+  }
+
   test("the HUD walks the whole money arc", async ({ page }) => {
     await open(page);
     for (const [pct, hud] of [
@@ -75,7 +89,7 @@ test.describe("the five stops", () => {
     await scrollToPct(page, 30);
     await expect.poll(async () => (await readScene(page)).mine).toEqual(["44", "45"]);
     // empty, marigold, teal
-    expect((await readScene(page)).distinctTokenColours).toBe(3);
+    await expect.poll(async () => (await readScene(page)).distinctTokenColours).toBe(3);
   });
 });
 

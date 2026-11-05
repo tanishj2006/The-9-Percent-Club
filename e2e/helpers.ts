@@ -6,7 +6,7 @@ export const scene = (page: Page) => page.getByTestId("scene");
 export async function open(page: Page, path = "/en") {
   await page.goto(path);
   await expect(scene(page)).toBeVisible();
-  await expect(page.locator("[data-part=wheelA]")).toBeAttached();
+  await expect(page.getByTestId("rail")).toBeAttached();
   await page.evaluate(() => document.fonts.ready);
 }
 
@@ -16,6 +16,8 @@ export async function open(page: Page, path = "/en") {
  * by a pixel would land on the previous beat.
  */
 export async function scrollToPct(page: Page, pct: number) {
+  // After a client-side chapter change the new scene's chunk may still be loading.
+  await expect(page.getByTestId("scene")).toBeAttached();
   await page.evaluate((pct) => {
     const el = document.querySelector<HTMLElement>("[data-testid=scene]")!;
     const top = el.getBoundingClientRect().top + window.scrollY;
@@ -25,9 +27,33 @@ export async function scrollToPct(page: Page, pct: number) {
   // Wait for the timeline to arrive, or a poll on something already true (beat 0
   // at 2%) passes before the scroll has landed.
   await expect
-    .poll(async () => (await readScene(page)).rail, `timeline reaches ${pct}%`)
+    .poll(() => readRail(page), `timeline reaches ${pct}%`)
     .toBeCloseTo(pct / 100, 2);
 }
+
+export const readRail = (page: Page) =>
+  page.evaluate(
+    () =>
+      new DOMMatrix(getComputedStyle(document.querySelector("[data-testid=rail]")!).transform).a,
+  );
+
+/** The one visible beat's heading, or several joined if a swap is broken. */
+export const visibleBeats = (page: Page) =>
+  page.evaluate(() =>
+    [...document.querySelectorAll("[data-testid=beat]")]
+      .filter((b) => {
+        const s = getComputedStyle(b);
+        return s.visibility !== "hidden" && Number(s.opacity) > 0;
+      })
+      .map((b) => b.querySelector("h2")!.textContent),
+  );
+
+export const hud = (page: Page) =>
+  page.evaluate(() => ({
+    label: document.querySelector("[data-testid=hud-label]")!.textContent,
+    value: document.querySelector("[data-testid=hud-value]")!.textContent,
+    note: document.querySelector("[data-testid=hud-sub]")!.textContent,
+  }));
 
 /** Reads what is rendered, never scene internals. */
 export const readScene = (page: Page) =>
