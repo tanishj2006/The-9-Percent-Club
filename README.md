@@ -18,17 +18,18 @@ from a blog post.
 | 01 to 03 | Not started |
 | 04 What a trade really costs | Built and verified |
 | 05 Why Rs 2,000 cannot trade | Built and verified |
-| 06 What losing looks like | Data ready (real 2020 drawdown curve) |
-| 07 and 08 | Not started |
+| 06 What losing looks like | Built and verified |
+| 07 The 91% number | Built and verified |
+| 08 What actually works | Built and verified |
 
-Wave 1 is chapters 00, 04 and 05. Hindi copy is awaiting review before launch.
+Hindi copy is awaiting review before launch.
 
 ## Running it
 
     npm install
     npm run dev           # http://localhost:3000, redirects to /en or /hi
 
-Chapters live at `/en`, `/en/04` and `/en/05`, with the same paths under `/hi`.
+Chapters live at `/en`, `/en/04` to `/en/08`, with the same paths under `/hi`.
 
     npm test              # cost engine and copy checks (vitest)
     npx playwright install chromium   # once
@@ -36,8 +37,7 @@ Chapters live at `/en`, `/en/04` and `/en/05`, with the same paths under `/hi`.
     E2E_DEV=1 npm run test:e2e        # the same, under next dev and strict mode
     npm run analyze       # bundle report in .next/analyze
 
-`prototype/chapter-00.html` is the original standalone reference, kept as it
-was. Its summer profit still reads Rs 2,20,000; the site's copy is Rs 1,20,000.
+`prototype/chapter-00.html` is the original standalone reference.
 
 ## Approach
 
