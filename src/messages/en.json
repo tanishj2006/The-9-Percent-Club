@@ -1,6 +1,8 @@
 {
   "meta": {
-    "title": "Chapter 0 — The Cold Coffee Cart | The 9% Club"
+    "title": "Chapter 0 — The Cold Coffee Cart | The 9% Club",
+    "ch04": "Chapter 4 — What a Trade Really Costs | The 9% Club",
+    "ch05": "Chapter 5 — Why ₹2,000 Cannot Trade | The 9% Club"
   },
   "site": {
     "name": "The 9% Club",
@@ -9,7 +11,12 @@
     "hudTokens": "2 of 100 tokens",
     "toggleTheme": "Toggle theme",
     "toggleLang": "Switch to Hindi",
-    "hudLabel": "Your money"
+    "hudLabel": "Your money",
+    "hudTrade": "This trade",
+    "hudFresh": "fresh start",
+    "hudOfWallet": "₹1,000 of your ₹2,000",
+    "hudUnmoved": "price unchanged",
+    "hudTenTrips": "after 10 round trips"
   },
   "ch00": {
     "ch": "Chapter 00",
@@ -57,7 +64,7 @@
         "tag": "Summer",
         "tone": "teal",
         "h": "April. It is 38 degrees.",
-        "p": "They sell 240 cups a day at ₹80. After beans, milk, ice and the pitch fee, the cart clears about ₹2,20,000 over the season."
+        "p": "They sell 240 cups a day at ₹80. After beans, milk, ice and the pitch fee, the cart clears about ₹1,20,000 over the season."
       },
       {
         "tag": "Your share",
@@ -86,5 +93,164 @@
     ],
     "cartAlt": "An isometric coffee cart assembling itself",
     "gridAlt": "One hundred ownership tokens, two of them yours"
+  },
+  "nav": {
+    "label": "Chapters",
+    "pager": "Chapter pages",
+    "prev": "Previous",
+    "next": "Next",
+    "ch00": "The cold coffee cart",
+    "ch04": "What a trade really costs",
+    "ch05": "Why ₹2,000 cannot trade",
+    "skipNote": "Chapters 01 to 03 are still being written, including that question about who buys your tokens. The story picks up at Chapter 04.",
+    "endNote": "Chapters 06 to 08 are still being written. This is as far as the story goes for now."
+  },
+  "ch04": {
+    "ch": "Chapter 04",
+    "title": "What a trade<br></br>really costs.",
+    "tagline": "The cart was a story, so its money stays there. This is the real market, and you start again with {wallet}. Nothing in this chapter needs a price to move.",
+    "scrollCue": "Scroll",
+    "noteLabel": "Your {trade} trade",
+    "noteAlt": "A {trade} note with each charge cut off its end, drawn to scale",
+    "zoomNote": "The note is to scale. These bars are zoomed in, or you could not see them.",
+    "rows": {
+      "brokerage": "Brokerage",
+      "dp": "DP charge",
+      "stt": "STT",
+      "gst": "GST",
+      "stamp": "Stamp duty",
+      "exchange": "Exchange charge",
+      "sebi": "SEBI fee",
+      "total": "Total gone"
+    },
+    "beats": [
+      {
+        "tag": "New start",
+        "tone": "gold",
+        "h": "Back to {wallet}, in the real market.",
+        "p": "The cart's money stays in the cart's story. Here the counter resets: you have {wallet} and an app on your phone."
+      },
+      {
+        "tag": "The trade",
+        "tone": "gold",
+        "h": "You put {trade} into one trade.",
+        "p": "{qty} shares at {price} each. Later you sell all {qty} at the same {price}. From here the counter follows only this {trade}, because this is the money the charges touch."
+      },
+      {
+        "tag": "Cut 1",
+        "tone": "brick",
+        "h": "{brokerage} to the broker.",
+        "p": "A broker is the company whose app places your order. This one takes {brokerageLeg} when you buy and {brokerageLeg} when you sell. Some apps advertise zero brokerage, but every cut after this one still comes."
+      },
+      {
+        "tag": "Cut 2",
+        "tone": "brick",
+        "h": "{dp}, in one flat bite.",
+        "p": "Your shares sit in a demat account, a locker for shares. Each time you sell, you pay this DP charge to take them out. It stays {dp} whatever the trade size, so here it alone eats {dpPct}% of your money."
+      },
+      {
+        "tag": "Cut 3",
+        "tone": "brick",
+        "h": "{stt} to the government.",
+        "p": "STT is Securities Transaction Tax, a tax on buying and selling shares. {sttLeg} on the way in, {sttLeg} on the way out. No app can waive it."
+      },
+      {
+        "tag": "Cut 4",
+        "tone": "brick",
+        "h": "Four small cuts, {rest} in all.",
+        "p": "The exchange, where orders meet: {exchange}. SEBI, the market regulator: {sebi}. Stamp duty on the purchase: {stamp}. GST on the broker's and exchange's fees: {gst}."
+      },
+      {
+        "tag": "The truth",
+        "tone": "teal",
+        "h": "The share did not move. You are down {lostPct}%.",
+        "p": "You bought at {price} and sold at {price}. Of your {trade}, {kept} came back. The other {total} is that pile of slices."
+      }
+    ],
+    "nextUp": "What happens next",
+    "outroH": "Every trade starts behind.",
+    "outroP": "A price can go up or down. These charges only go one way, and they come whatever the price does.",
+    "handoffQ": "So how far must a price rise just to get your money back?",
+    "handoffP": "On {trade} it is {lostPct}%. Does the amount you trade change that? Chapter 05 is that arithmetic.",
+    "assumptions": "Worked for a delivery trade on NSE, meaning shares bought and held at least overnight, using statutory rates checked in November 2026 and a conservative reading of one discount broker's fees. Rates change, so your own contract note may differ."
+  },
+  "ch05": {
+    "ch": "Chapter 05",
+    "title": "Why ₹2,000<br></br>cannot trade.",
+    "tagline": "This is arithmetic, not advice. You start again with {wallet}, and there is one question: how far must a price rise before a trade simply gets your money back?",
+    "scrollCue": "Scroll",
+    "chartAlt": "Bars showing the breakeven gap shrinking from {pct500}% at {c500} to {pct50000}% at {c50000}",
+    "beats": [
+      {
+        "tag": "The gap",
+        "tone": "gold",
+        "h": "Meet the breakeven gap.",
+        "p": "Buy a share, sell it, pay the charges. The breakeven gap is how far the price must rise for you to end with exactly what you started with. No profit. Just your money back."
+      },
+      {
+        "tag": "{c500}",
+        "tone": "brick",
+        "h": "{c500} needs a {pct500}% rise.",
+        "p": "Charges on one round trip come to {cost500}. On an amount this small, the price has a long way to climb."
+      },
+      {
+        "tag": "{c1000}",
+        "tone": "brick",
+        "h": "{c1000} needs {pct1000}%.",
+        "p": "This is the trade from Chapter 04, with {cost1000} in charges. Double the money and the gap nearly halves."
+      },
+      {
+        "tag": "Your money",
+        "tone": "teal",
+        "h": "{c2000} needs {pct2000}%.",
+        "p": "A round trip costs {cost2000}. The share has to rise nearly 2% before you have earned a single rupee."
+      },
+      {
+        "tag": "The wall",
+        "tone": "brick",
+        "h": "The wall is a flat {dp}.",
+        "p": "The dark part of each bar is the DP charge. It does not care how much you trade, and at {c2000} it is {dpShare}% of your charges. The smaller the trade, the taller it stands."
+      },
+      {
+        "tag": "Ten times",
+        "tone": "brick",
+        "h": "Now do that {ten} times.",
+        "p": "{ten} round trips of {c2000}, with the price never moving, cost about {tenCost}. That is {tenPct}% of your money gone, before any trade has gone right or wrong."
+      },
+      {
+        "tag": "{c5000}",
+        "tone": "gold",
+        "h": "{c5000} needs {pct5000}%.",
+        "p": "The same {dp}, spread over more money. Charges are {cost5000}, and the gap is less than half of yours."
+      },
+      {
+        "tag": "{c10000}",
+        "tone": "gold",
+        "h": "{c10000} needs {pct10000}%.",
+        "p": "Charges are {cost10000}. The wall is fading, because more of the bill now grows with the trade instead of staying flat."
+      },
+      {
+        "tag": "{c50000}",
+        "tone": "gold",
+        "h": "{c50000} needs {pct50000}%.",
+        "p": "Less than a fifth of your gap. It is still a gap, though, and clearing it only gets you back to zero."
+      },
+      {
+        "tag": "Your turn",
+        "tone": "teal",
+        "h": "Try your own number.",
+        "p": "Slide the amount. These figures come from the same calculation as every number on this page. They show the cost of one round trip, not what any price will do."
+      }
+    ],
+    "calc": {
+      "capital": "Amount in one trade",
+      "cost": "Round trip charges",
+      "gap": "Breakeven gap",
+      "dpShare": "DP share of charges"
+    },
+    "nextUp": "What this means",
+    "outroH": "The gap is not a prediction.",
+    "outroP": "It says nothing about where any price is going. It only measures how far a price has to travel before one trade pays for itself, and at {wallet} that distance is long for reasons that have nothing to do with skill.",
+    "assumptions": "One delivery round trip on NSE at the same buy and sell price, which slightly understates the true gap, since sell-side charges grow with a higher exit price. The ten-trade figure keeps the trade size fixed at ₹2,000 for simplicity. Statutory rates checked in November 2026, with a conservative reading of one discount broker's fees. This is education, not advice."
   }
 }
