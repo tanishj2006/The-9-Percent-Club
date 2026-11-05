@@ -5,7 +5,10 @@
     "ch05": "Chapter 5 — Why ₹2,000 Cannot Trade | The 9% Club",
     "ch06": "Chapter 6 — What Losing Looks Like | The 9% Club",
     "ch07": "Chapter 7 — The 91% Number | The 9% Club",
-    "ch08": "Chapter 8 — What Actually Works | The 9% Club"
+    "ch08": "Chapter 8 — What Actually Works | The 9% Club",
+    "ch01": "Chapter 1 — Who Buys Your Token? | The 9% Club",
+    "ch02": "Chapter 2 — Who Decides the Price? | The 9% Club",
+    "ch03": "Chapter 3 — Reading a Chart | The 9% Club"
   },
   "site": {
     "name": "The 9% Club",
@@ -24,7 +27,13 @@
     "hudSoldAt": "if sold: {amount}",
     "hudHeldAt": "if held: {amount}",
     "hudLostCount": "{amount} of 100 lost",
-    "hudPutIn": "{amount} put in"
+    "hudPutIn": "{amount} put in",
+    "hudAtBank": "in your bank",
+    "hudAtBroker": "with your broker",
+    "hudAtExchange": "order at the exchange",
+    "hudInDemat": "shares in your demat",
+    "hudInShares": "{amount} in 10 shares",
+    "hudSharesAt": "10 shares at {amount}"
   },
   "ch00": {
     "ch": "Chapter 00",
@@ -110,16 +119,18 @@
     "ch00": "The cold coffee cart",
     "ch04": "What a trade really costs",
     "ch05": "Why ₹2,000 cannot trade",
-    "skipNote": "Chapters 01 to 03 are still being written, including that question about who buys your tokens. The story picks up at Chapter 04, then runs straight through to Chapter 08.",
-    "endNote": "That is the end of the story for now. Chapters 01 to 03, on how the market itself works, are still being written.",
+    "endNote": "That is the whole course: what a share is, how a trade travels, what it costs, what a fall feels like, why most traders lose, and what boring looks like. All of it is arithmetic and history. None of it is advice.",
     "ch06": "What losing looks like",
     "ch07": "The 91% number",
-    "ch08": "What actually works"
+    "ch08": "What actually works",
+    "ch01": "Who buys your token?",
+    "ch02": "Who decides the price?",
+    "ch03": "Reading a chart"
   },
   "ch04": {
     "ch": "Chapter 04",
     "title": "What a trade<br></br>really costs.",
-    "tagline": "The cart was a story, so its money stays there. This is the real market, and you start again with {wallet}. Nothing in this chapter needs a price to move.",
+    "tagline": "Your shares closed at ₹103, but set that aside. To see what a trade costs on its own, take the price out of it: back to {wallet}, and nothing in this chapter needs a price to move.",
     "scrollCue": "Scroll",
     "noteLabel": "Your {trade} trade",
     "noteAlt": "A {trade} note with each charge cut off its end, drawn to scale",
@@ -138,8 +149,8 @@
       {
         "tag": "New start",
         "tone": "gold",
-        "h": "Back to {wallet}, in the real market.",
-        "p": "The cart's money stays in the cart's story. Here the counter resets: you have {wallet} and an app on your phone."
+        "h": "Back to {wallet}. Price frozen.",
+        "p": "The counter resets so the charges have nothing to hide behind. Same app, same ₹100 share, and this time the price stays still."
       },
       {
         "tag": "The trade",
@@ -465,5 +476,207 @@
     "outroH": "Boring is the point.",
     "outroP": "Nothing in this chapter needs you to be right about a price. It needs time, a small cost and not stopping. It can still go badly over the years you happen to choose, and nobody can promise otherwise.",
     "assumptions": "Instalments are paid at the end of each month. The {rate}% a year is an assumption chosen to show the shape of compounding. It is not a forecast, a target or a measured historical return. Fund expenses, charges on selling, tax and inflation are left out. No fund is named or recommended. This is education, not advice."
+  },
+  "ch01": {
+    "ch": "Chapter 01",
+    "title": "Who buys<br></br>your token?",
+    "tagline": "Your tokens came from two friends at a cart. A real share cannot change hands that way. This chapter follows {wallet} through the pipes of the Indian market, before any charge touches it.",
+    "scrollCue": "Scroll",
+    "mapAlt": "A loop of four stops: your bank, the broker, the exchange and your demat account",
+    "nodes": {
+      "phone": {
+        "title": "Your bank",
+        "sub": "UPI / IMPS"
+      },
+      "broker": {
+        "title": "The broker",
+        "sub": "the app"
+      },
+      "exchange": {
+        "title": "The exchange",
+        "sub": "NSE / BSE"
+      },
+      "demat": {
+        "title": "Your demat",
+        "sub": "CDSL / NSDL"
+      }
+    },
+    "beats": [
+      {
+        "tag": "The problem",
+        "tone": "gold",
+        "h": "You cannot walk up to the counter.",
+        "p": "The cart's ₹3,400 stays in the cart's story. Now picture selling to someone you have never met, or buying a piece of a company 1,000 km away. The counter resets to {wallet}, and this is the way in."
+      },
+      {
+        "tag": "Stop 1",
+        "tone": "gold",
+        "h": "It starts in your bank.",
+        "p": "You open an app and add {wallet} over UPI or IMPS. The money leaves your bank account. Nothing has been bought yet."
+      },
+      {
+        "tag": "Stop 2",
+        "tone": "gold",
+        "h": "The broker is a doorway.",
+        "p": "The app belongs to a broker, a licensed middleman. You tap Buy and it passes your order on. It is the way in, not the place your shares live."
+      },
+      {
+        "tag": "Stop 3",
+        "tone": "gold",
+        "h": "The exchange is where orders meet.",
+        "p": "NSE and BSE are India's two main exchanges. Buyers and sellers never see each other here: orders are matched automatically, by a system you never touch."
+      },
+      {
+        "tag": "Stop 4",
+        "tone": "teal",
+        "h": "Your shares land in a vault.",
+        "p": "The money goes on to the seller. The shares come back to your demat account, held at a depository, CDSL or NSDL. They usually arrive by the next working day."
+      },
+      {
+        "tag": "The loop",
+        "tone": "teal",
+        "h": "Four stops, four jobs.",
+        "p": "The bank holds money. The broker carries orders. The exchange matches them. The depository holds the shares. Remember that vault: taking shares out of it is where a charge in Chapter 04 comes from."
+      },
+      {
+        "tag": "The answer",
+        "tone": "gold",
+        "h": "So who buys your token?",
+        "p": "A stranger, whose order met yours. You never learn their name. You only ever agree on one thing: the price."
+      }
+    ],
+    "nextUp": "What happens next",
+    "outroH": "A share has an address.",
+    "outroP": "It is not inside the app. It sits in a demat account in your name, and the app is one door to it.",
+    "handoffQ": "You agreed a price with a stranger. Who set it?",
+    "handoffP": "Not the company, and not SEBI. That is Chapter 02.",
+    "assumptions": "Simplified. Clearing corporations sit between the exchange and the depository to guarantee the trade, and money can also move by other routes. Delivery trades on NSE and BSE settle on the next working day. This is education, not advice."
+  },
+  "ch02": {
+    "ch": "Chapter 02",
+    "title": "Who decides<br></br>the price?",
+    "tagline": "Not the company. Not SEBI. A share's price is just the last number where an impatient buyer and an impatient seller agreed.",
+    "scrollCue": "Scroll",
+    "bookAlt": "An order book with buyers on the left at {bids} and sellers on the right at {asks}",
+    "ltpLabel": "Last traded",
+    "gapLabel": "Gap",
+    "buyers": "Buyers",
+    "sellers": "Sellers",
+    "you": "You",
+    "hurry": "In a hurry",
+    "beats": [
+      {
+        "tag": "The myth",
+        "tone": "gold",
+        "h": "Nobody sets the price.",
+        "p": "Many people picture the company or SEBI updating a number every second. Neither does. Zoom into Stop 3 from Chapter 01 and you find a queue, called the order book. This one is invented, to show how it works."
+      },
+      {
+        "tag": "Buyers",
+        "tone": "teal",
+        "h": "Buyers line up, wanting it cheap.",
+        "p": "{bids}. Each is an offer: I will pay this much, no more. The best one is {bestBid}."
+      },
+      {
+        "tag": "Sellers",
+        "tone": "brick",
+        "h": "Sellers line up, wanting more.",
+        "p": "{asks}. Each is an offer too: I will sell at this price, no less. The best one is {bestAsk}."
+      },
+      {
+        "tag": "The gap",
+        "tone": "gold",
+        "h": "Nothing trades across a gap.",
+        "p": "The best buyer stops at {bestBid}. The best seller starts at {bestAsk}. That {spread} between them is the spread, and while it stays open, everyone just waits."
+      },
+      {
+        "tag": "Someone moves",
+        "tone": "brick",
+        "h": "A seller gets impatient.",
+        "p": "Someone wants out now and drops their price to {match}, for {qty} shares. That is lower than any other seller, and still nobody has traded."
+      },
+      {
+        "tag": "The match",
+        "tone": "teal",
+        "h": "You buy {qty} shares at {match}.",
+        "p": "You are the impatient buyer. Your order meets theirs and the two clear each other. {deployed} of your {wallet} is now in shares, and the last traded price is {match}."
+      },
+      {
+        "tag": "The price",
+        "tone": "gold",
+        "h": "That is all a price is.",
+        "p": "Not what a share is worth. Not what it should be. Just the last deal two strangers made. The next deal can be different, seconds later."
+      }
+    ],
+    "nextUp": "What happens next",
+    "outroH": "Every price on a screen is a past deal.",
+    "outroP": "It tells you where two people last agreed. It does not tell you where the next two will.",
+    "handoffQ": "Thousands of deals a day. How do you read them?",
+    "handoffP": "Your {qty} shares are about to live through a whole day. That is Chapter 03.",
+    "assumptions": "An invented order book, with no real share behind it. Real books hold thousands of orders and match them in milliseconds. A trade fills at the price of the order already waiting, which is why someone had to come down to ₹100 here. Charges are left out until Chapter 04. This is education, not advice."
+  },
+  "ch03": {
+    "ch": "Chapter 03",
+    "title": "Reading<br></br>a chart.",
+    "tagline": "Trading screens look like a language you were never taught. They are not. One day of your {qty} shares is enough to read all of them.",
+    "scrollCue": "Scroll",
+    "dayAlt": "The price line for one day, building a single candle from {open} open to {close} close",
+    "rowAlt": "A row of {days} candles, one for each day, ending on your day",
+    "ohlc": {
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "close": "Close"
+    },
+    "beats": [
+      {
+        "tag": "9:15 AM",
+        "tone": "gold",
+        "h": "The market opens at {open}.",
+        "p": "The line on the left is the price through one invented day. The mark on the right is a candle, which starts as nothing but that first number: the open."
+      },
+      {
+        "tag": "Morning",
+        "tone": "brick",
+        "h": "By mid-morning it has dipped to {low}.",
+        "p": "Your {qty} shares fall with it, so the counter drops to {lowMoney}. The candle grows a thin line downwards, called a wick. It records the lowest point of the day, for good."
+      },
+      {
+        "tag": "Afternoon",
+        "tone": "teal",
+        "h": "Then it spikes to {high}.",
+        "p": "The counter touches {highMoney}. The wick stretches up to mark the high. The candle now remembers how far the day travelled in both directions."
+      },
+      {
+        "tag": "3:30 PM",
+        "tone": "teal",
+        "h": "The day closes at {close}.",
+        "p": "The thick body runs from the open to the close. Teal means it closed higher than it opened. The wicks stay behind as the day's extremes. Four numbers, one shape."
+      },
+      {
+        "tag": "Red days",
+        "tone": "brick",
+        "h": "Close lower, and the candle turns.",
+        "p": "Open at {redOpen}, close at {redClose}: same shape, opposite colour. A candle cannot tell you why it happened. Only what happened."
+      },
+      {
+        "tag": "Zoom out",
+        "tone": "gold",
+        "h": "A chart is a row of days.",
+        "p": "Your day is the last of these {days}, all invented. Each candle is one more day compressed into four numbers. That is everything a chart is: a diary of past deals."
+      },
+      {
+        "tag": "The limit",
+        "tone": "brick",
+        "h": "A diary cannot read the future.",
+        "p": "These shapes record what buyers and sellers already did. They do not say what happens next, and they leave out something else entirely: what the trade cost you."
+      }
+    ],
+    "nextUp": "What happens next",
+    "outroH": "Now the screens are readable.",
+    "outroP": "A chart stops being intimidating once you know it is only a compressed diary. It is still only a diary.",
+    "handoffQ": "You saw ₹2,000 become {closeMoney}. Is that what you would keep?",
+    "handoffP": "No. There are charges the chart never shows. That is Chapter 04.",
+    "assumptions": "Invented prices, with no real share behind them. The market hours shown are the NSE and BSE regular session. The counter values your {qty} shares at the current price and leaves out charges, which arrive in Chapter 04. This is education, not advice."
   }
 }
