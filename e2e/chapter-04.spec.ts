@@ -6,7 +6,7 @@ const mid = (beat: number) => ((beat + 0.5) / 7) * 100;
 
 /** Mid-beat stops: what must be true at each. Widths are checked against costs.ts. */
 const STOPS = [
-  { beat: 0, en: "Back to ₹2,000, in the real market.", hud: "₹2,000", label: "Your money", bar: 1000, slices: [] as string[], rows: [] as string[] },
+  { beat: 0, en: "Back to ₹2,000. Price frozen.", hud: "₹2,000", label: "Your money", bar: 1000, slices: [] as string[], rows: [] as string[] },
   { beat: 1, en: "You put ₹1,000 into one trade.", hud: "₹1,000.00", label: "This trade", bar: 1000, slices: [], rows: [] },
   { beat: 2, en: "₹10.00 to the broker.", hud: "₹990.00", label: "This trade", bar: 990, slices: ["brokerage"], rows: ["brokerage"] },
   { beat: 3, en: "₹23.60, in one flat bite.", hud: "₹966.40", label: "This trade", bar: 966.4, slices: ["brokerage", "dp"], rows: ["brokerage", "dp"] },

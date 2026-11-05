@@ -113,7 +113,7 @@ test("Hindi: same count, same figure", async ({ page }) => {
   await expect.poll(() => visibleBeats(page)).toEqual(["₹1,05,603 करोड़।"]);
   await expect(page.getByTestId("loss-figure")).toContainText("₹1,05,603 करोड़");
   expect((await readCrowd(page)).lost).toBe(91);
-  expect((await hud(page)).note).toBe("100 में से 91 हारे");
+  expect((await hud(page)).note).toBe("100 में से 91 घाटे में");
 });
 
 test("has a scroll budget and stays pinned", async ({ page }) => {

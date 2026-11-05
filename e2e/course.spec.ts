@@ -1,8 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { hud, jumpTo, open, scrollToPct, visibleBeats } from "./helpers";
+import { hud, jumpTo, open, scrollToPct } from "./helpers";
 
 const CHAPTERS = [
   { path: "", title: "Chapter 00", titleHi: "अध्याय 00" },
+  { path: "/01", title: "Chapter 01", titleHi: "अध्याय 01" },
+  { path: "/02", title: "Chapter 02", titleHi: "अध्याय 02" },
+  { path: "/03", title: "Chapter 03", titleHi: "अध्याय 03" },
   { path: "/04", title: "Chapter 04", titleHi: "अध्याय 04" },
   { path: "/05", title: "Chapter 05", titleHi: "अध्याय 05" },
   { path: "/06", title: "Chapter 06", titleHi: "अध्याय 06" },
@@ -11,22 +14,29 @@ const CHAPTERS = [
 ];
 
 test.describe("navigation", () => {
-  test("Next walks 00 → 04 → 05 → 06 → 07 → 08, Previous walks back", async ({ page }) => {
+  test("Next walks all nine chapters in order, Previous walks back", async ({ page }) => {
     await open(page);
-    for (const n of ["04", "05", "06", "07", "08"]) {
+    for (const n of ["01", "02", "03", "04", "05", "06", "07", "08"]) {
       await page.getByTestId("next-chapter").click();
       await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
       await expect(page.locator(".eyebrow").first()).toHaveText(`Chapter ${n}`);
     }
     await expect(page.getByTestId("next-chapter")).toHaveCount(0);
-    await expect(page.getByTestId("chapter-nav")).toContainText("Chapters 01 to 03");
-    for (const n of ["07", "06", "05", "04"]) {
+    await expect(page.getByTestId("chapter-nav")).toContainText("That is the whole course");
+    for (const n of ["07", "06", "05", "04", "03", "02", "01"]) {
       await page.getByTestId("prev-chapter").click();
       await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
     }
     await page.getByTestId("prev-chapter").click();
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.getByTestId("prev-chapter")).toHaveCount(0);
+  });
+
+  test("no chapter says anything is still being written", async ({ page }) => {
+    for (const { path } of CHAPTERS) {
+      await page.goto(`/en${path}`);
+      await expect(page.locator("body")).not.toContainText("still being written");
+    }
   });
 
   test("the switcher marks the current chapter and jumps", async ({ page }) => {
@@ -47,7 +57,7 @@ test.describe("navigation", () => {
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     const links = page.getByTestId("chapter-switcher").getByRole("link");
-    await expect(links).toHaveCount(6);
+    await expect(links).toHaveCount(9);
     const box = (await links.first().boundingBox())!;
     expect(box.height, "touch target").toBeGreaterThanOrEqual(44);
     await page.getByTestId("chapter-switcher").getByRole("link", { name: "The 91% number" }).click();
@@ -65,26 +75,31 @@ test.describe("navigation", () => {
     await scrollToPct(page, 50);
     await expect.poll(async () => (await hud(page)).value).toBe("₹966.40");
   });
-
-  test("Chapter 00 explains why the numbering jumps", async ({ page }) => {
-    await open(page);
-    await expect(page.getByTestId("chapter-nav")).toContainText("Chapters 01 to 03 are still being written");
-  });
 });
 
 test.describe("HUD continuity", () => {
-  test("₹3,400 from the cart becomes a labelled fresh ₹2,000, then the trade", async ({ page }) => {
+  test("₹3,400 from the cart becomes a labelled fresh ₹2,000 on Chapter 01", async ({ page }) => {
     await open(page);
     await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" }));
     await expect.poll(async () => (await hud(page)).value).toBe("₹3,400");
 
     await page.getByTestId("next-chapter").click();
-    await expect(page).toHaveURL(/\/en\/04$/);
+    await expect(page).toHaveURL(/\/en\/01$/);
     await expect.poll(() => hud(page)).toEqual({ label: "Your money", value: "₹2,000", note: "fresh start" });
 
     await scrollToPct(page, 7);
-    await expect.poll(() => visibleBeats(page)).toEqual(["Back to ₹2,000, in the real market."]);
-    await expect(page.getByTestId("beat").first()).toContainText("The cart's money stays");
+    await expect(page.getByTestId("beat").first()).toContainText("The cart's ₹3,400 stays");
+  });
+
+  test("Chapter 03's ₹2,030 becomes a labelled ₹2,000, then the trade", async ({ page }) => {
+    await open(page, "/en/03");
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" }));
+    await expect.poll(async () => (await hud(page)).value).toBe("₹2,030");
+
+    await page.getByTestId("next-chapter").click();
+    await expect(page).toHaveURL(/\/en\/04$/);
+    await expect.poll(() => hud(page)).toEqual({ label: "Your money", value: "₹2,000", note: "fresh start" });
+    await expect(page.locator(".intro")).toContainText("closed at ₹103");
 
     await scrollToPct(page, 21);
     await expect.poll(() => hud(page)).toEqual({
@@ -135,7 +150,7 @@ test.describe("routes", () => {
   }
 
   test("chapters not built yet are a 404", async ({ page }) => {
-    for (const n of ["01", "02", "03", "09"]) {
+    for (const n of ["09", "10"]) {
       const response = await page.goto(`/en/${n}`);
       expect(response?.status(), n).toBe(404);
     }
@@ -160,7 +175,7 @@ test.describe("strict mode", () => {
 
     await open(page);
     await expect.poll(triggers).toBe(1);
-    for (const n of ["04", "05", "06", "07", "08"]) {
+    for (const n of ["01", "02", "03", "04", "05", "06", "07", "08"]) {
       await page.getByTestId("next-chapter").click();
       await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
       await expect(page.getByTestId("rail")).toBeAttached();
@@ -180,6 +195,7 @@ test.describe("layout", () => {
     for (const [name, width, height] of [
       ["small Android", 360, 640],
       ["390 wide", 390, 844],
+      ["small tablet", 768, 1024],
       ["laptop", 1280, 720],
     ] as const) {
       for (const locale of ["en", "hi"] as const) {
@@ -198,7 +214,7 @@ test.describe("layout", () => {
               const beat = [...document.querySelectorAll("[data-testid=beat]")].find(shown)!;
               const content = [
                 ...document.querySelectorAll(
-                  ".stage-stack svg, .receipt-row, .receipt-zoom, .calc, .gap-chart svg, .readout, .curve-charts svg, .curve-foot > *, [data-testid=crowd], .crowd-side > *",
+                  ".stage-stack svg, .receipt-row, .receipt-zoom, .calc, .gap-chart svg, .readout, .curve-charts svg, .curve-foot > *, [data-testid=crowd], .crowd-side > *, [data-testid=plumbing], .book-chart svg",
                 ),
               ].filter(shown);
               const hudBox = r(document.querySelector("[data-testid=hud]")!);
