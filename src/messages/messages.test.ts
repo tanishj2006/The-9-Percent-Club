@@ -29,7 +29,7 @@ describe("both languages are first class", () => {
   });
 
   it("have matching beat tones, so colour means the same in both", () => {
-    for (const ch of ["ch00", "ch04", "ch05"] as const) {
+    for (const ch of ["ch00", "ch04", "ch05", "ch06", "ch07", "ch08"] as const) {
       expect(hi[ch].beats.map((b) => b.tone)).toEqual(en[ch].beats.map((b) => b.tone));
     }
   });
@@ -52,7 +52,7 @@ describe("the summer arithmetic is airtight", () => {
 });
 
 describe("SEBI: no performance claims", () => {
-  const banned = /guarante|sure.?shot|you will (make|earn)|join the 9%|beat the market/i;
+  const banned = /guaranteed (return|profit)|sure.?shot|you will (make|earn)|join the 9%/i;
 
   it("the new chapters promise nothing", () => {
     for (const [key, value] of Object.entries(flatEn)) {

@@ -6,7 +6,9 @@ const BUDGET_GZIP = 200 * 1024;
 test.skip(process.env.E2E_DEV === "1", "production bundles only");
 test.skip(({ isMobile }) => isMobile, "same bundle");
 
-for (const path of ["/en", "/en/04", "/en/05", "/hi", "/hi/04", "/hi/05"]) {
+const CHAPTERS = ["", "/04", "/05", "/06", "/07", "/08"];
+
+for (const path of CHAPTERS.flatMap((c) => [`/en${c}`, `/hi${c}`])) {
   test(`${path}: GSAP and Lenis stay out of the initial bundle, which is under budget`, async ({
     request,
     baseURL,
@@ -23,6 +25,7 @@ for (const path of ["/en", "/en/04", "/en/05", "/hi", "/hi/04", "/hi/05"]) {
       expect(text, `${url} contains ScrollTrigger`).not.toContain("ScrollTrigger");
       expect(text, `${url} contains gsap`).not.toMatch(/GreenSock|gsap\.com/i);
       expect(text, `${url} contains Lenis`).not.toContain("lenis-smooth");
+      expect(text, `${url} contains the drawdown data`).not.toContain("2020-03-24");
     }
     console.log(`${path}: ${new Set(urls).size} scripts, ${(total / 1024).toFixed(1)} KB gzipped`);
     expect(total).toBeLessThan(BUDGET_GZIP);

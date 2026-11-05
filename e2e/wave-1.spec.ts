@@ -1,23 +1,29 @@
 import { expect, test } from "@playwright/test";
-import { hud, open, scrollToPct, visibleBeats } from "./helpers";
+import { hud, jumpTo, open, scrollToPct, visibleBeats } from "./helpers";
 
 const CHAPTERS = [
   { path: "", title: "Chapter 00", titleHi: "अध्याय 00" },
   { path: "/04", title: "Chapter 04", titleHi: "अध्याय 04" },
   { path: "/05", title: "Chapter 05", titleHi: "अध्याय 05" },
+  { path: "/06", title: "Chapter 06", titleHi: "अध्याय 06" },
+  { path: "/07", title: "Chapter 07", titleHi: "अध्याय 07" },
+  { path: "/08", title: "Chapter 08", titleHi: "अध्याय 08" },
 ];
 
 test.describe("navigation", () => {
-  test("Next walks 00 → 04 → 05, Previous walks back", async ({ page }) => {
+  test("Next walks 00 → 04 → 05 → 06 → 07 → 08, Previous walks back", async ({ page }) => {
     await open(page);
-    await page.getByTestId("next-chapter").click();
-    await expect(page).toHaveURL(/\/en\/04$/);
-    await expect(page.locator(".eyebrow").first()).toHaveText("Chapter 04");
-    await page.getByTestId("next-chapter").click();
-    await expect(page).toHaveURL(/\/en\/05$/);
+    for (const n of ["04", "05", "06", "07", "08"]) {
+      await page.getByTestId("next-chapter").click();
+      await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
+      await expect(page.locator(".eyebrow").first()).toHaveText(`Chapter ${n}`);
+    }
     await expect(page.getByTestId("next-chapter")).toHaveCount(0);
-    await page.getByTestId("prev-chapter").click();
-    await expect(page).toHaveURL(/\/en\/04$/);
+    await expect(page.getByTestId("chapter-nav")).toContainText("Chapters 01 to 03");
+    for (const n of ["07", "06", "05", "04"]) {
+      await page.getByTestId("prev-chapter").click();
+      await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
+    }
     await page.getByTestId("prev-chapter").click();
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.getByTestId("prev-chapter")).toHaveCount(0);
@@ -26,16 +32,34 @@ test.describe("navigation", () => {
   test("the switcher marks the current chapter and jumps", async ({ page }) => {
     await open(page, "/en/04");
     const switcher = page.getByTestId("chapter-switcher");
-    await expect(switcher.getByRole("link", { name: "What a trade really costs" })).toHaveAttribute("aria-current", "page");
-    await switcher.getByRole("link", { name: "Why ₹2,000 cannot trade" }).click();
-    await expect(page).toHaveURL(/\/en\/05$/);
-    await expect(switcher.getByRole("link", { name: "Why ₹2,000 cannot trade" })).toHaveAttribute("aria-current", "page");
+    await expect(switcher.getByRole("link", { name: "What a trade really costs", includeHidden: true })).toHaveAttribute("aria-current", "page");
+    await jumpTo(page, "What actually works");
+    await expect(page).toHaveURL(/\/en\/08$/);
+    await expect(switcher.getByRole("link", { name: "What actually works", includeHidden: true })).toHaveAttribute("aria-current", "page");
+  });
+
+  test("on a phone the menu lists every chapter by name, then closes", async ({ page, isMobile }) => {
+    test.skip(!isMobile, "phone menu");
+    await open(page, "/en/06");
+    const toggle = page.getByTestId("chapter-toggle");
+    await expect(toggle).toContainText("06");
+    await expect(page.getByTestId("chapter-switcher").getByRole("link", { name: "The 91% number" })).toBeHidden();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    const links = page.getByTestId("chapter-switcher").getByRole("link");
+    await expect(links).toHaveCount(6);
+    const box = (await links.first().boundingBox())!;
+    expect(box.height, "touch target").toBeGreaterThanOrEqual(44);
+    await page.getByTestId("chapter-switcher").getByRole("link", { name: "The 91% number" }).click();
+    await expect(page).toHaveURL(/\/en\/07$/);
+    await expect(page.getByTestId("chapter-toggle")).toHaveAttribute("aria-expanded", "false");
+    await expect(page.getByTestId("chapter-toggle")).toContainText("07");
   });
 
   test("a new chapter starts at the top, in a working scene", async ({ page }) => {
     await open(page);
     await scrollToPct(page, 97);
-    await page.getByTestId("chapter-switcher").getByRole("link", { name: "What a trade really costs" }).click();
+    await jumpTo(page, "What a trade really costs");
     await expect(page).toHaveURL(/\/en\/04$/);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
     await scrollToPct(page, 50);
@@ -87,7 +111,7 @@ test.describe("HUD continuity", () => {
     await open(page);
     await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" }));
     await expect.poll(async () => (await hud(page)).value).toBe("₹3,400");
-    await page.getByTestId("chapter-switcher").getByRole("link", { name: "Why ₹2,000 cannot trade" }).click();
+    await jumpTo(page, "Why ₹2,000 cannot trade");
     await expect(page).toHaveURL(/\/en\/05$/);
     await expect(page.locator("body")).not.toContainText("₹3,400");
   });
@@ -111,7 +135,7 @@ test.describe("routes", () => {
   }
 
   test("chapters not built yet are a 404", async ({ page }) => {
-    for (const n of ["01", "02", "03", "06", "07", "08"]) {
+    for (const n of ["01", "02", "03", "09"]) {
       const response = await page.goto(`/en/${n}`);
       expect(response?.status(), n).toBe(404);
     }
@@ -122,6 +146,8 @@ test.describe("routes", () => {
     expect(html).toContain("Two friends, one cart");
     expect(html).not.toContain("Meet the breakeven gap");
     expect(html).not.toContain("in one flat bite");
+    expect(html).not.toContain("Hold or sell?");
+    expect(html).not.toContain("SEBI counted");
   });
 });
 
@@ -134,17 +160,17 @@ test.describe("strict mode", () => {
 
     await open(page);
     await expect.poll(triggers).toBe(1);
-    for (const n of ["04", "05"]) {
+    for (const n of ["04", "05", "06", "07", "08"]) {
       await page.getByTestId("next-chapter").click();
       await expect(page).toHaveURL(new RegExp(`/en/${n}$`));
       await expect(page.getByTestId("rail")).toBeAttached();
       await expect.poll(triggers).toBe(1);
     }
     await page.getByTestId("lang-toggle").click();
-    await expect(page).toHaveURL(/\/hi\/05$/);
+    await expect(page).toHaveURL(/\/hi\/08$/);
     await expect.poll(triggers).toBe(1);
     await page.getByTestId("prev-chapter").click();
-    await expect(page).toHaveURL(/\/hi\/04$/);
+    await expect(page).toHaveURL(/\/hi\/07$/);
     await expect.poll(triggers).toBe(1);
   });
 });
@@ -164,16 +190,19 @@ test.describe("layout", () => {
             await scrollToPct(page, pct);
             await page.waitForTimeout(30);
             const box = await page.evaluate(() => {
-              const shown = (el: Element) => getComputedStyle(el).visibility !== "hidden";
+              const shown = (el: Element) => {
+                const style = getComputedStyle(el);
+                return style.visibility !== "hidden" && style.display !== "none";
+              };
               const r = (el: Element) => el.getBoundingClientRect();
               const beat = [...document.querySelectorAll("[data-testid=beat]")].find(shown)!;
               const content = [
                 ...document.querySelectorAll(
-                  ".stage-stack svg, .receipt-row, .receipt-zoom, .calc, .gap-chart svg, .readout",
+                  ".stage-stack svg, .receipt-row, .receipt-zoom, .calc, .gap-chart svg, .readout, .curve-charts svg, .curve-foot > *, [data-testid=crowd], .crowd-side > *",
                 ),
               ].filter(shown);
               const hudBox = r(document.querySelector("[data-testid=hud]")!);
-              const controls = [...document.querySelectorAll(".topbar .ctl")].map(r);
+              const controls = [...document.querySelectorAll(".topbar .ctl")].filter(shown).map(r);
               return {
                 beatBottom: r(beat).bottom,
                 captionTop: r(document.querySelector(".caption")!).top,

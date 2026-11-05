@@ -31,6 +31,13 @@ export async function scrollToPct(page: Page, pct: number) {
     .toBeCloseTo(pct / 100, 2);
 }
 
+/** Uses the chapter switcher, opening the phone menu first when there is one. */
+export async function jumpTo(page: Page, title: string) {
+  const toggle = page.getByTestId("chapter-toggle");
+  if (await toggle.isVisible()) await toggle.click();
+  await page.getByTestId("chapter-switcher").getByRole("link", { name: title }).click();
+}
+
 export const readRail = (page: Page) =>
   page.evaluate(
     () =>

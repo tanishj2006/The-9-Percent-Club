@@ -2,7 +2,10 @@
   "meta": {
     "title": "Chapter 0 — The Cold Coffee Cart | The 9% Club",
     "ch04": "Chapter 4 — What a Trade Really Costs | The 9% Club",
-    "ch05": "Chapter 5 — Why ₹2,000 Cannot Trade | The 9% Club"
+    "ch05": "Chapter 5 — Why ₹2,000 Cannot Trade | The 9% Club",
+    "ch06": "Chapter 6 — What Losing Looks Like | The 9% Club",
+    "ch07": "Chapter 7 — The 91% Number | The 9% Club",
+    "ch08": "Chapter 8 — What Actually Works | The 9% Club"
   },
   "site": {
     "name": "The 9% Club",
@@ -16,7 +19,12 @@
     "hudFresh": "fresh start",
     "hudOfWallet": "₹1,000 of your ₹2,000",
     "hudUnmoved": "price unchanged",
-    "hudTenTrips": "after 10 round trips"
+    "hudTenTrips": "after 10 round trips",
+    "hudSip": "Your SIP",
+    "hudSoldAt": "if sold: {amount}",
+    "hudHeldAt": "if held: {amount}",
+    "hudLostCount": "{amount} of 100 lost",
+    "hudPutIn": "{amount} put in"
   },
   "ch00": {
     "ch": "Chapter 00",
@@ -102,8 +110,11 @@
     "ch00": "The cold coffee cart",
     "ch04": "What a trade really costs",
     "ch05": "Why ₹2,000 cannot trade",
-    "skipNote": "Chapters 01 to 03 are still being written, including that question about who buys your tokens. The story picks up at Chapter 04.",
-    "endNote": "Chapters 06 to 08 are still being written. This is as far as the story goes for now."
+    "skipNote": "Chapters 01 to 03 are still being written, including that question about who buys your tokens. The story picks up at Chapter 04, then runs straight through to Chapter 08.",
+    "endNote": "That is the end of the story for now. Chapters 01 to 03, on how the market itself works, are still being written.",
+    "ch06": "What losing looks like",
+    "ch07": "The 91% number",
+    "ch08": "What actually works"
   },
   "ch04": {
     "ch": "Chapter 04",
@@ -252,5 +263,207 @@
     "outroH": "The gap is not a prediction.",
     "outroP": "It says nothing about where any price is going. It only measures how far a price has to travel before one trade pays for itself, and at {wallet} that distance is long for reasons that have nothing to do with skill.",
     "assumptions": "One delivery round trip on NSE at the same buy and sell price, which slightly understates the true gap, since sell-side charges grow with a higher exit price. The ten-trade figure keeps the trade size fixed at ₹2,000 for simplicity. Statutory rates checked in November 2026, with a conservative reading of one discount broker's fees. This is education, not advice."
+  },
+  "ch06": {
+    "ch": "Chapter 06",
+    "title": "What losing<br></br>looks like.",
+    "tagline": "The cart was invented. This is not. Back to {wallet}, on a real line from a real crash, and at the worst moment you get to choose.",
+    "scrollCue": "Scroll",
+    "crashAlt": "The real curve falling {fallPct}% in {fallDays} days, from {wallet} to {bottom}",
+    "fullAlt": "The real curve recovering after the fall and ending near {final}, against a flat line at {bottomRound} for selling at the bottom",
+    "sell": "Sell and lock in {bottomRound}",
+    "hold": "Hold through the fear",
+    "trackSold": "Sold at the bottom",
+    "trackHeld": "Stayed invested",
+    "yourTrackSold": "You sold at the bottom",
+    "yourTrackHeld": "You stayed invested",
+    "beats": [
+      {
+        "tag": "Real data",
+        "tone": "gold",
+        "h": "{wallet}, in 49 large companies.",
+        "p": "11 February 2020. Your {wallet} is spread evenly across 49 large Indian companies. No story this time: every point on this line happened."
+      },
+      {
+        "tag": "The slide",
+        "tone": "brick",
+        "h": "It starts as a bad week.",
+        "p": "A few red days. Then more. Nothing on the screen tells you how far this will go, and everyone you ask sounds certain, in both directions."
+      },
+      {
+        "tag": "The fall",
+        "tone": "brick",
+        "h": "In {fallDays} days, {fallPct}% is gone.",
+        "p": "March 2020. Lockdown news, every screen red. Nobody did anything wrong. Your {wallet} is now {bottom}."
+      },
+      {
+        "tag": "Your call",
+        "tone": "gold",
+        "h": "Hold or sell?",
+        "p": "24 March 2020. This turned out to be the bottom, but nobody could know that today. Choose as if you do not know what comes next, then keep scrolling."
+      },
+      {
+        "tag": "Aftermath",
+        "tone": "teal",
+        "h": "{recoverDays} days later, the line was back.",
+        "p": "By August 2020 it had climbed past where it started. Anyone who sold stayed at {bottomRound}. Selling is what turns a fall on a screen into a real loss."
+      },
+      {
+        "tag": "The climb",
+        "tone": "teal",
+        "h": "More than {gainPct}% above the bottom.",
+        "p": "By the end of 2025, and not smoothly: there was another steep fall on the way. Held, {bottom} became {final}. Sold, it stayed {bottomRound}."
+      },
+      {
+        "tag": "Two tracks",
+        "tone": "gold",
+        "h": "Same crash. One decision.",
+        "p": "The gap between {final} and {bottomRound} did not come from skill or a better pick. It came from what someone did during one frightening week."
+      },
+      {
+        "tag": "Careful",
+        "tone": "brick",
+        "h": "This is one crash, not a rule.",
+        "p": "Nobody is promised a recovery, or one this fast. This basket also leaves out companies that collapsed, which flatters the gain. The lesson is how a loss feels, and what selling does to it. It is not that holding always wins."
+      }
+    ],
+    "nextUp": "What this means",
+    "outroH": "A fall hurts before it is real.",
+    "outroP": "Most of what losing feels like happens before you sell. Knowing that in advance will not make it pleasant, but it is the only preparation there is.",
+    "assumptions": "Real prices, 2019 to 2025: 49 large Indian companies bought in equal weight in January 2019 and not rebalanced. The list is made of companies that are large today, so ones that failed are missing, and that flatters the result. The steep fall in early 2023 came mainly from one holding growing too large in the basket, not from the wider market, which is why this chapter teaches from 2020. Charges and tax are left out. Rupee figures are the basket's movement applied to {wallet}, starting at the February 2020 high. Past prices say nothing about future ones. This is education, not advice.",
+    "crashFrom": "11 Feb 2020",
+    "crashTo": "24 Mar 2020",
+    "fullFrom": "Feb 2020",
+    "fullTo": "Dec 2025"
+  },
+  "ch07": {
+    "ch": "Chapter 07",
+    "title": "The 91%<br></br>number.",
+    "tagline": "This is where the name comes from. It is a count of what happened to real people, and it is not an invitation to be one of the {kept}.",
+    "scrollCue": "Scroll",
+    "gridAlt": "One hundred figures, of which {lost} go dark and {kept} remain",
+    "countLabel": "lost money, after charges",
+    "lossAmount": "{loss} crore",
+    "lossLabel": "net loss of individual F&O traders, FY25",
+    "beats": [
+      {
+        "tag": "100 traders",
+        "tone": "gold",
+        "h": "Picture 100 traders.",
+        "p": "They trade futures and options, or F&O: contracts that bet on where a price goes, where a small deposit controls a much bigger amount. Each one expects to be the exception."
+      },
+      {
+        "tag": "The count",
+        "tone": "gold",
+        "h": "SEBI counted.",
+        "p": "SEBI, the market regulator, went through individual traders' F&O records for 2024-25. Not a survey and not an opinion. What actually happened to their money."
+      },
+      {
+        "tag": "The result",
+        "tone": "brick",
+        "h": "{lost} of them lost money.",
+        "p": "After charges, {lost} in every 100 individual traders ended the year with a net loss."
+      },
+      {
+        "tag": "The rest",
+        "tone": "teal",
+        "h": "{kept} did not.",
+        "p": "That is the number in the name. It is not a club with a way in, and this site does not offer one. Being among the {kept} in one year says nothing about the next."
+      },
+      {
+        "tag": "Arithmetic",
+        "tone": "brick",
+        "h": "Charges come first.",
+        "p": "Chapters 04 and 05 showed charges arriving before a price moves. F&O has its own charges, different from a delivery trade, but the arithmetic is the same: every trade pays, right or wrong, and more trades pay more."
+      },
+      {
+        "tag": "Behaviour",
+        "tone": "brick",
+        "h": "Then fear joins in.",
+        "p": "Selling in a panic. Trading again to win it back. Each extra trade pays charges again. An earlier SEBI study found more than 75% of loss-makers kept trading after consecutive years of losses."
+      },
+      {
+        "tag": "The total",
+        "tone": "brick",
+        "h": "{loss} crore.",
+        "p": "That is what individual traders lost together in 2024-25, after charges. One crore is ₹1,00,00,000. Behind that number are students, salaries and savings."
+      },
+      {
+        "tag": "Plainly",
+        "tone": "gold",
+        "h": "If you lost money, you are in the majority.",
+        "p": "It does not mean you are stupid. You were up against arithmetic that is rarely shown to anyone. This site cannot put you among the {kept}, and nobody honest can promise to."
+      }
+    ],
+    "nextUp": "What this means",
+    "outroH": "The name is a warning.",
+    "outroP": "The 9% Club is a provocation about arithmetic. It is not a strategy, and there is nothing here to join.",
+    "assumptions": "Source: SEBI's study of individual traders in equity derivatives, July 2025, for FY25 (April 2024 to March 2025). These figures cover F&O only, not all investing. The 75% figure is from SEBI's September 2024 study of FY22 to FY24. SEBI has since published a later study that revises FY25 losses to about ₹1.12 lakh crore and reports FY26: 87.7% of individual traders lost money, with net losses of ₹91,685 crore. This is education, not advice."
+  },
+  "ch08": {
+    "ch": "Chapter 08",
+    "title": "What actually<br></br>works.",
+    "tagline": "Not a way to beat the market, and not a promise. Just the most boring thing in this course: the same amount, every month, for a very long time.",
+    "scrollCue": "Scroll",
+    "chartAlt": "Over 10 years, {put10} put in grows to about {value10} at an assumed {rate}% a year, with most of the growth arriving late",
+    "yearLabel": "Year",
+    "putLabel": "Put in",
+    "beats": [
+      {
+        "tag": "Boring",
+        "tone": "gold",
+        "h": "{monthly} a month. That is it.",
+        "p": "A SIP, or systematic investment plan, moves a fixed amount every month into a low-cost fund spread across the whole market. No picking. No round trips. No trading charges again and again."
+      },
+      {
+        "tag": "Year 1",
+        "tone": "gold",
+        "h": "Year 1. Nothing happens.",
+        "p": "You have put in {put1}. It is worth about {value1}. Look how boring this is."
+      },
+      {
+        "tag": "Year 3",
+        "tone": "gold",
+        "h": "Year 3. Still nothing much.",
+        "p": "{put3} in, about {value3} now. This is the stage where most people get bored and stop."
+      },
+      {
+        "tag": "Year 5",
+        "tone": "gold",
+        "h": "Year 5. The grey is still doing the work.",
+        "p": "{put5} in, about {value5} now. Nearly everything you can see on the chart is money you put in yourself."
+      },
+      {
+        "tag": "Year 8",
+        "tone": "teal",
+        "h": "Year 8. The line starts to lift.",
+        "p": "{put8} in, about {value8} now. The growth is starting to earn growth of its own, and that is all compounding is."
+      },
+      {
+        "tag": "Year 10",
+        "tone": "teal",
+        "h": "Year 10. About {value10}.",
+        "p": "You put in {put10}. The other {growth10} is growth, {growthShare10}% of the pile, and most of it came late. A real path would not be this smooth: Chapter 06 shows what one looks like."
+      },
+      {
+        "tag": "Your turn",
+        "tone": "teal",
+        "h": "Try your own numbers.",
+        "p": "Change the amount and the years. Notice which one matters more."
+      }
+    ],
+    "calc": {
+      "monthly": "Amount each month",
+      "horizon": "Years",
+      "years": "{years, plural, one {# year} other {# years}}",
+      "putIn": "You put in",
+      "growth": "Growth",
+      "value": "Total",
+      "disclaimer": "Illustration only. Assumes a steady {rate}% a year, which no real investment delivers. Market returns can be lower or negative, and past returns do not guarantee future ones. Mutual fund investments are subject to market risks."
+    },
+    "nextUp": "What this means",
+    "outroH": "Boring is the point.",
+    "outroP": "Nothing in this chapter needs you to be right about a price. It needs time, a small cost and not stopping. It can still go badly over the years you happen to choose, and nobody can promise otherwise.",
+    "assumptions": "Instalments are paid at the end of each month. The {rate}% a year is an assumption chosen to show the shape of compounding. It is not a forecast, a target or a measured historical return. Fund expenses, charges on selling, tax and inflation are left out. No fund is named or recommended. This is education, not advice."
   }
 }
