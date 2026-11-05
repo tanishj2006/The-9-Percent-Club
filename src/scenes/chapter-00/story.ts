@@ -26,8 +26,8 @@ export const partAt = (order: number) => order * 0.048;
 /** Tokens fill left to right, top to bottom, done by 42%. */
 export const tokenAt = (index: number) => (index + 0.5) * 0.0042;
 
-/** Beat copy fades in this far ahead of its boundary. */
-export const BEAT_LEAD = 0.01;
+/** Beat copy fades in 1% ahead of its boundary; see BEAT_FADE in useScene. */
+const BEAT_LEAD = 0.01;
 
 /**
  * Your 2 tokens turn teal and the HUD says so, as "You buy 2 tokens" (beat 3,
