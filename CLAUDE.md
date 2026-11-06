@@ -18,7 +18,7 @@ mostly on mid-range Android phones on mobile data.
 | Name | **The 9% Club**, always paired with the tagline so it reads as a provocation, not a promise |
 | Tagline | *Most traders lose money. Here's the arithmetic.* |
 | Languages | English + Hindi, both first class |
-| Stack | Next.js 15 App Router, Tailwind, next-themes, MDX, next-intl |
+| Stack | Next.js 15 App Router, Tailwind, next-themes, next-intl. Chapter copy lives in typed JSON message bundles plus scene components, not MDX |
 | Scroll | **GSAP + ScrollTrigger**, via `@gsap/react` (see below) |
 | 3D | No Three.js. These are 2D data stories |
 | AI tutor | Pre-generated answers only. No live API, no running cost |
@@ -47,6 +47,16 @@ Four things to get right:
    plugin; Lenis is free, lighter, and works well with ScrollTrigger. Call
    `ScrollTrigger.update()` on Lenis's scroll event.
 
+**The scene pattern.** Every scene is built on `src/scenes/shared/useScene.ts`.
+The section gets its height in CSS (`--beats * 88svh`), a `position: sticky` child
+does the pinning, and ScrollTrigger only measures progress across the section.
+Do not use `pin: true`: height in CSS is reserved before the dynamic chunk loads,
+so the page cannot shift when it arrives.
+
+**Test isolation.** Playwright builds into `.next-e2e` (via `NEXT_DIST_DIR`), so
+`npm run test:e2e` can run beside `npm run dev` without either overwriting the
+other's files in `.next`.
+
 Always honour `prefers-reduced-motion`: set the scene to its final state and
 skip the timeline rather than disabling the content.
 
@@ -74,18 +84,17 @@ scene should do something to that number.
 
 | # | Chapter | Scene | State |
 |---|---|---|---|
-| 00 | What is a share? | Cold coffee cart assembles; 100 tokens fill; 2 are yours | **Prototype built + verified** |
-| 01 | Who buys your token? | Money's path: phone → broker → exchange → demat | Not started |
-| 02 | Who decides the price? | Order book fills, a trade matches | Not started |
-| 03 | Reading a chart | One candle builds across a day | Not started |
-| 04 | **What a trade really costs** | ₹1,000 note slices apart, HUD → ₹962.38 | Data ready |
-| 05 | **Why ₹2,000 cannot trade** | Breakeven gap widens/narrows with capital | Data ready |
-| 06 | **What losing looks like** | Real 2020 curve; *Hold or Sell?*; then recovery | Data ready |
-| 07 | The 91% number | 100 figures, 91 fade out | Data ready |
-| 08 | What actually works | SIP compounding, slow and boring, ends highest | Not started |
+| 00 | What is a share? | Cold coffee cart assembles; 100 tokens fill; 2 are yours | **Built + verified** |
+| 01 | Who buys your token? | Money's path: phone → broker → exchange → demat | **Built + verified** |
+| 02 | Who decides the price? | Order book fills, a trade matches | **Built + verified** |
+| 03 | Reading a chart | One candle builds across a day | **Built + verified** |
+| 04 | **What a trade really costs** | ₹1,000 note slices apart, HUD → ₹962.38 | **Built + verified** |
+| 05 | **Why ₹2,000 cannot trade** | Breakeven gap widens/narrows with capital | **Built + verified** |
+| 06 | **What losing looks like** | Real 2020 curve; *Hold or Sell?*; then recovery | **Built + verified** |
+| 07 | The 91% number | 100 figures, 91 fade out | **Built + verified** |
+| 08 | What actually works | SIP compounding, slow and boring, ends highest | **Built + verified** |
 
-Ship order: **00, 04, 05** first. That is a complete story on its own and
-tells you whether anyone cares before nine chapters get written.
+The original ship order was **00, 04, 05** first, then 06 to 08, then 01 to 03.
 
 ---
 
@@ -199,30 +208,30 @@ actual scroll positions and asserting state changed, not by looking at them.
 
 ### Known rough edge
 
-The isometric cart geometry is wonky — the canopy floats, the sign clips the
-posts, the support posts barely read. It is recognisably a cart-ish structure,
-not clearly a coffee cart. Refinement, not architecture. The iso projection
-helper and box builder are sound and worth keeping.
+The prototype's isometric cart geometry is wonky — the canopy floats, the sign
+clips the posts, the support posts barely read. The app's version in
+`src/scenes/chapter-00/cart.ts` fixes this, keeping the iso projection helper and
+box builder.
 
 ---
 
 ## Setup
 
 ```bash
-npx create-next-app@latest . --typescript --tailwind --app --eslint
-npm i gsap @gsap/react lenis next-themes next-intl
+npm install
+npm run dev
+npm test                  # vitest
+npm run test:e2e          # Playwright, production build in .next-e2e
+E2E_DEV=1 npm run test:e2e   # the same under next dev and strict mode
 ```
 
-Then port `prototype/chapter-00.html` into components. Keep its scene
-behaviour and its design tokens; rewrite the scroll mechanics in GSAP.
-
-## Repo layout (target)
+## Repo layout
 
 ```
 src/
   app/[locale]/          chapters as routes
-  chapters/              MDX content, en + hi
-  scenes/                one component per scroll scene
+  messages/              chapter copy, en.json + hi.json
+  scenes/                one folder per chapter, plus shared/
   lib/costs.ts           TS port of the Python cost engine
   components/MoneyHud.tsx
 data/                    verified fixtures (do not edit by hand)
