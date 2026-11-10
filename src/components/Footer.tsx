@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { feedbackHref, PORTFOLIO_URL, REPO_URL } from "@/lib/contact";
+import { feedbackHref, NEW_ISSUE_URL, PORTFOLIO_URL, REPO_URL } from "@/lib/contact";
+import { SUPPORT_ENABLED } from "@/lib/support";
 
 /**
  * Server component: brand and tagline, the disclaimer, the trust pages, and who
@@ -10,7 +11,6 @@ import { feedbackHref, PORTFOLIO_URL, REPO_URL } from "@/lib/contact";
 export function Footer() {
   const site = useTranslations("site");
   const t = useTranslations("footer");
-  const feedback = feedbackHref();
 
   return (
     <footer className="site-footer gutter" data-testid="site-footer">
@@ -41,20 +41,29 @@ export function Footer() {
             <li>
               <Link href="/privacy">{t("privacy")}</Link>
             </li>
-            {feedback && (
-              <li>
-                <a href={feedback} data-testid="feedback">
-                  {t("feedback")}
-                </a>
-              </li>
-            )}
             <li>
               <a href={REPO_URL} data-testid="source">
                 {t("source")}
               </a>
             </li>
+            {SUPPORT_ENABLED && (
+              <li>
+                <Link href="/support" data-testid="support-link">
+                  {t("support")}
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
+
+        <p className="footer-feedback">
+          <a href={feedbackHref()} data-testid="feedback">
+            {t("feedback")}
+          </a>{" "}
+          <a href={NEW_ISSUE_URL} className="contact-issue" data-testid="feedback-issue">
+            {t("feedbackIssue")}
+          </a>
+        </p>
 
         <div className="footer-bottom">
           <p className="footer-copyright">{t("copyright")}</p>

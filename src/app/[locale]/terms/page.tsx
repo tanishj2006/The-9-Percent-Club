@@ -11,10 +11,11 @@ import { use } from "react";
 import { InfoPage } from "@/components/InfoPage";
 import { routing } from "@/i18n/routing";
 import { routeMetadata } from "@/lib/chapter-metadata";
+import { SUPPORT_ENABLED } from "@/lib/support";
 
 type Props = { params: Promise<{ locale: string }> };
 
-const SECTIONS = ["education", "registration", "figures", "risk", "warranty", "links", "copyright", "law"] as const;
+const SECTIONS = ["education", "registration", "figures", "risk", "warranty", "links", "support", "copyright", "law"] as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -33,7 +34,7 @@ export default function Terms({ params }: Props) {
       <p className="eyebrow">{t("eyebrow")}</p>
       <h1>{t("title")}</h1>
       <p className="info-lede">{t("lede")}</p>
-      {SECTIONS.map((section) => (
+      {SECTIONS.filter((section) => section !== "support" || SUPPORT_ENABLED).map((section) => (
         <section key={section} aria-labelledby={`terms-${section}`} data-testid={`terms-${section}`}>
           <h2 id={`terms-${section}`}>{t(`${section}.title`)}</h2>
           <p>{t(`${section}.text`)}</p>

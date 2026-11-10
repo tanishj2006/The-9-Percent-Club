@@ -2,6 +2,8 @@
  * KEEP THIS PAGE TRUE. It describes what the code does today:
  * - next-themes stores "npc-theme" in localStorage (src/components/ThemeProvider.tsx)
  * - next-intl sets the session cookie "NEXT_LOCALE" when the language is switched
+ * - the support page exists only when NEXT_PUBLIC_UPI_ID and _NAME are set, and
+ *   hands payment to the reader's own UPI app (src/lib/support.ts)
  * - @vercel/analytics renders only when VERCEL_ENV is "production"
  *   (src/app/[locale]/layout.tsx), described from Vercel's own documentation
  * If any of that changes, or anything new stores data or calls a third party,
@@ -12,10 +14,10 @@ import { hasLocale, useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { ContactLink, InfoPage } from "@/components/InfoPage";
+import { ContactLinks, InfoPage } from "@/components/InfoPage";
 import { routing } from "@/i18n/routing";
 import { routeMetadata } from "@/lib/chapter-metadata";
-import { feedbackHref, ISSUES_URL } from "@/lib/contact";
+import { SUPPORT_ENABLED } from "@/lib/support";
 import { STORED, VERCEL_ANALYTICS_PRIVACY } from "@/lib/privacy";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -33,7 +35,6 @@ export default function Privacy({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = useTranslations("privacy");
-  const feedback = feedbackHref();
 
   return (
     <InfoPage testId="privacy">
@@ -77,6 +78,13 @@ export default function Privacy({ params }: Props) {
         <p>{t("portfolioLink")}</p>
       </section>
 
+      {SUPPORT_ENABLED && (
+        <section aria-labelledby="payments" data-testid="privacy-payments">
+          <h2 id="payments">{t("paymentsTitle")}</h2>
+          <p>{t("payments")}</p>
+        </section>
+      )}
+
       <section aria-labelledby="none">
         <h2 id="none">{t("noneTitle")}</h2>
         <p>{t("none")}</p>
@@ -85,15 +93,10 @@ export default function Privacy({ params }: Props) {
       <section aria-labelledby="contact">
         <h2 id="contact">{t("contactTitle")}</h2>
         <p>
-          {t("contact")}{" "}
-          <ContactLink
-            feedback={feedback}
-            issues={ISSUES_URL}
-            emailLabel={t("contactEmail")}
-            issuesLabel={t("contactIssues")}
-          />
-          {!feedback && <> {t("contactIssuesWarning")}</>}
+          {t("contact")} <ContactLinks email={t("contactEmail")} issue={t("contactIssues")} />
         </p>
+        <p data-testid="privacy-email">{t("contactEmailPrivacy")}</p>
+        <p>{t("contactIssuesWarning")}</p>
       </section>
 
       <p className="info-updated">{t("updated")}</p>

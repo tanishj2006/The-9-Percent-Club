@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, IBM_Plex_Mono, Mukta } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -7,9 +7,10 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import type { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteJsonLd } from "@/components/SiteJsonLd";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { routing } from "@/i18n/routing";
-import { SITE_URL } from "@/lib/site";
+import { INDEXABLE, SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const display = Instrument_Serif({
@@ -37,6 +38,14 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// The browser chrome follows the page: --bg in each theme.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#131316" },
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
@@ -44,6 +53,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: t("meta.title"),
     description: t("site.tagline"),
+    // Pages that set their own robots (Support) override this.
+    ...(INDEXABLE ? {} : { robots: { index: false, follow: false } }),
   };
 }
 
@@ -54,6 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   // Chapter copy reaches the client through ChapterMessages, one chapter at a time.
   const { site, nav, safety } = await getMessages();
+  const tagline = (site as { tagline: string }).tagline;
 
   return (
     <html
@@ -62,6 +74,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body>
+        <SiteJsonLd locale={locale} description={tagline} />
         <ThemeProvider>
           <NextIntlClientProvider messages={{ site, nav, safety }}>
             <SiteHeader />

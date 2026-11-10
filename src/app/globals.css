@@ -737,6 +737,34 @@
     color: var(--ink-faint);
   }
 
+  .footer-feedback {
+    margin: 0.4rem 0 0;
+    max-width: none;
+  }
+  .footer-feedback a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 0.2em;
+  }
+  .footer-feedback a:hover {
+    text-decoration-color: var(--marigold);
+  }
+  .footer-feedback a:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* the second, quieter way to report a mistake */
+  .footer-feedback .contact-issue,
+  .contact-links .contact-issue {
+    font-size: 0.85em;
+    color: var(--ink-soft);
+  }
+
   /* "Built by Tanish": the underline draws in left to right, the arrow nudges */
   .built-by {
     display: inline-flex;
@@ -847,6 +875,65 @@
   .info-updated {
     margin-top: 2.5rem;
     font-size: 0.85rem;
+  }
+
+  /* support: a UPI button where there is a UPI app (touch), a QR where there is not */
+  .support-pay {
+    margin: 1.6rem 0 1.4rem;
+  }
+  .support-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .info a.support-button {
+    color: var(--bg);
+    text-decoration: none;
+  }
+  .support-button:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 3px;
+  }
+  .support-qr {
+    margin: 0;
+  }
+  .support-qr-code {
+    width: 13rem;
+    max-width: 100%;
+    padding: 0.5rem;
+    background: #ffffff; /* the code stays dark on white in both themes, so it scans */
+    border: 1px solid var(--rule);
+    border-radius: 0.6rem;
+  }
+  .support-qr-code svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .support-qr figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .support-id {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+  @media (pointer: coarse) {
+    .support-button {
+      display: inline-flex;
+    }
+    .support-qr {
+      display: none;
+    }
   }
 
   /* not-found and error pages */

@@ -3,7 +3,7 @@ import { hasLocale, useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { InfoPage } from "@/components/InfoPage";
+import { ContactLinks, InfoPage } from "@/components/InfoPage";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { routeMetadata } from "@/lib/chapter-metadata";
@@ -32,6 +32,9 @@ export default function About({ params }: Props) {
       <p>{t("not")}</p>
       <p>
         <Link href="/methodology">{t("methodologyLink")}</Link>
+      </p>
+      <p>
+        {t("contact")} <ContactLinks email={t("contactEmail")} issue={t("contactIssue")} />
       </p>
     </InfoPage>
   );

@@ -3,10 +3,10 @@ import { hasLocale, useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { ContactLink, InfoPage } from "@/components/InfoPage";
+import { ContactLinks, InfoPage } from "@/components/InfoPage";
 import { routing } from "@/i18n/routing";
 import { routeMetadata } from "@/lib/chapter-metadata";
-import { feedbackHref, ISSUES_URL, repoFile } from "@/lib/contact";
+import { repoFile } from "@/lib/contact";
 import { SEBI_STUDIES } from "@/lib/sebi-studies";
 import { VALUES as V1 } from "@/scenes/chapter-01/story";
 import { VALUES as V2 } from "@/scenes/chapter-02/story";
@@ -141,12 +141,7 @@ export default function Methodology({ params }: Props) {
         <h2 id="mistake">{t("mistakeTitle")}</h2>
         <p>
           {t("mistake")}{" "}
-          <ContactLink
-            feedback={feedbackHref()}
-            issues={ISSUES_URL}
-            emailLabel={t("mistakeEmail")}
-            issuesLabel={t("mistakeIssues")}
-          />
+          <ContactLinks email={t("mistakeEmail")} issue={t("mistakeIssues")} />
         </p>
       </section>
     </InfoPage>

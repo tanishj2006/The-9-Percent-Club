@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { feedbackHref, NEW_ISSUE_URL } from "@/lib/contact";
 import { ChapterStart } from "./ChapterStart";
 
 /** The shared frame for About, Methodology, Terms and Privacy. */
@@ -13,25 +14,16 @@ export function InfoPage({ children, testId }: { children: ReactNode; testId: st
   );
 }
 
-/** A link to the author: email when an address is configured, else GitHub issues. */
-export function ContactLink({
-  feedback,
-  issues,
-  emailLabel,
-  issuesLabel,
-}: {
-  feedback: string | null;
-  issues: string;
-  emailLabel: string;
-  issuesLabel: string;
-}) {
-  return feedback ? (
-    <a href={feedback} data-testid="contact-link">
-      {emailLabel}
-    </a>
-  ) : (
-    <a href={issues} data-testid="contact-link">
-      {issuesLabel}
-    </a>
+/** "Email me", then a smaller "or open an issue on GitHub". The same pair everywhere. */
+export function ContactLinks({ email, issue }: { email: string; issue: string }) {
+  return (
+    <span className="contact-links">
+      <a href={feedbackHref()} data-testid="contact-email">
+        {email}
+      </a>{" "}
+      <a href={NEW_ISSUE_URL} className="contact-issue" data-testid="contact-issue">
+        {issue}
+      </a>
+    </span>
   );
 }
