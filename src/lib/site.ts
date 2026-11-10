@@ -1,5 +1,6 @@
 import { CHAPTERS } from "./chapters";
 import { INFO_PAGES } from "./pages";
+import { SUPPORT_ENABLED } from "./support";
 import { routing } from "@/i18n/routing";
 
 /**
@@ -15,8 +16,25 @@ export const SITE_URL = (
 
 export const SITE_NAME = "The 9% Club";
 
+/**
+ * Only the production deploy may be indexed. Vercel previews and development
+ * deploys are noindex in robots.txt, page metadata and an X-Robots-Tag header.
+ * Builds outside Vercel (local, e2e, CI) have no VERCEL_ENV and stay indexable,
+ * so they behave like production.
+ */
+export const INDEXABLE = (process.env.VERCEL_ENV ?? "production") === "production";
+
+/** The one place the author's address appears. Everything else imports it. */
+export const CONTACT_EMAIL = "tanishj52@gmail.com";
+
 /** Every page the site has: the nine chapters, then the four info pages. */
-export const SITE_HREFS = [...CHAPTERS.map((c) => c.href), ...INFO_PAGES.map((p) => p.href)];
+export const SITE_HREFS = [
+  ...CHAPTERS.map((c) => c.href),
+  ...INFO_PAGES.map((p) => p.href),
+  // Listed only when the page exists. It is also noindex: see the note in
+  // src/app/[locale]/support/page.tsx about dropping it from the sitemap.
+  ...(SUPPORT_ENABLED ? (["/support"] as const) : []),
+];
 
 export type Href = (typeof SITE_HREFS)[number];
 
