@@ -28,6 +28,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The lockfile is written by npm 11. Node 22 ships npm 10, which resolves an
+      # optional @swc/helpers peer (via next-intl) differently and rejects it.
+      # Same npm as local development, so `npm ci` behaves the same everywhere.
+      - run: npm install -g npm@11
       # No install scripts: none of them are needed to build or test.
       - run: npm ci --ignore-scripts
       - run: npm run lint

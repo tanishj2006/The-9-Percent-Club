@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The lockfile is written by npm 11. Node 22 ships npm 10, which resolves an
+      # optional @swc/helpers peer (via next-intl) differently and rejects it.
+      # Same npm as local development, so `npm ci` behaves the same everywhere.
+      - run: npm install -g npm@11
       - run: npm ci --ignore-scripts
       - run: npm run build
       - run: npx --yes @lhci/cli@0.16.0 autorun --config=lighthouserc.json
