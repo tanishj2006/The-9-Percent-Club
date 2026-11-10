@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Instrument_Serif, IBM_Plex_Mono, Mukta } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -52,7 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   // Chapter copy reaches the client through ChapterMessages, one chapter at a time.
-  const { site, nav } = await getMessages();
+  const { site, nav, safety } = await getMessages();
 
   return (
     <html
@@ -62,10 +63,12 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body>
         <ThemeProvider>
-          <NextIntlClientProvider messages={{ site, nav }}>
+          <NextIntlClientProvider messages={{ site, nav, safety }}>
             <SiteHeader />
             {children}
             <Footer />
+            {/* Production deploys only: previews, local builds and e2e never load it. */}
+            {process.env.VERCEL_ENV === "production" && <Analytics />}
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
