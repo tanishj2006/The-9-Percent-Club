@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { switchLanguage } from "./helpers";
+import { open, switchLanguage } from "./helpers";
 
 const box = (page: Page, testId: string) => page.getByTestId(testId).boundingBox().then((b) => b!);
 const focused = (page: Page) => page.evaluate(() => document.activeElement?.textContent?.trim() ?? "");
@@ -97,7 +97,7 @@ test.describe("chapter menu", () => {
 
   test("the keyboard walks it: arrows, Home, End, Escape", async ({ page, isMobile }) => {
     test.skip(isMobile, "keyboard");
-    await page.goto("/en/03");
+    await open(page, "/en/03");
     await page.getByTestId("chapter-toggle").focus();
     await page.keyboard.press("ArrowDown");
     await expect(card(page)).toBeVisible();
@@ -117,7 +117,7 @@ test.describe("chapter menu", () => {
 
   test("Enter on a chapter goes there and closes the menu", async ({ page, isMobile }) => {
     test.skip(isMobile, "keyboard");
-    await page.goto("/en/03");
+    await open(page, "/en/03");
     await page.getByTestId("chapter-toggle").focus();
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
@@ -137,7 +137,7 @@ test.describe("chapter menu", () => {
 
   test("closes when focus tabs out of it", async ({ page, isMobile }) => {
     test.skip(isMobile, "keyboard");
-    await page.goto("/en/02");
+    await open(page, "/en/02");
     await page.getByTestId("chapter-toggle").click();
     for (let i = 0; i < 12; i++) await page.keyboard.press("Tab");
     await expect(card(page)).toBeHidden();
@@ -191,7 +191,7 @@ test.describe("language menu", () => {
 
   test("the keyboard works, and Escape returns focus", async ({ page, isMobile }) => {
     test.skip(isMobile, "keyboard");
-    await page.goto("/en/07");
+    await open(page, "/en/07");
     await page.getByTestId("lang-toggle").focus();
     await page.keyboard.press("Enter");
     expect(await focused(page), "starts on the active language").toContain("English");

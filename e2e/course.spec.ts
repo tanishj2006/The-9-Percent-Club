@@ -136,16 +136,16 @@ test.describe("routes", () => {
   for (const { path, title, titleHi } of CHAPTERS) {
     test(`/en${path} and /hi${path} serve the right language and survive a toggle`, async ({ page }) => {
       await open(page, `/en${path}`);
-      await expect(page.locator(".eyebrow").first()).toHaveText(title);
+      await expect(page.locator(".intro .eyebrow").first()).toHaveText(title);
       await expect(page.locator("html")).toHaveAttribute("lang", "en");
 
       await switchLanguage(page);
       await expect(page).toHaveURL(new RegExp(`/hi${path}$`));
-      await expect(page.locator(".eyebrow").first()).toHaveText(titleHi);
+      await expect(page.locator(".intro .eyebrow").first()).toHaveText(titleHi);
       await expect(page.locator("html")).toHaveAttribute("lang", "hi");
 
       await open(page, `/hi${path}`);
-      await expect(page.locator(".eyebrow").first()).toHaveText(titleHi);
+      await expect(page.locator(".intro .eyebrow").first()).toHaveText(titleHi);
     });
   }
 
@@ -153,6 +153,7 @@ test.describe("routes", () => {
     for (const n of ["09", "10"]) {
       const response = await page.goto(`/en/${n}`);
       expect(response?.status(), n).toBe(404);
+      await expect(page.getByTestId("not-found")).toBeVisible();
     }
   });
 
@@ -274,7 +275,7 @@ test.describe("page health", () => {
   for (const { path } of CHAPTERS.slice(1)) {
     test(`/en${path}: footer disclaimer, and no raw placeholders on the page`, async ({ page }) => {
       await open(page, `/en${path}`);
-      await expect(page.locator("footer")).toContainText("Nothing is advice.");
+      await expect(page.locator("footer")).toContainText("not investment advice");
       await expect(page.locator("body")).not.toContainText(/\{[a-zA-Z0-9]+\}/);
       await expect(page.locator("body")).not.toContainText("ch04.");
       await expect(page.locator("body")).not.toContainText("ch05.");

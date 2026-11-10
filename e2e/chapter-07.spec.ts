@@ -1,8 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
-import { lostAt } from "../src/scenes/chapter-07/story";
+import { BEATS, lostAt } from "../src/scenes/chapter-07/story";
 import { hud, open, scene, scrollToPct, visibleBeats } from "./helpers";
 
-const mid = (beat: number) => ((beat + 0.5) / 8) * 100;
+const mid = (beat: number) => ((beat + 0.5) / BEATS) * 100;
 
 const readCrowd = (page: Page) =>
   page.evaluate(() => {
@@ -44,7 +44,7 @@ test.describe("Chapter 07 scroll stops", () => {
     expect(partway.readout).toBe(partway.lost);
 
     await scrollToPct(page, mid(2));
-    await expect.poll(() => visibleBeats(page)).toEqual(["91 of them lost money."]);
+    await expect.poll(() => visibleBeats(page)).toEqual(["In FY25, 91 of them lost money."]);
     await expect.poll(async () => (await readCrowd(page)).lost).toBe(91);
     expect((await readCrowd(page)).lit).toBe(9);
 
@@ -63,7 +63,7 @@ test.describe("Chapter 07 scroll stops", () => {
     expect((await readCrowd(page)).lossOn).toBe(false);
 
     await scrollToPct(page, mid(6));
-    await expect.poll(() => visibleBeats(page)).toEqual(["₹1,05,603 crore."]);
+    await expect.poll(() => visibleBeats(page)).toEqual(["₹1,05,603 crore in FY25."]);
     await expect(page.getByTestId("loss-figure")).toBeVisible();
     await expect(page.getByTestId("loss-figure")).toContainText("₹1,05,603 crore");
     await expect(page.getByTestId("loss-figure")).toContainText("FY25");
@@ -72,7 +72,7 @@ test.describe("Chapter 07 scroll stops", () => {
   test("the HUD counts them while the reader's own ₹2,000 stays put", async ({ page }) => {
     await open(page, "/en/07");
     await scrollToPct(page, mid(3));
-    await expect.poll(async () => (await hud(page)).note).toBe("91 of 100 lost");
+    await expect.poll(async () => (await hud(page)).note).toBe("91 of 100 lost, FY25");
     expect((await hud(page)).value).toBe("₹2,000");
   });
 
@@ -87,13 +87,52 @@ test.describe("Chapter 07 scroll stops", () => {
   });
 });
 
+test.describe("FY25 is dated, and FY26 is on the page", () => {
+  test("the grid's count and headings say FY25", async ({ page }) => {
+    await open(page, "/en/07");
+    await expect(page.locator("h1")).toContainText("FY25");
+    await scrollToPct(page, mid(3));
+    await expect(page.locator(".crowd-label")).toHaveText("lost money in FY25, after charges");
+  });
+
+  test("a beat after the total gives the FY26 figures, and stays put on the grid", async ({ page }) => {
+    await open(page, "/en/07");
+    await scrollToPct(page, mid(7));
+    await expect.poll(() => visibleBeats(page)).toEqual(["A year later, a similar picture."]);
+    const beat = page.getByTestId("beat").nth(7);
+    await expect(beat).toContainText("87.7%");
+    await expect(beat).toContainText("₹91,685 crore");
+    await expect(beat).toContainText("does not mean trading got better");
+    const crowd = await readCrowd(page);
+    expect(crowd).toMatchObject({ lost: 91, kept: 9, lossOn: true });
+  });
+
+  test("Hindi says the same", async ({ page }) => {
+    await open(page, "/hi/07");
+    await scrollToPct(page, mid(7));
+    await expect.poll(() => visibleBeats(page)).toEqual(["एक साल बाद भी तस्वीर मिलती-जुलती।"]);
+    await expect(page.getByTestId("beat").nth(7)).toContainText("87.7%");
+    await expect(page.getByTestId("beat").nth(7)).toContainText("₹91,685 करोड़");
+  });
+
+  test("the nav and the share card title are dated too", async ({ page }) => {
+    await page.goto("/en/07");
+    await expect(page).toHaveTitle(/FY25/);
+    await expect(page.getByTestId("chapter-toggle")).toContainText("Ch 07");
+    await page.getByTestId("chapter-toggle").click();
+    await expect(page.getByTestId("chapter-switcher").getByRole("link", { name: "The 91% number, FY25" })).toBeVisible();
+  });
+});
+
 test.describe("sourcing and tone", () => {
   test("the figures are dated, scoped to F&O, and the later revision is disclosed", async ({ page }) => {
     await open(page, "/en/07");
     const note = page.locator(".outro");
     await expect(note).toContainText("July 2025");
     await expect(note).toContainText("F&O only");
-    await expect(note).toContainText("₹1.12 lakh crore");
+    await expect(note).toContainText("₹1,11,788 crore");
+    await expect(note).toContainText("90.9%");
+    await expect(note).toContainText("August 2026");
     await expect(note).toContainText("87.7%");
     await expect(note).toContainText("₹91,685 crore");
     await expect(note).toContainText("September 2024");
@@ -110,10 +149,10 @@ test.describe("sourcing and tone", () => {
 test("Hindi: same count, same figure", async ({ page }) => {
   await open(page, "/hi/07");
   await scrollToPct(page, mid(6));
-  await expect.poll(() => visibleBeats(page)).toEqual(["₹1,05,603 करोड़।"]);
+  await expect.poll(() => visibleBeats(page)).toEqual(["FY25 में ₹1,05,603 करोड़।"]);
   await expect(page.getByTestId("loss-figure")).toContainText("₹1,05,603 करोड़");
   expect((await readCrowd(page)).lost).toBe(91);
-  expect((await hud(page)).note).toBe("100 में से 91 घाटे में");
+  expect((await hud(page)).note).toBe("FY25: 100 में से 91 घाटे में");
 });
 
 test("has a scroll budget and stays pinned", async ({ page }) => {
@@ -133,9 +172,9 @@ test.describe("reduced motion", () => {
     await open(page, "/en/07");
     expect((await hud(page)).note).toBe("fresh start");
     await scene(page).scrollIntoViewIfNeeded();
-    await expect.poll(async () => (await hud(page)).note).toBe("91 of 100 lost");
+    await expect.poll(async () => (await hud(page)).note).toBe("91 of 100 lost, FY25");
     const crowd = await readCrowd(page);
     expect(crowd).toMatchObject({ lit: 0, lost: 91, kept: 9, lossOn: true, readout: 91 });
-    expect(await visibleBeats(page)).toHaveLength(8);
+    expect(await visibleBeats(page)).toHaveLength(BEATS);
   });
 });

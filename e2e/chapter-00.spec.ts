@@ -350,7 +350,7 @@ test.describe("page health", () => {
     const footer = page.locator("footer");
     await expect(footer).toContainText("The 9% Club");
     await expect(footer).toContainText("Most traders lose money. Here's the arithmetic.");
-    await expect(footer).toContainText("Nothing is advice.");
+    await expect(footer).toContainText("not investment advice");
   });
 
   test("an unknown locale is a 404, not a crash", async ({ page }) => {

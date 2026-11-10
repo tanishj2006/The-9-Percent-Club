@@ -62,13 +62,15 @@ test.describe("metadata on every route", () => {
   });
 });
 
-test("sitemap.xml lists all 18 routes with hreflang", async ({ request }) => {
+const INFO_ROUTES = ["about", "methodology", "terms", "privacy"].flatMap((p) => [`/en/${p}`, `/hi/${p}`]);
+
+test("sitemap.xml lists all 26 routes with hreflang", async ({ request }) => {
   const response = await request.get("/sitemap.xml");
   expect(response.status()).toBe(200);
   const xml = await response.text();
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).sort();
-  expect(urls).toEqual(ROUTES.map((r) => `${SITE}${r}`).sort());
-  expect(xml.match(/hreflang="hi"/g)).toHaveLength(18);
+  expect(urls).toEqual([...ROUTES, ...INFO_ROUTES].map((r) => `${SITE}${r}`).sort());
+  expect(xml.match(/hreflang="hi"/g)).toHaveLength(26);
   expect(xml).not.toContain("localhost");
 });
 

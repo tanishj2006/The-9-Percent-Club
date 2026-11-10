@@ -6,7 +6,7 @@ const BUDGET_GZIP = 200 * 1024;
 test.skip(process.env.E2E_DEV === "1", "production bundles only");
 test.skip(({ isMobile }) => isMobile, "same bundle");
 
-const CHAPTERS = ["", "/01", "/02", "/03", "/04", "/05", "/06", "/07", "/08"];
+const CHAPTERS = ["", "/01", "/02", "/03", "/04", "/05", "/06", "/07", "/08", "/about", "/methodology", "/terms", "/privacy"];
 
 for (const path of CHAPTERS.flatMap((c) => [`/en${c}`, `/hi${c}`])) {
   test(`${path}: GSAP and Lenis stay out of the initial bundle, which is under budget`, async ({
