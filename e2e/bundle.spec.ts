@@ -34,12 +34,30 @@ for (const path of CHAPTERS.flatMap((c) => [`/en${c}`, `/hi${c}`])) {
 
 test("the scene chunk loads on the client, with GSAP inside it", async ({ page }) => {
   const chunks: string[] = [];
-  page.on("response", async (res) => {
-    if (res.url().endsWith(".js") && (await res.text()).includes("ScrollTrigger")) {
-      chunks.push(res.url());
-    }
+  // Every body read is tracked and its failure swallowed. A response body can
+  // vanish when the page navigates or the test ends (slow CI runners hit this),
+  // and an unawaited rejection would fail the test for a reason that has
+  // nothing to do with the bundle. If the scene chunk never reads, the poll
+  // below still fails.
+  const reads: Promise<void>[] = [];
+  page.on("response", (res) => {
+    if (!res.url().endsWith(".js")) return;
+    reads.push(
+      res.text().then(
+        (text) => {
+          if (text.includes("ScrollTrigger")) chunks.push(res.url());
+        },
+        () => {},
+      ),
+    );
   });
   await page.goto("/en");
   await expect(page.getByTestId("scene")).toBeVisible();
-  await expect.poll(() => chunks.length).toBeGreaterThan(0);
+  await expect
+    .poll(async () => {
+      await Promise.allSettled(reads);
+      return chunks.length;
+    })
+    .toBeGreaterThan(0);
+  await Promise.allSettled(reads);
 });
