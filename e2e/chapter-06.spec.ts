@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { hud, open, scene, scrollToPct, visibleBeats } from "./helpers";
+import { hud, open, scene, scrollToPct, visibleBeats, switchLanguage } from "./helpers";
 
 const mid = (beat: number) => ((beat + 0.5) / 8) * 100;
 
@@ -211,7 +211,7 @@ test("Hindi: same figures, Hindi copy", async ({ page }) => {
 test("a language swap keeps the choice", async ({ page }) => {
   await toGate(page);
   await page.getByTestId("choose-sell").click();
-  await page.getByTestId("lang-toggle").click();
+  await switchLanguage(page);
   await expect(page).toHaveURL(/\/hi\/06$/);
   await expect(page.getByTestId("choose-sell")).toHaveAttribute("aria-pressed", "true");
 });

@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { breakevenMove, roundTripCost } from "../src/lib/costs";
 import { formatCost, formatRupees } from "../src/lib/hud-store";
 import { SLIDER_STOPS, TIERS } from "../src/scenes/chapter-05/story";
-import { hud, open, scene, scrollToPct, visibleBeats } from "./helpers";
+import { hud, open, scene, scrollToPct, visibleBeats, switchLanguage } from "./helpers";
 
 const mid = (beat: number) => beat * 10 + 5;
 
@@ -180,7 +180,7 @@ test.describe("the capital slider", () => {
   test("survives a language swap with the reader's number", async ({ page }) => {
     await toSlider(page);
     await page.getByTestId("calc-slider").fill("0");
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/hi\/05$/);
     await expect(page.getByTestId("calc-capital")).toHaveText("₹500");
     await expect.poll(() => visibleBeats(page)).toEqual(["अपनी रकम डालकर देखिए।"]);

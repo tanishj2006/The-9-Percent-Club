@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { hud, jumpTo, open, scrollToPct } from "./helpers";
+import { hud, jumpTo, open, scrollToPct, switchLanguage } from "./helpers";
 
 const CHAPTERS = [
   { path: "", title: "Chapter 00", titleHi: "अध्याय 00" },
@@ -139,7 +139,7 @@ test.describe("routes", () => {
       await expect(page.locator(".eyebrow").first()).toHaveText(title);
       await expect(page.locator("html")).toHaveAttribute("lang", "en");
 
-      await page.getByTestId("lang-toggle").click();
+      await switchLanguage(page);
       await expect(page).toHaveURL(new RegExp(`/hi${path}$`));
       await expect(page.locator(".eyebrow").first()).toHaveText(titleHi);
       await expect(page.locator("html")).toHaveAttribute("lang", "hi");
@@ -181,7 +181,7 @@ test.describe("strict mode", () => {
       await expect(page.getByTestId("rail")).toBeAttached();
       await expect.poll(triggers).toBe(1);
     }
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/hi\/08$/);
     await expect.poll(triggers).toBe(1);
     await page.getByTestId("prev-chapter").click();
@@ -217,28 +217,36 @@ test.describe("layout", () => {
                   ".stage-stack svg, .receipt-row, .receipt-zoom, .calc, .gap-chart svg, .readout, .curve-charts svg, .curve-foot > *, [data-testid=crowd], .crowd-side > *, [data-testid=plumbing], .book-chart svg",
                 ),
               ].filter(shown);
-              const hudBox = r(document.querySelector("[data-testid=hud]")!);
-              const controls = [...document.querySelectorAll(".topbar .ctl")].filter(shown).map(r);
+              const header = r(document.querySelector("[data-testid=site-header]")!);
+              const items = [...document.querySelectorAll("[data-header-item]")].filter(shown).map(r);
+              let overlaps = 0;
+              for (let i = 0; i < items.length; i++) {
+                for (let j = i + 1; j < items.length; j++) {
+                  const [p, q] = [items[i], items[j]];
+                  if (p.left < q.right - 0.5 && p.right > q.left + 0.5 && p.top < q.bottom - 0.5 && p.bottom > q.top + 0.5) overlaps++;
+                }
+              }
               return {
                 beatBottom: r(beat).bottom,
                 captionTop: r(document.querySelector(".caption")!).top,
                 contentBottom: Math.max(...content.map((c) => r(c).bottom)),
                 contentTop: Math.min(...content.map((c) => r(c).top)),
-                hudBottom: hudBox.bottom,
-                hudLeft: hudBox.left,
-                hudRight: hudBox.right,
-                controlsAllRight: Math.max(...controls.map((c) => c.right)),
-                controlsBottom: Math.max(...controls.map((c) => c.bottom)),
+                headerBottom: header.bottom,
+                headerItems: items.length,
+                overlaps,
+                itemsRight: Math.max(...items.map((item) => item.right)),
+                itemsBottom: Math.max(...items.map((item) => item.bottom)),
                 scrollWidth: document.documentElement.scrollWidth,
                 viewport: [innerWidth, innerHeight],
               };
             });
             expect(box.beatBottom, `beat fits at ${pct}%`).toBeLessThanOrEqual(box.viewport[1]);
             expect(box.contentBottom, `art clear of caption at ${pct}%`).toBeLessThanOrEqual(box.captionTop + 1);
-            expect(box.contentTop, `art clear of HUD at ${pct}%`).toBeGreaterThanOrEqual(box.hudBottom - 1);
-            expect(box.controlsAllRight, `controls clear of HUD at ${pct}%`).toBeLessThanOrEqual(box.hudLeft);
-            expect(box.controlsBottom, `controls clear of art at ${pct}%`).toBeLessThanOrEqual(box.contentTop);
-            expect(box.hudRight, "HUD on screen").toBeLessThanOrEqual(box.viewport[0]);
+            expect(box.contentTop, `art clear of the header at ${pct}%`).toBeGreaterThanOrEqual(box.headerBottom - 1);
+            expect(box.headerItems, "brand, chapters, language, theme and HUD").toBe(5);
+            expect(box.overlaps, `nothing in the header collides at ${pct}%`).toBe(0);
+            expect(box.itemsRight, "header fits the screen").toBeLessThanOrEqual(box.viewport[0]);
+            expect(box.itemsBottom, "header items stay inside the bar").toBeLessThanOrEqual(box.headerBottom + 1);
             expect(box.scrollWidth, "no horizontal scroll").toBeLessThanOrEqual(box.viewport[0]);
           }
         });

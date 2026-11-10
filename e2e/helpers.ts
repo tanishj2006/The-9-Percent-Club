@@ -31,11 +31,18 @@ export async function scrollToPct(page: Page, pct: number) {
     .toBeCloseTo(pct / 100, 2);
 }
 
-/** Uses the chapter switcher, opening the phone menu first when there is one. */
+/** Opens the chapter menu in the header and picks a chapter by its title. */
 export async function jumpTo(page: Page, title: string) {
-  const toggle = page.getByTestId("chapter-toggle");
-  if (await toggle.isVisible()) await toggle.click();
+  await page.getByTestId("chapter-toggle").click();
   await page.getByTestId("chapter-switcher").getByRole("link", { name: title }).click();
+}
+
+/** Opens the language menu and picks the other language, or the one given. */
+export async function switchLanguage(page: Page, to?: "en" | "hi") {
+  const current = await page.locator("html").getAttribute("lang");
+  const target = to ?? (current === "hi" ? "en" : "hi");
+  await page.getByTestId("lang-toggle").click();
+  await page.getByTestId(`lang-${target}`).click();
 }
 
 export const readRail = (page: Page) =>

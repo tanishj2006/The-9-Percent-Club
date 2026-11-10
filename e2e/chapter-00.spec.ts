@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { open, readScene, scene, scrollToPct, STOPS } from "./helpers";
+import { open, readScene, scene, scrollToPct, STOPS, switchLanguage } from "./helpers";
 
 test.describe("the five stops", () => {
   for (const locale of ["en", "hi"] as const) {
@@ -177,7 +177,7 @@ test("strict mode registers each trigger once, even across a language swap", asy
   const triggers = () =>
     page.evaluate(() => (window as unknown as { __npc: { triggers(): number } }).__npc.triggers());
   await expect.poll(triggers).toBe(1);
-  await page.getByTestId("lang-toggle").click();
+  await switchLanguage(page);
   await expect(page).toHaveURL(/\/hi$/);
   await expect(page.locator("[data-part=wheelA]")).toBeAttached();
   await expect.poll(triggers).toBe(1);
@@ -190,7 +190,7 @@ test.describe("language", () => {
     await expect.poll(async () => (await readScene(page)).beat).toBe(STOPS[3].en);
     const y = await page.evaluate(() => window.scrollY);
 
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/hi$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "hi");
     await expect.poll(async () => (await readScene(page)).beat).toBe(STOPS[3].hi);
@@ -201,13 +201,13 @@ test.describe("language", () => {
     expect(s.parts).toBe(10);
     expect(s.gold).toBe(98);
     expect(Math.abs((await page.evaluate(() => window.scrollY)) - y)).toBeLessThan(4);
-    await expect(page.getByTestId("lang-toggle")).toHaveText("हिं");
-    await expect(page.getByTestId("lang-toggle")).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByTestId("lang-toggle")).toHaveAccessibleName(/हिंदी/);
+    await expect(page.getByTestId("lang-hi")).toHaveAttribute("aria-checked", "true");
 
     // The scene must still be alive after the swap, in both directions.
     await scrollToPct(page, 97);
     await expect.poll(async () => (await readScene(page)).beat).toBe(STOPS[4].hi);
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/en$/);
     await expect.poll(async () => (await readScene(page)).beat).toBe(STOPS[4].en);
     await scrollToPct(page, 2);
@@ -244,7 +244,7 @@ test.describe("theme", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect.poll(() => bg(page)).toBe("rgb(19, 19, 22)");
 
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/hi$/);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     expect(await bg(page)).toBe("rgb(19, 19, 22)");
@@ -310,7 +310,7 @@ test.describe("layout", () => {
               captionTop: r(document.querySelector(".caption")!).top,
               svgBottom: Math.max(...svgs.map((s) => r(s).bottom)),
               svgHeights: svgs.map((s) => r(s).height),
-              hudBottom: r(document.querySelector("[data-testid=hud]")!).bottom,
+              hudBottom: r(document.querySelector("[data-testid=site-header]")!).bottom,
               svgTop: Math.min(...svgs.map((s) => r(s).top)),
               scrollWidth: document.documentElement.scrollWidth,
               viewport: [innerWidth, innerHeight],
@@ -319,7 +319,7 @@ test.describe("layout", () => {
           expect(box.beatBottom, `beat fits at ${pct}%`).toBeLessThanOrEqual(box.viewport[1]);
           expect(box.svgBottom, `art clear of caption at ${pct}%`).toBeLessThanOrEqual(box.captionTop + 1);
           expect(Math.min(...box.svgHeights), `art still legible at ${pct}%`).toBeGreaterThan(90);
-          expect(box.svgTop, `art clear of HUD at ${pct}%`).toBeGreaterThanOrEqual(box.hudBottom - 1);
+          expect(box.svgTop, `art clear of the header at ${pct}%`).toBeGreaterThanOrEqual(box.hudBottom - 1);
           expect(box.scrollWidth, "no horizontal scroll").toBeLessThanOrEqual(box.viewport[0]);
         }
       });
@@ -339,7 +339,7 @@ test.describe("page health", () => {
       await scrollToPct(page, pct);
       await page.waitForTimeout(50);
     }
-    await page.getByTestId("lang-toggle").click();
+    await switchLanguage(page);
     await expect(page).toHaveURL(/\/hi$/);
     await page.getByTestId("theme-toggle").click();
     expect(problems).toEqual([]);
