@@ -4,7 +4,7 @@
     "ch04": "अध्याय 4 — एक Trade की असली कीमत | The 9% Club",
     "ch05": "अध्याय 5 — ₹2,000 से Trade क्यों नहीं होता | The 9% Club",
     "ch06": "अध्याय 6 — नुकसान कैसा दिखता है | The 9% Club",
-    "ch07": "अध्याय 7 — 91% का आँकड़ा | The 9% Club",
+    "ch07": "अध्याय 7 — 91% का आँकड़ा, FY25 | The 9% Club",
     "ch08": "अध्याय 8 — असल में क्या काम करता है | The 9% Club",
     "ch01": "अध्याय 1 — आपका Token कौन खरीदेगा? | The 9% Club",
     "ch02": "अध्याय 2 — कीमत कौन तय करता है? | The 9% Club",
@@ -13,7 +13,6 @@
   "site": {
     "name": "The 9% Club",
     "tagline": "ज़्यादातर traders पैसे गँवाते हैं। यह रहा पूरा हिसाब।",
-    "disclaimer": "इस site पर सब कुछ सिर्फ़ education के लिए है। यहाँ कुछ भी advice नहीं है।",
     "hudTokens": "100 में से 2 token",
     "toggleTheme": "Theme बदलें",
     "hudLabel": "आपके पैसे",
@@ -25,7 +24,7 @@
     "hudSip": "आपकी SIP",
     "hudSoldAt": "बेच देते तो: {amount}",
     "hudHeldAt": "रुकते तो: {amount}",
-    "hudLostCount": "100 में से {amount} घाटे में",
+    "hudLostCount": "FY25: 100 में से {amount} घाटे में",
     "hudPutIn": "{amount} लगाए",
     "hudAtBank": "आपके bank में",
     "hudAtBroker": "broker के पास",
@@ -39,7 +38,7 @@
   "ch00": {
     "ch": "अध्याय 00",
     "title": "आपके पास ₹2,000 हैं।<br></br>चलिए एक business खरीदते हैं।",
-    "tagline": "Trading, charts और भारी-भरकम शब्दों से पहले एक सवाल: जब आप share खरीदते हैं, असल में खरीदते क्या हैं? यहाँ से शुरू करें। चार मिनट लगेंगे।",
+    "tagline": "Trading, charts और भारी-भरकम शब्दों से पहले एक सवाल: जब आप share खरीदते हैं, असल में खरीदते क्या हैं? यहाँ से शुरू करें।",
     "scrollCue": "स्क्रॉल करें",
     "cupsSold": "कप बिके",
     "nextUp": "आगे क्या",
@@ -122,7 +121,7 @@
     "ch05": "₹2,000 से trade क्यों नहीं होता",
     "endNote": "पूरा course यही है: share क्या है, trade कैसे चलता है, उस पर कितना खर्च आता है, गिरावट कैसी लगती है, ज़्यादातर traders क्यों हारते हैं, और उबाऊ रास्ता कैसा दिखता है। यह सब हिसाब और इतिहास है। इसमें से कुछ भी advice नहीं है।",
     "ch06": "नुकसान कैसा दिखता है",
-    "ch07": "91% का आँकड़ा",
+    "ch07": "91% का आँकड़ा, FY25",
     "ch08": "असल में क्या काम करता है",
     "ch01": "आपका token कौन खरीदेगा?",
     "ch02": "कीमत कौन तय करता है?",
@@ -352,11 +351,11 @@
   },
   "ch07": {
     "ch": "अध्याय 07",
-    "title": "91% का<br></br>आँकड़ा।",
+    "title": "91% का<br></br>आँकड़ा, FY25।",
     "tagline": "नाम यहीं से आया है। यह असली लोगों के साथ जो हुआ उसकी गिनती है, {kept} में शामिल होने का न्योता नहीं।",
     "scrollCue": "स्क्रॉल करें",
     "gridAlt": "सौ लोग, जिनमें से {lost} धुँधले पड़ जाते हैं और {kept} बचते हैं",
-    "countLabel": "ने charges के बाद पैसे गँवाए",
+    "countLabel": "ने FY25 में charges के बाद पैसे गँवाए",
     "lossAmount": "{loss} करोड़",
     "lossLabel": "individual F&O traders का net loss, FY25",
     "beats": [
@@ -375,7 +374,7 @@
       {
         "tag": "नतीजा",
         "tone": "brick",
-        "h": "{lost} ने पैसे गँवाए।",
+        "h": "FY25 में {lost} ने पैसे गँवाए।",
         "p": "Charges के बाद, हर 100 में से {lost} individual traders साल के अंत में net loss में थे।"
       },
       {
@@ -399,8 +398,14 @@
       {
         "tag": "कुल",
         "tone": "brick",
-        "h": "{loss} करोड़।",
+        "h": "FY25 में {loss} करोड़।",
         "p": "2024-25 में individual traders ने charges के बाद मिलकर इतना गँवाया। एक करोड़ यानी ₹1,00,00,000। इस number के पीछे students, salaries और बचत है।"
+      },
+      {
+        "tag": "FY26",
+        "tone": "brick",
+        "h": "एक साल बाद भी तस्वीर मिलती-जुलती।",
+        "p": "अगस्त 2026 में आई SEBI की अगली study के मुताबिक FY26 में {fy26Pct}% individual F&O traders ने पैसे गँवाए, और net loss {fy26Loss} करोड़ रहा। SEBI ने खुद चेताया है कि उस साल trade करने वाले 20% कम थे, इसलिए घाटे वालों का हिस्सा घटने का मतलब यह नहीं कि trading बेहतर हुई।"
       },
       {
         "tag": "सीधी बात",
@@ -412,7 +417,7 @@
     "nextUp": "इसका मतलब",
     "outroH": "नाम एक चेतावनी है।",
     "outroP": "The 9% Club इस कड़वे हिसाब का आईना है। यह कोई trading strategy नहीं है, और यहाँ जुड़ने के लिए कोई स्कीम नहीं है।",
-    "assumptions": "स्रोत: individual equity derivatives traders पर SEBI की study, जुलाई 2025, FY25 (अप्रैल 2024 से मार्च 2025) के लिए। ये आँकड़े सिर्फ़ F&O के हैं, पूरी investing के नहीं। 75% वाला आँकड़ा FY22 से FY24 पर SEBI की सितंबर 2024 की study से है। SEBI की बाद की study में FY25 का नुकसान बदलकर करीब ₹1.12 लाख करोड़ किया गया है, और FY26 के लिए: 87.7% individual traders ने पैसे गँवाए, net loss ₹91,685 करोड़। यह education है, advice नहीं।"
+    "assumptions": "स्रोत: individual equity derivatives traders पर SEBI की study, जुलाई 2025 (press release 39/2025), FY25 यानी अप्रैल 2024 से मार्च 2025 के लिए। ये आँकड़े सिर्फ़ F&O के हैं, पूरी investing के नहीं। अगस्त 2026 में आई SEBI की बाद की study FY26 के लिए बताती है: {fy26Pct}% individual traders ने पैसे गँवाए, net loss {fy26Loss} करोड़। वही study brokers का sample बढ़ाने के बाद FY25 को बदलकर {fy25RevisedPct}% और {fy25RevisedLoss} करोड़ करती है। 75% वाला आँकड़ा FY22 से FY24 पर SEBI की सितंबर 2024 की study से है। यह education है, advice नहीं।"
   },
   "ch08": {
     "ch": "अध्याय 08",
@@ -813,7 +818,7 @@
     ],
     "ch07": [
       {
-        "q": "क्या SEBI का 91% नुकसान वाला आँकड़ा लंबे समय की mutual fund SIP पर भी लागू होता है?",
+        "q": "क्या SEBI का FY25 वाला 91% का आँकड़ा लंबे समय की mutual fund SIP पर भी लागू होता है?",
         "a": "नहीं। वो study equity derivatives, यानी F&O, के individual traders की गिनती है। वो mutual funds, SIP या सिर्फ़ share रखने के बारे में कुछ नहीं कहती। उनके अपने जोखिम हैं, जिनकी बात अध्याय 06 और 08 में है, पर यह आँकड़ा उनके बारे में नहीं है।"
       },
       {
@@ -822,7 +827,7 @@
       },
       {
         "q": "क्या 91% ताज़ा आँकड़ा है?",
-        "a": "यह SEBI की जुलाई 2025 की study का FY25 का आँकड़ा है, और इसी पर इस site का नाम है। SEBI की बाद की study FY26 के लिए 87.7% बताती है, net loss ₹91,685 करोड़ के साथ, और FY25 का नुकसान बदलकर करीब ₹1.12 लाख करोड़ करती है। तस्वीर थोड़ी बदली है। पलटी नहीं।"
+        "a": "यह SEBI की जुलाई 2025 की study का FY25 का आँकड़ा है, और इसी पर इस site का नाम है। SEBI की अगस्त 2026 की study FY26 के लिए {fy26Pct}% बताती है, net loss {fy26Loss} करोड़ के साथ, और sample में brokers जोड़ने के बाद FY25 को बदलकर {fy25RevisedPct}% और {fy25RevisedLoss} करोड़ करती है। SEBI ने चेताया है कि FY26 में trade करने वाले कम थे, इसलिए घटा हुआ हिस्सा इस बात का संकेत नहीं कि trading आसान हो गई।"
       },
       {
         "q": "एक आम trader ने कितना गँवाया?",
@@ -847,5 +852,161 @@
         "a": "जो आप लगा चुके हैं वो invested रहता है, और SIP को आमतौर पर रोका या बंद किया जा सकता है। यहाँ के आँकड़ों में हर किश्त आती है, तो छूटने से वो घटते हैं, और शुरुआती किश्तों का असर सबसे ज़्यादा होता है क्योंकि उन्हें बढ़ने का समय सबसे ज़्यादा मिलता है।"
       }
     ]
+  },
+  "home": {
+    "meta": "9 अध्याय, हर एक करीब 4 मिनट, English और हिंदी",
+    "gridCaption": "यह FY25 में जो हुआ उसकी गिनती है, कोई लक्ष्य नहीं: SEBI के मुताबिक हर 100 individual F&O traders में से {lost} ने पैसे गँवाए।",
+    "gridAlt": "सौ छोटी आकृतियाँ। {lost} भरी हुई हैं, उन traders के लिए जिन्होंने FY25 में पैसे गँवाए। {kept} सिर्फ़ रेखाओं में बनी हैं।",
+    "mapHeading": "सभी नौ अध्याय",
+    "start": "अध्याय 00 शुरू करें"
+  },
+  "safety": {
+    "notFoundTitle": "यह पन्ना इस course का हिस्सा नहीं है।",
+    "notFoundText": "Link पुराना हो सकता है, या गलत टाइप हुआ हो। सारे अध्याय अब भी यहीं हैं, पहले से शुरू करके।",
+    "backHome": "अध्याय 00 पर वापस जाएँ",
+    "errorEyebrow": "कुछ गड़बड़ हो गई",
+    "errorTitle": "यह अध्याय लोड नहीं हुआ।",
+    "errorText": "अक्सर इसकी वजह कमज़ोर connection होता है। Course में आपकी जगह खोई नहीं है।",
+    "retry": "फिर से कोशिश करें"
+  },
+  "footer": {
+    "label": "इस site के बारे में",
+    "disclaimer": "सिर्फ़ education, कोई investment advice नहीं। लेखक SEBI में registered investment adviser या research analyst नहीं हैं। पुराना data आगे का हाल नहीं बताता।",
+    "readDisclaimer": "Disclaimer पढ़ें",
+    "about": "परिचय",
+    "methodology": "तरीका और स्रोत",
+    "terms": "Disclaimer और शर्तें",
+    "privacy": "Privacy",
+    "feedback": "Feedback",
+    "source": "GitHub पर source",
+    "copyright": "© 2026 Tanish Jain",
+    "builtBy": "तनिश द्वारा बनाया गया",
+    "newTab": "(नए tab में खुलेगा)"
+  },
+  "about": {
+    "metaTitle": "परिचय | The 9% Club",
+    "description": "The 9% Club किसने और क्यों बनाया: trading की असली कीमत पर एक सीधा course।",
+    "eyebrow": "परिचय",
+    "title": "इसे किसने बनाया, और क्यों",
+    "who": "The 9% Club तनिश जैन ने बनाया है, जो एक student developer हैं।",
+    "why": "ज़्यादातर नए लोग share market के बारे में hype से सीखते हैं: reels, tips और बड़ी कमाई के screenshots। इनमें नीचे छुपा हिसाब शायद ही दिखता है, जैसे हर trade से कटने वाले charges, या किसी असली crash में रुके रहने वाले को कैसा लगा।",
+    "how": "यह course वही हिसाब दिखाने की कोशिश करता है। इस site का हर number एक असली cost model या असली पुराने data से आता है, और तरीके वाला पन्ना बताता है कि कौन सा number कहाँ से आया।",
+    "not": "यह education है, advice नहीं। यह नहीं बताता कि क्या खरीदें, और यहाँ का कुछ भी किसी को उन 100 में से 9 में नहीं पहुँचा सकता जिन्होंने पैसे कमाए। मकसद बस इतना है कि आप कोई भी फ़ैसला खुद लेने से पहले खर्च और जोखिम साफ़ देख सकें।",
+    "methodologyLink": "हर number कहाँ से आता है"
+  },
+  "methodology": {
+    "metaTitle": "तरीका और स्रोत | The 9% Club",
+    "description": "The 9% Club का हर number कहाँ से आता है: cost model, 2020 के crash का data और SEBI की studies।",
+    "eyebrow": "तरीका",
+    "title": "हर number कहाँ से आता है",
+    "lede": "इस site पर कोई अंदाज़ा सच बनाकर नहीं दिखाया गया। हर आँकड़ा नीचे दिए किसी स्रोत से आता है, और जो कुछ भी काल्पनिक या माना हुआ है, उसे वहीं बता दिया गया है।",
+    "costsTitle": "Trading के charges",
+    "costs": "अध्याय 04 और 05 में NSE पर delivery trade के लिए एक cost model इस्तेमाल हुआ है। इसमें brokerage, STT, exchange transaction charges, SEBI turnover fee, stamp duty, GST और DP charge गिने जाते हैं। यह एक Python cost engine का port है, और automated tests इसे एक तय reference file से दशमलव के छह अंकों तक मिलाते हैं। उदाहरण के लिए, ₹1,000 का एक round trip {total} का पड़ता है।",
+    "costsRates": "Statutory rates नवंबर 2026 में जाँचे गए। Brokerage और DP charge के लिए एक आम discount broker की प्रकाशित fees को सावधानी से लिया गया है, इसलिए आपका अपना contract note अलग हो सकता है।",
+    "costsCode": "Cost model (code)",
+    "costsFixture": "वो reference file जिससे इसे जाँचा जाता है",
+    "drawdownTitle": "2020 का crash",
+    "drawdown": "अध्याय 06 में 2019 से 2025 तक का असली price history इस्तेमाल हुआ है, 49 बड़ी Indian companies की एक equal-weight basket का, जो जनवरी 2019 में खरीदी गई और कभी rebalance नहीं हुई। 11 फ़रवरी 2020 के high से यह {fallDays} दिन में {fallPct}% गिरी, 24 मार्च 2020 तक, और वापस आने में {recoverDays} दिन लगे। Companies के नाम नहीं दिए गए, ताकि यहाँ कुछ भी tip जैसा न लगे।",
+    "drawdownData": "Price curve (data)",
+    "sebiTitle": "SEBI की studies",
+    "sebiScope": "अध्याय 07 में market के regulator SEBI की तीन studies इस्तेमाल हुई हैं। ये equity derivatives, यानी F&O, के individual traders की गिनती हैं, और कुछ नहीं: न mutual funds, न सिर्फ़ share रखना।",
+    "sebiJul2025": "जुलाई 2025, FY25 (अप्रैल 2024 से मार्च 2025) के लिए: {lost}% individual traders ने पैसे गँवाए, charges के बाद net loss {loss} करोड़। अध्याय 07 का grid और headline FY25 की यही कहानी है।",
+    "sebiAug2026": "अगस्त 2026, FY25 और FY26 के लिए: FY26 में {fy26Pct}% ने पैसे गँवाए, net loss {fy26Loss} करोड़। वही study brokers का sample बढ़ाने के बाद FY25 को बदलकर {fy25RevisedPct}% और {fy25RevisedLoss} करोड़ करती है। SEBI ने चेताया है कि FY26 में trade करने वाले कम थे, इसलिए घाटे वालों का घटा हुआ हिस्सा इस बात का संकेत नहीं कि trading बेहतर हुई।",
+    "sebiSep2024": "सितंबर 2024, FY22 से FY24 के लिए: तीन सालों में {sep2024Lost}% individual traders ने पैसे गँवाए, उस पूरे समय में सिर्फ़ {sep2024Profit}% ने profit कमाया, और {sep2024KeptTrading}% से ज़्यादा loss-makers लगातार सालों के नुकसान के बाद भी trade करते रहे।",
+    "pressRelease": "SEBI press release {number}",
+    "fullStudy": "पूरी study",
+    "pricesTitle": "Price data",
+    "prices": "इस site का सारा असली price data पुराना है, 2019 से 2025 का, 30 दिन से ज़्यादा पुराना, और सिर्फ़ education के लिए। अध्याय 02 की order book, अध्याय 03 का trading दिन और अध्याय 08 का एक जैसा return काल्पनिक या माने हुए हैं, और हर एक को उसके पन्ने पर ऐसा बताया गया है।",
+    "simplificationsTitle": "जानी-पहचानी सरलताएँ",
+    "simplificationsLede": "ये हर अध्याय के footnotes हैं, यहाँ शब्दशः दिखाए गए।",
+    "mistakeTitle": "कोई गलती दिखी?",
+    "mistake": "अगर कोई number गलत लगे, तो मुझे बताइए।",
+    "mistakeEmail": "Feedback भेजें",
+    "mistakeIssues": "GitHub पर बताएँ"
+  },
+  "terms": {
+    "metaTitle": "Disclaimer और शर्तें | The 9% Club",
+    "description": "The 9% Club सिर्फ़ education है, investment advice नहीं। Disclaimer और इस्तेमाल की शर्तें।",
+    "eyebrow": "Disclaimer",
+    "title": "Disclaimer और शर्तें",
+    "lede": "इस site की किसी भी बात पर भरोसा करने से पहले इसे पढ़ लीजिए।",
+    "education": {
+      "title": "Education, advice नहीं",
+      "text": "इस site पर सब कुछ education के लिए है। यहाँ कुछ भी investment advice नहीं है, और यहाँ कुछ भी किसी security को खरीदने, बेचने या रखने की सिफ़ारिश नहीं करता।"
+    },
+    "registration": {
+      "title": "किसने लिखा",
+      "text": "लेखक SEBI में investment adviser या research analyst के रूप में registered नहीं हैं।"
+    },
+    "figures": {
+      "title": "आँकड़े और उदाहरण",
+      "text": "उदाहरण और आँकड़े या तो समझाने के लिए हैं या पुराने data से। काल्पनिक कीमतें और माने हुए returns जहाँ आते हैं, वहीं बताए गए हैं। पुरानी कीमतें और पुराने returns आगे का हाल नहीं बताते।"
+    },
+    "risk": {
+      "title": "Market में जोखिम है",
+      "text": "Market में पैसा डूब सकता है, वो पैसा भी जिसे गँवाना आप झेल नहीं सकते। Mutual fund investments are subject to market risks; read all scheme-related documents carefully."
+    },
+    "warranty": {
+      "title": "कोई गारंटी नहीं",
+      "text": "यह site जैसी है वैसी दी गई है। मैं हर आँकड़ा सही रखने की कोशिश करता हूँ, पर यह वादा नहीं कर सकता कि सब कुछ पूरा, ताज़ा या बिना गलती का है। इस site के इस्तेमाल से हुए किसी नुकसान या लिए गए किसी फ़ैसले की ज़िम्मेदारी मेरी नहीं है।"
+    },
+    "links": {
+      "title": "दूसरी websites",
+      "text": "दूसरी websites के links सिर्फ़ संदर्भ के लिए हैं। ये उनकी सिफ़ारिश नहीं हैं, और वो websites जो कहती हैं उसकी ज़िम्मेदारी मेरी नहीं है।"
+    },
+    "copyright": {
+      "title": "Copyright",
+      "text": "इस site का लेखन, आँकड़े और design copyright © 2026 Tanish Jain हैं।"
+    },
+    "law": {
+      "title": "कानून",
+      "text": "ये शर्तें भारत के कानूनों के अधीन हैं।"
+    },
+    "updated": "आखिरी बदलाव: नवंबर 2026।"
+  },
+  "privacy": {
+    "metaTitle": "Privacy | The 9% Club",
+    "description": "The 9% Club आपके device पर क्या रखती है और इसकी analytics क्या दर्ज करती है, सीधे शब्दों में।",
+    "eyebrow": "Privacy",
+    "title": "Privacy",
+    "lede": "यह पन्ना बताता है कि site असल में क्या करती है, इसके code से जाँचकर।",
+    "storedTitle": "आपके device पर क्या रखा जाता है",
+    "storedLede": "सिर्फ़ पढ़ने पर कुछ भी नहीं रखा जाता। दो चीज़ें save हो सकती हैं, और वो भी तब जब आप कोई control इस्तेमाल करें:",
+    "kinds": {
+      "localStorage": "browser storage",
+      "cookie": "cookie"
+    },
+    "stored": {
+      "theme": "Theme button इस्तेमाल करने के बाद light या dark mode याद रखता है। यह तब तक रहता है जब तक आप इस site का data साफ़ न करें।",
+      "locale": "Language बदलने के बाद English या हिंदी याद रखता है, ताकि site उसी भाषा में खुले। यह session cookie है, browser बंद करने पर हट जाती है।"
+    },
+    "storedNothingElse": "इसके अलावा कोई cookie नहीं है और browser storage में कुछ और नहीं। Site के fonts इसी site से आते हैं, किसी third party से नहीं।",
+    "analyticsTitle": "Analytics",
+    "analyticsWhen": "Live site पर page views Vercel Web Analytics से गिने जाते हैं। Preview versions और किसी के अपने computer पर चल रही copies कुछ भी इकट्ठा नहीं करतीं।",
+    "analyticsHow": "Vercel की documentation के मुताबिक, यह third-party cookies इस्तेमाल नहीं करती। यह आने वाली request के एक hash से visit पहचानती है, और वो visitor session 24 घंटे बाद हटा दिया जाता है। हर page view के साथ यह ये बातें दर्ज कर सकती है:",
+    "analyticsPoints": {
+      "time": "page view का समय",
+      "url": "पन्ने का पता",
+      "route": "पन्ने का route pattern",
+      "referrer": "आप किस पन्ने से आए",
+      "query": "पते में filtered query parameters",
+      "location": "मोटी-मोटी जगह: देश, राज्य और शहर",
+      "os": "आपके device का operating system और उसका version",
+      "browser": "आपका browser और उसका version",
+      "device": "device का प्रकार: mobile, tablet या desktop",
+      "version": "analytics script का version"
+    },
+    "analyticsSource": "Web Analytics privacy पर Vercel की documentation",
+    "hostingTitle": "Hosting और links",
+    "hosting": "यह site Vercel पर host है, जो इसे load करने के लिए आपके browser की भेजी requests संभालता है।",
+    "portfolioLink": "Footer का \"तनिश द्वारा बनाया गया\" link अपने पते में ?ref=9percentclub जोड़ता है, ताकि लेखक की portfolio site देख सके कि visit यहाँ से आई।",
+    "noneTitle": "Site क्या नहीं करती",
+    "none": "यहाँ कोई account नहीं, कोई form नहीं और कोई ad नहीं। Calculators आपके browser में चलते हैं और कहीं कुछ नहीं भेजते। कुछ भी बेचा या साझा नहीं किया जाता।",
+    "contactTitle": "अपने data के बारे में सवाल",
+    "contact": "अगर इनमें से किसी बात पर सवाल हो, तो",
+    "contactEmail": "feedback भेजें",
+    "contactIssues": "GitHub पर issue खोलें",
+    "contactIssuesWarning": "GitHub issues सबको दिखते हैं, इसलिए वहाँ अपनी निजी जानकारी न डालें।",
+    "updated": "आखिरी बदलाव: नवंबर 2026।"
   }
 }

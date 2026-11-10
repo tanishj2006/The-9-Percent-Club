@@ -33,10 +33,29 @@ Chapters live at `/en`, `/en/01` to `/en/08`, with the same paths under `/hi`.
 
 ## Deploying
 
-Set `NEXT_PUBLIC_SITE_URL` to the public address, for example
-`https://example.com`. Canonical links, hreflang, the sitemap and share cards all
-use it. Without it, Vercel builds fall back to the project's production URL and
-local builds to localhost.
+On Vercel:
+
+1. **Import the repo** as a new project. The framework preset is Next.js and
+   no build settings need changing.
+2. **Set `NEXT_PUBLIC_SITE_URL`** to the public address, for example
+   `https://example.com`, for Production. Canonical links, hreflang, the
+   sitemap and share cards use it. Without it, Vercel falls back to the
+   project's production URL, and local builds to localhost.
+3. **Turn on Web Analytics** in the project settings. `@vercel/analytics` only
+   renders when `VERCEL_ENV` is `production`, so previews and local runs send
+   nothing.
+4. **Check the share cards on a preview deploy** before going live. Open
+   `/en/04/opengraph-image` and `/hi/05/opengraph-image` and look at them:
+   the Hindi must read correctly, and ₹ must appear in the English titles.
+   They are drawn with HarfBuzz (WebAssembly) and fonts read from
+   `src/assets/fonts` with `fs`.
+
+The cards are rendered once, at build time, for the 18 real routes, and
+`dynamicParams = false` stops any other path from rendering one on request. So
+the fonts and the WebAssembly are needed only during the build, where the whole
+repo is available, and `outputFileTracingIncludes` is not required. If a card is
+ever made to render on request, add the fonts to `outputFileTracingIncludes` in
+`next.config.ts` first.
 
 ## Approach
 

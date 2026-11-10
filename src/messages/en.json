@@ -4,7 +4,7 @@
     "ch04": "Chapter 4 — What a Trade Really Costs | The 9% Club",
     "ch05": "Chapter 5 — Why ₹2,000 Cannot Trade | The 9% Club",
     "ch06": "Chapter 6 — What Losing Looks Like | The 9% Club",
-    "ch07": "Chapter 7 — The 91% Number | The 9% Club",
+    "ch07": "Chapter 7 — The 91% Number, FY25 | The 9% Club",
     "ch08": "Chapter 8 — What Actually Works | The 9% Club",
     "ch01": "Chapter 1 — Who Buys Your Token? | The 9% Club",
     "ch02": "Chapter 2 — Who Decides the Price? | The 9% Club",
@@ -13,7 +13,6 @@
   "site": {
     "name": "The 9% Club",
     "tagline": "Most traders lose money. Here's the arithmetic.",
-    "disclaimer": "Everything on this site is education. Nothing is advice.",
     "hudTokens": "2 of 100 tokens",
     "toggleTheme": "Toggle theme",
     "hudLabel": "Your money",
@@ -25,7 +24,7 @@
     "hudSip": "Your SIP",
     "hudSoldAt": "if sold: {amount}",
     "hudHeldAt": "if held: {amount}",
-    "hudLostCount": "{amount} of 100 lost",
+    "hudLostCount": "{amount} of 100 lost, FY25",
     "hudPutIn": "{amount} put in",
     "hudAtBank": "in your bank",
     "hudAtBroker": "with your broker",
@@ -39,7 +38,7 @@
   "ch00": {
     "ch": "Chapter 00",
     "title": "You have ₹2,000.<br></br>Let's buy a business.",
-    "tagline": "Before any of the trading, charts or jargon: what are you actually buying when you buy a share? Start here. It takes four minutes.",
+    "tagline": "Before any of the trading, charts or jargon: what are you actually buying when you buy a share? Start here.",
     "scrollCue": "Scroll",
     "cupsSold": "cups sold",
     "nextUp": "What happens next",
@@ -122,7 +121,7 @@
     "ch05": "Why ₹2,000 cannot trade",
     "endNote": "That is the whole course: what a share is, how a trade travels, what it costs, what a fall feels like, why most traders lose, and what boring looks like. All of it is arithmetic and history. None of it is advice.",
     "ch06": "What losing looks like",
-    "ch07": "The 91% number",
+    "ch07": "The 91% number, FY25",
     "ch08": "What actually works",
     "ch01": "Who buys your token?",
     "ch02": "Who decides the price?",
@@ -352,11 +351,11 @@
   },
   "ch07": {
     "ch": "Chapter 07",
-    "title": "The 91%<br></br>number.",
+    "title": "The 91%<br></br>number, FY25.",
     "tagline": "This is where the name comes from. It is a count of what happened to real people, and it is not an invitation to be one of the {kept}.",
     "scrollCue": "Scroll",
     "gridAlt": "One hundred figures, of which {lost} go dark and {kept} remain",
-    "countLabel": "lost money, after charges",
+    "countLabel": "lost money in FY25, after charges",
     "lossAmount": "{loss} crore",
     "lossLabel": "net loss of individual F&O traders, FY25",
     "beats": [
@@ -375,7 +374,7 @@
       {
         "tag": "The result",
         "tone": "brick",
-        "h": "{lost} of them lost money.",
+        "h": "In FY25, {lost} of them lost money.",
         "p": "After charges, {lost} in every 100 individual traders ended the year with a net loss."
       },
       {
@@ -399,8 +398,14 @@
       {
         "tag": "The total",
         "tone": "brick",
-        "h": "{loss} crore.",
+        "h": "{loss} crore in FY25.",
         "p": "That is what individual traders lost together in 2024-25, after charges. One crore is ₹1,00,00,000. Behind that number are students, salaries and savings."
+      },
+      {
+        "tag": "FY26",
+        "tone": "brick",
+        "h": "A year later, a similar picture.",
+        "p": "SEBI's next study, published in August 2026, found that {fy26Pct}% of individual F&O traders lost money in FY26, with net losses of {fy26Loss} crore. SEBI itself cautions that 20% fewer people traded that year, so a smaller share of losers does not mean trading got better."
       },
       {
         "tag": "Plainly",
@@ -412,7 +417,7 @@
     "nextUp": "What this means",
     "outroH": "The name is a warning.",
     "outroP": "The 9% Club is a provocation about arithmetic. It is not a strategy, and there is nothing here to join.",
-    "assumptions": "Source: SEBI's study of individual traders in equity derivatives, July 2025, for FY25 (April 2024 to March 2025). These figures cover F&O only, not all investing. The 75% figure is from SEBI's September 2024 study of FY22 to FY24. SEBI has since published a later study that revises FY25 losses to about ₹1.12 lakh crore and reports FY26: 87.7% of individual traders lost money, with net losses of ₹91,685 crore. This is education, not advice."
+    "assumptions": "Sources: SEBI's study of individual traders in equity derivatives, July 2025 (press release 39/2025), for FY25, April 2024 to March 2025. These figures cover F&O only, not all investing. SEBI's later study, published in August 2026, reports FY26: {fy26Pct}% of individual traders lost money, with net losses of {fy26Loss} crore. It also revises FY25 to {fy25RevisedPct}% and {fy25RevisedLoss} crore, after widening its sample of brokers. The 75% figure is from SEBI's September 2024 study of FY22 to FY24. This is education, not advice."
   },
   "ch08": {
     "ch": "Chapter 08",
@@ -813,7 +818,7 @@
     ],
     "ch07": [
       {
-        "q": "Does the 91% SEBI loss number apply to long-term mutual fund SIPs too?",
+        "q": "Does SEBI's FY25 figure of 91% apply to long-term mutual fund SIPs too?",
         "a": "No. That study counts individual traders in equity derivatives, meaning F&O. It says nothing about mutual funds, SIPs or simply owning shares. Those carry their own risks, which Chapters 06 and 08 come to, but this number is not about them."
       },
       {
@@ -822,7 +827,7 @@
       },
       {
         "q": "Is 91% the latest figure?",
-        "a": "It is the FY25 figure from SEBI's July 2025 study, and the one this site is named after. A later SEBI study reports 87.7% for FY26, with net losses of ₹91,685 crore, and revises FY25 losses to about ₹1.12 lakh crore. The picture has shifted a little. It has not changed."
+        "a": "It is the FY25 figure from SEBI's July 2025 study, and the one this site is named after. SEBI's August 2026 study reports {fy26Pct}% for FY26, with net losses of {fy26Loss} crore, and revises FY25 to {fy25RevisedPct}% and {fy25RevisedLoss} crore after adding brokers to its sample. SEBI warns that fewer people traded in FY26, so the lower share is not a sign that trading got easier."
       },
       {
         "q": "How much did a typical trader lose?",
@@ -847,5 +852,161 @@
         "a": "What you already put in stays invested, and a SIP can usually be paused or stopped. The figures here assume every instalment arrives, so gaps lower them, and early instalments count most because they have the longest to grow."
       }
     ]
+  },
+  "home": {
+    "meta": "9 chapters, about 4 minutes each, English and हिंदी",
+    "gridCaption": "A count of what happened in FY25, not a target: {lost} of every 100 individual F&O traders lost money, by SEBI's count.",
+    "gridAlt": "One hundred small figures. {lost} are filled in, for the traders who lost money in FY25. {kept} are drawn as outlines.",
+    "mapHeading": "All nine chapters",
+    "start": "Start chapter 00"
+  },
+  "safety": {
+    "notFoundTitle": "This page is not part of the course.",
+    "notFoundText": "The link may be old, or mistyped. Every chapter is still here, starting from the first.",
+    "backHome": "Back to Chapter 00",
+    "errorEyebrow": "Something went wrong",
+    "errorTitle": "This chapter did not load.",
+    "errorText": "Usually that is a weak connection. Your place in the course is not lost.",
+    "retry": "Try again"
+  },
+  "footer": {
+    "label": "About this site",
+    "disclaimer": "Education only, not investment advice. The author is not a SEBI-registered investment adviser or research analyst. Past data does not predict the future.",
+    "readDisclaimer": "Read the disclaimer",
+    "about": "About",
+    "methodology": "Methodology and sources",
+    "terms": "Disclaimer and terms",
+    "privacy": "Privacy",
+    "feedback": "Feedback",
+    "source": "Source on GitHub",
+    "copyright": "© 2026 Tanish Jain",
+    "builtBy": "Built by Tanish",
+    "newTab": "(opens in a new tab)"
+  },
+  "about": {
+    "metaTitle": "About | The 9% Club",
+    "description": "Who made The 9% Club, and why: a plain course on what trading actually costs.",
+    "eyebrow": "About",
+    "title": "Who made this, and why",
+    "who": "The 9% Club was made by Tanish Jain, a student developer.",
+    "why": "Most beginners learn about the stock market from hype: reels, tips and screenshots of big wins. Very little of it shows the arithmetic underneath, like the charges taken from every trade, or what a real crash felt like for someone who held on.",
+    "how": "This course tries to show that arithmetic instead. Every number on the site comes from a real cost model or from real historical data, and the methodology page says where each one comes from.",
+    "not": "It is education, not advice. It will not tell you what to buy, and nothing here can put anyone among the 9 in 100 who made money. The aim is only to help you see the costs and risks clearly, before you decide anything for yourself.",
+    "methodologyLink": "Where every number comes from"
+  },
+  "methodology": {
+    "metaTitle": "Methodology and sources | The 9% Club",
+    "description": "Where every number on The 9% Club comes from: the cost model, the 2020 crash data and SEBI's studies.",
+    "eyebrow": "Methodology",
+    "title": "Where every number comes from",
+    "lede": "Nothing on this site is a guess presented as a fact. Each figure comes from one of the sources below, and anything invented or assumed is labelled where it appears.",
+    "costsTitle": "Trading charges",
+    "costs": "Chapters 04 and 05 use a cost model for a delivery trade on NSE. It counts brokerage, STT, exchange transaction charges, the SEBI turnover fee, stamp duty, GST and the DP charge. It is a port of a Python cost engine, and automated tests check it against a fixed reference file to six decimal places. For example, a ₹1,000 round trip comes to {total}.",
+    "costsRates": "Statutory rates were checked in November 2026. Brokerage and the DP charge use a conservative reading of one discount broker's published fees, so your own contract note may differ.",
+    "costsCode": "The cost model (code)",
+    "costsFixture": "The reference file it is tested against",
+    "drawdownTitle": "The 2020 crash",
+    "drawdown": "Chapter 06 uses the real price history, from 2019 to 2025, of an equal-weight basket of 49 large Indian companies, bought in January 2019 and never rebalanced. From its high on 11 February 2020 it fell {fallPct}% in {fallDays} days, to 24 March 2020, and took {recoverDays} days to get back. The companies are not named, so nothing here reads as a tip.",
+    "drawdownData": "The price curve (data)",
+    "sebiTitle": "SEBI's studies",
+    "sebiScope": "Chapter 07 uses three studies by SEBI, the market regulator. They count individual traders in equity derivatives, meaning F&O, and nothing else: not mutual funds, and not simply owning shares.",
+    "sebiJul2025": "July 2025, for FY25 (April 2024 to March 2025): {lost}% of individual traders lost money, with net losses of {loss} crore after charges. Chapter 07's grid and headline tell this FY25 story.",
+    "sebiAug2026": "August 2026, for FY25 and FY26: in FY26, {fy26Pct}% lost money, with net losses of {fy26Loss} crore. The same study revises FY25 to {fy25RevisedPct}% and {fy25RevisedLoss} crore, after widening its sample of brokers. SEBI cautions that fewer people traded in FY26, so a smaller share of losers is not a sign that trading got better.",
+    "sebiSep2024": "September 2024, for FY22 to FY24: {sep2024Lost}% of individual traders lost money over the three years, only {sep2024Profit}% made a profit over that period, and more than {sep2024KeptTrading}% of loss-makers kept trading after consecutive years of losses.",
+    "pressRelease": "SEBI press release {number}",
+    "fullStudy": "Full study",
+    "pricesTitle": "Price data",
+    "prices": "All real price data on this site is historical, from 2019 to 2025, more than 30 days old, and used for education only. The order book in Chapter 02, the trading day in Chapter 03 and the steady return in Chapter 08 are invented or assumed, and each is labelled as such on its page.",
+    "simplificationsTitle": "Known simplifications",
+    "simplificationsLede": "These are the footnotes from each chapter, shown here word for word.",
+    "mistakeTitle": "Found a mistake?",
+    "mistake": "If a number looks wrong, I would like to know.",
+    "mistakeEmail": "Send feedback",
+    "mistakeIssues": "Report it on GitHub"
+  },
+  "terms": {
+    "metaTitle": "Disclaimer and terms | The 9% Club",
+    "description": "The 9% Club is education only, not investment advice. The disclaimer and terms of use.",
+    "eyebrow": "Disclaimer",
+    "title": "Disclaimer and terms",
+    "lede": "Please read this before you rely on anything on this site.",
+    "education": {
+      "title": "Education, not advice",
+      "text": "Everything on this site is for education. Nothing here is investment advice, and nothing here recommends buying, selling or holding any security."
+    },
+    "registration": {
+      "title": "Who wrote it",
+      "text": "The author is not registered with SEBI as an investment adviser or as a research analyst."
+    },
+    "figures": {
+      "title": "Figures and examples",
+      "text": "Examples and figures are illustrative or historical. Invented prices and assumed returns are labelled where they appear. Past prices and past returns do not predict future ones."
+    },
+    "risk": {
+      "title": "Markets carry risk",
+      "text": "Markets can lose money, including money you cannot afford to lose. Mutual fund investments are subject to market risks; read all scheme-related documents carefully."
+    },
+    "warranty": {
+      "title": "No warranty",
+      "text": "The site is provided as it is. I try to keep every figure correct, but I cannot promise it is complete, current or free of errors. I am not liable for any loss, or for any decision made using this site."
+    },
+    "links": {
+      "title": "Other websites",
+      "text": "Links to other websites are for reference. They are not endorsements, and I am not responsible for what those websites say."
+    },
+    "copyright": {
+      "title": "Copyright",
+      "text": "The writing, figures and design on this site are copyright © 2026 Tanish Jain."
+    },
+    "law": {
+      "title": "Law",
+      "text": "These terms are governed by the laws of India."
+    },
+    "updated": "Last updated: November 2026."
+  },
+  "privacy": {
+    "metaTitle": "Privacy | The 9% Club",
+    "description": "What The 9% Club stores on your device and what its analytics record, described plainly.",
+    "eyebrow": "Privacy",
+    "title": "Privacy",
+    "lede": "This page describes what the site actually does, checked against its code.",
+    "storedTitle": "What is stored on your device",
+    "storedLede": "Nothing is stored when you simply read. Two things can be saved, and only after you use a control:",
+    "kinds": {
+      "localStorage": "browser storage",
+      "cookie": "cookie"
+    },
+    "stored": {
+      "theme": "Remembers light or dark mode, after you use the theme button. It stays until you clear this site's data.",
+      "locale": "Remembers English or Hindi, after you switch language, so the site opens in that language. It is a session cookie, deleted when you close the browser."
+    },
+    "storedNothingElse": "There are no other cookies and nothing else in browser storage. The site's fonts are served from this site, not from a third party.",
+    "analyticsTitle": "Analytics",
+    "analyticsWhen": "On the live site, page views are counted with Vercel Web Analytics. Preview versions and copies running on someone's own computer collect nothing.",
+    "analyticsHow": "According to Vercel's documentation, it does not use third-party cookies. It identifies a visit by a hash of the incoming request, and that visitor session is discarded after 24 hours. It may record these details with each page view:",
+    "analyticsPoints": {
+      "time": "the time of the page view",
+      "url": "the address of the page",
+      "route": "the page's route pattern",
+      "referrer": "the page you came from",
+      "query": "filtered query parameters in the address",
+      "location": "a rough location: country, region and city",
+      "os": "your device's operating system and its version",
+      "browser": "your browser and its version",
+      "device": "the type of device: mobile, tablet or desktop",
+      "version": "the version of the analytics script"
+    },
+    "analyticsSource": "Vercel's documentation on Web Analytics privacy",
+    "hostingTitle": "Hosting and links",
+    "hosting": "The site is hosted on Vercel, which handles the requests your browser makes to load it.",
+    "portfolioLink": "The \"Built by Tanish\" link in the footer adds ?ref=9percentclub to its address, so the author's portfolio site can see that a visit came from here.",
+    "noneTitle": "What the site does not do",
+    "none": "There are no accounts, no forms and no ads. The calculators run in your browser and send nothing anywhere. Nothing is sold or shared.",
+    "contactTitle": "Questions about your data",
+    "contact": "If you have a question about any of this,",
+    "contactEmail": "send feedback",
+    "contactIssues": "open an issue on GitHub",
+    "contactIssuesWarning": "GitHub issues are public, so please do not include personal details there.",
+    "updated": "Last updated: November 2026."
   }
 }

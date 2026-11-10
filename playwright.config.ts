@@ -23,7 +23,11 @@ export default defineConfig({
     url: `http://localhost:${port}/en`,
     timeout: 180_000,
     reuseExistingServer: false,
-    env: { NEXT_DIST_DIR: ".next-e2e", NEXT_PUBLIC_SITE_URL: "https://e2e.example" },
+    env: {
+      NEXT_DIST_DIR: ".next-e2e",
+      NEXT_PUBLIC_SITE_URL: "https://e2e.example",
+      NEXT_PUBLIC_CONTACT_EMAIL: "hello@e2e.example",
+    },
   },
   projects: [
     {

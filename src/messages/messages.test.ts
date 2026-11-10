@@ -83,8 +83,11 @@ describe("SEBI: no performance claims", () => {
     }
   });
 
-  it("the footer disclaimer exists in both languages", () => {
-    expect(en.site.disclaimer).toContain("Nothing is advice");
-    expect(hi.site.disclaimer).toContain("advice नहीं");
+  it("the footer disclaimer exists in both languages, and covers registration", () => {
+    expect(en.footer.disclaimer).toContain("not investment advice");
+    expect(en.footer.disclaimer).toContain("not a SEBI-registered investment adviser or research analyst");
+    expect(en.footer.disclaimer).toContain("Past data does not predict the future");
+    expect(hi.footer.disclaimer).toContain("advice नहीं");
+    expect(hi.footer.disclaimer).toContain("SEBI में registered");
   });
 });
