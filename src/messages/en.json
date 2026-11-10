@@ -678,5 +678,171 @@
     "handoffQ": "You saw ₹2,000 become {closeMoney}. Is that what you would keep?",
     "handoffP": "No. There are charges the chart never shows. That is Chapter 04.",
     "assumptions": "Invented prices, with no real share behind them. The market hours shown are the NSE and BSE regular session. The counter values your {qty} shares at the current price and leaves out charges, which arrive in Chapter 04. This is education, not advice."
+  },
+  "doubts": {
+    "heading": "Still have a doubt?",
+    "note": "Common questions, answered in advance. This is education, not advice.",
+    "ch00": [
+      {
+        "q": "In the story you got 2% of the profit. Do real companies send you cash like that?",
+        "a": "Not automatically. A company's board can choose to pay part of its profit as a dividend, and each share gets the same amount. Many keep most of it to run and grow the business. The cart story simplified this: your slice can rise in value without any cash reaching you."
+      },
+      {
+        "q": "Can I lose more than the ₹2,000 I put in?",
+        "a": "Not by buying shares with your own money. The lowest a share can go is zero, so the most you can lose is what you paid. That changes with borrowed money or futures and options, which Chapter 07 comes to."
+      },
+      {
+        "q": "If I own 2%, can I tell the company what to do?",
+        "a": "You get a vote at shareholder meetings, in proportion to your shares. With a tiny slice your vote will rarely decide anything, and you have no say in daily decisions."
+      },
+      {
+        "q": "Why did Aarti and Imran sell pieces instead of taking a loan?",
+        "a": "A loan has to be repaid with interest, even in a monsoon. Selling ownership brings in money with nothing to repay, but the founders now share every future profit. Real companies weigh the same trade-off."
+      }
+    ],
+    "ch01": [
+      {
+        "q": "What happens to my shares in CDSL if my broker app shuts down tomorrow?",
+        "a": "They stay yours. Your shares are recorded in your name at the depository, CDSL or NSDL, and a broker shutting down does not make them the broker's property. You would move them to a demat account with another broker, which can take time and paperwork. Cash sitting with the broker is a separate matter, and getting it back can take longer."
+      },
+      {
+        "q": "Is money in a broker app the same as money in my bank?",
+        "a": "No. It is a balance with a broker, not a bank deposit, so bank deposit insurance does not cover it. If a broker fails, the exchanges run investor protection funds, but those have limits and claim rules."
+      },
+      {
+        "q": "Why can't I buy directly on NSE without a broker?",
+        "a": "Only exchange members can place orders on NSE or BSE. A broker is a member, and it also checks your identity and your money before your order goes in. That is why every trade starts at a broker, and why brokers can charge for it."
+      },
+      {
+        "q": "Why do shares take a day to reach my demat?",
+        "a": "Share trades in India settle on the next working day, called T+1. That time goes to moving money and shares between both sides through the clearing system. Your app may show the shares before they actually reach your demat."
+      }
+    ],
+    "ch02": [
+      {
+        "q": "If a company announces good news, doesn't it raise its own price?",
+        "a": "Not directly. The company changes nothing on the screen. News changes what buyers will pay and what sellers will accept, and the order book moves with them, sometimes within seconds."
+      },
+      {
+        "q": "What is the difference between a market order and a limit order?",
+        "a": "A market order takes the best price waiting right now, so buying at market in this book would have cost {bestAsk}. A limit order names your price and waits, as the seller at {match} did. One is sure to fill but not sure of its price. The other is sure of its price but may never fill."
+      },
+      {
+        "q": "Can a price go anywhere, any time?",
+        "a": "Not without limits. Exchanges set price bands on many shares, which cap how far they can move in a day, and the whole market can pause after a sharp fall. These slow a move down. They do not prevent a loss."
+      },
+      {
+        "q": "Is a ₹100 share cheaper than a ₹1,000 share?",
+        "a": "Not from that number alone. A price is one slice, and companies cut themselves into very different numbers of slices. What the whole company is valued at is its price multiplied by its number of shares. A low price does not mean a bargain."
+      }
+    ],
+    "ch03": [
+      {
+        "q": "Can patterns in candles tell me what happens tomorrow?",
+        "a": "Not reliably. A candle records what already happened. The research behind this course tested four classes of trading strategy on Indian shares after costs, with four negative results, and the one positive result turned out to be a single stock."
+      },
+      {
+        "q": "Why are candles on my app green and red, not teal?",
+        "a": "Colours are only a convention. Most apps use green for a day that closed higher and red for lower. This course uses its own teal and brick. The shape means the same either way."
+      },
+      {
+        "q": "Is one candle always one day?",
+        "a": "No. A candle can cover five minutes, a day, a week or a month. It always holds the same four numbers for that period, so check the timeframe before reading anything into a chart."
+      },
+      {
+        "q": "Why does a price sometimes open far from yesterday's close?",
+        "a": "News does not wait for 9:15. Orders build up overnight and the first trades of the day reflect them. That jump is called a gap, and it shows as space between one close and the next open. The invented row in this chapter leaves it out for simplicity."
+      }
+    ],
+    "ch04": [
+      {
+        "q": "If an app advertises zero brokerage, why did {total} still get cut?",
+        "a": "Because {total} is not the zero-brokerage figure: it includes {brokerage} of brokerage from the broker in this example. Remove that and about {noBrokerage} would still go, if the DP charge stayed at {dp}. Zero brokerage removes one cut. STT, exchange charges, stamp duty and GST remain, and DP charges vary by broker."
+      },
+      {
+        "q": "Do I pay the DP charge if I buy and just hold?",
+        "a": "No. It comes when you sell and shares leave your demat. Buying does not trigger it, which is why the same charge hurts someone who sells often far more than someone who rarely sells."
+      },
+      {
+        "q": "Would two ₹500 trades be cheaper than one {trade} trade?",
+        "a": "No, worse. Two separate ₹500 round trips in different shares cost about {twoHalves}, against {total} for one of {trade}, because each carries its own flat charges."
+      },
+      {
+        "q": "Intraday trades have no DP charge. Are they cheaper?",
+        "a": "On that one line, yes: shares bought and sold the same day never reach your demat. But charges are only part of it. SEBI's study of FY23 found that 71% of individual intraday traders in the cash segment lost money."
+      }
+    ],
+    "ch05": [
+      {
+        "q": "So is it impossible to start with {c2000}?",
+        "a": "No. This chapter measures trading, not owning. The gap applies to every round trip, so {pct2000}% once is very different from {pct2000}% every week. How often you sell changes the sum more than people expect. This is arithmetic, not a recommendation."
+      },
+      {
+        "q": "What if my broker charges a lower DP fee?",
+        "a": "The gap shrinks, but it does not vanish. Even with no DP charge at all, this {c2000} round trip would still need about {gapNoDp}%. DP fees differ by broker, so the charges page is worth reading before comparing apps."
+      },
+      {
+        "q": "Is {pct2000}% exact?",
+        "a": "Close, and slightly low. It assumes you sell at the price you bought at. Selling higher raises the sell-side charges a little, so the true figure sits just above it. Tax on any gain is extra."
+      },
+      {
+        "q": "Does the share's price change the gap?",
+        "a": "No. One share at {c2000} and 20 shares at ₹100 cost the same {cost2000} to trade, because charges depend on the total amount, not on the number of shares."
+      }
+    ],
+    "ch06": [
+      {
+        "q": "Which 49 companies are these?",
+        "a": "Large Indian companies, left unnamed so that nothing here reads as a tip. How the list was made matters more: it uses companies that are large today, so ones that failed are missing. That makes the result look better than anyone in 2019 could have expected."
+      },
+      {
+        "q": "Does holding always recover like this?",
+        "a": "No. This is one crash. Others have taken many years to recover, and a single company can fall and never come back. Spreading money across many companies reduces that risk. It does not remove it."
+      },
+      {
+        "q": "Could I have sold before the fall and bought back at the bottom?",
+        "a": "Only with hindsight. Nobody knew 24 March 2020 was the bottom, and for {fallDays} days nothing signalled when the fall would stop. Doing this means being right twice: about when to leave, and about when to return."
+      },
+      {
+        "q": "What was the steep fall around 2023 on the chart?",
+        "a": "Mostly one holding. The basket was never rebalanced, so one share grew far too large inside it and then crashed. That is why this chapter teaches from 2020: the 2023 fall says more about how this basket was built than about the market."
+      }
+    ],
+    "ch07": [
+      {
+        "q": "Does the 91% SEBI loss number apply to long-term mutual fund SIPs too?",
+        "a": "No. That study counts individual traders in equity derivatives, meaning F&O. It says nothing about mutual funds, SIPs or simply owning shares. Those carry their own risks, which Chapters 06 and 08 come to, but this number is not about them."
+      },
+      {
+        "q": "Do the 9 keep winning year after year?",
+        "a": "It is not a lasting group. SEBI's study of FY22 to FY24 found that only about 7.2% of individual F&O traders made a profit over those three years."
+      },
+      {
+        "q": "Is 91% the latest figure?",
+        "a": "It is the FY25 figure from SEBI's July 2025 study, and the one this site is named after. A later SEBI study reports 87.7% for FY26, with net losses of ₹91,685 crore, and revises FY25 losses to about ₹1.12 lakh crore. The picture has shifted a little. It has not changed."
+      },
+      {
+        "q": "How much did a typical trader lose?",
+        "a": "About ₹1.1 lakh on average in FY25. An average hides a wide spread: some lost far less and some far more."
+      }
+    ],
+    "ch08": [
+      {
+        "q": "Is {rate}% a year guaranteed?",
+        "a": "No. It is an assumption for showing the shape of compounding. A real fund's return changes every year, can be negative, and depends on the years you happen to pick. Nobody can promise it."
+      },
+      {
+        "q": "Can a SIP lose money?",
+        "a": "Yes. If the market is down when you need the money, you can get back less than you put in. A SIP spreads your buying over time. It does not protect you from a fall."
+      },
+      {
+        "q": "Which fund should I pick?",
+        "a": "This site does not name or recommend any fund. What anyone can compare is what a fund holds and its expense ratio, the yearly cost taken from your money. For personal advice, SEBI registers investment advisers. This chapter cannot be one."
+      },
+      {
+        "q": "What if I miss a month or stop?",
+        "a": "What you already put in stays invested, and a SIP can usually be paused or stopped. The figures here assume every instalment arrives, so gaps lower them, and early instalments count most because they have the longest to grow."
+      }
+    ]
   }
 }

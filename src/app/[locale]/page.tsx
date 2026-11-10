@@ -1,14 +1,22 @@
+import type { Metadata } from "next";
 import { hasLocale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
+import { ChapterDoubts } from "@/components/ChapterDoubts";
 import { ChapterMessages } from "@/components/ChapterMessages";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
 import { routing } from "@/i18n/routing";
+import { chapterMetadata } from "@/lib/chapter-metadata";
 import { CoffeeCartSceneLoader } from "@/scenes/chapter-00/CoffeeCartSceneLoader";
 
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return chapterMetadata(locale, "00");
+}
 
 export default function ChapterZero({ params }: Props) {
   const { locale } = use(params);
@@ -47,6 +55,9 @@ export default function ChapterZero({ params }: Props) {
           <p className="mt-[.8rem] text-ink-soft">{t("handoffP")}</p>
         </div>
       </section>
+
+      <ChapterDoubts chapter="ch00" />
+
 
       <ChapterNav current="00" />
     </main>

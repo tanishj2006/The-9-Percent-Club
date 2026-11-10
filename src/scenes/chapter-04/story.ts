@@ -1,5 +1,5 @@
 import { formatCost, formatRupees, type HudNote } from "@/lib/hud-store";
-import { roundTripCost } from "@/lib/costs";
+import { GROWW, roundTripCost } from "@/lib/costs";
 
 /**
  * Every figure in Chapter 04 comes from costs.ts: one delivery round trip of
@@ -72,6 +72,17 @@ export const BEAT_NOTE: HudNote[] = [
   "hudUnmoved",
 ];
 
+/** The same trade at a broker charging no brokerage, keeping its DP charge. */
+export const NO_BROKERAGE_COST = roundTripCost(QTY, PRICE, PRICE, "delivery", {
+  ...GROWW,
+  deliveryFlat: 0,
+  deliveryPct: 0,
+  deliveryMin: 0,
+}).total;
+
+/** Two separate ₹500 round trips, in different shares. */
+export const TWO_HALVES_COST = 2 * roundTripCost(QTY / 2, PRICE, PRICE).total;
+
 /** Figures for the copy, formatted once. */
 export const VALUES: Record<string, string> = {
   wallet: formatRupees(WALLET),
@@ -92,4 +103,6 @@ export const VALUES: Record<string, string> = {
   total: formatCost(TOTAL_COST),
   kept: formatCost(KEPT),
   lostPct: ((TOTAL_COST / TRADE) * 100).toFixed(2),
+  noBrokerage: formatCost(NO_BROKERAGE_COST),
+  twoHalves: formatCost(TWO_HALVES_COST),
 };

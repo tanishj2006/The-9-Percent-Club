@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { MoneyHud } from "@/components/MoneyHud";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const display = Instrument_Serif({
@@ -39,7 +40,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t("meta.title"), description: t("site.tagline") };
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: t("meta.title"),
+    description: t("site.tagline"),
+  };
 }
 
 export default async function LocaleLayout({ children, params }: Props) {

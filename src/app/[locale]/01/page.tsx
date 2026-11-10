@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { hasLocale, useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
 import { ChapterIntro } from "@/components/ChapterIntro";
+import { ChapterDoubts } from "@/components/ChapterDoubts";
 import { ChapterMessages } from "@/components/ChapterMessages";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
 import { routing } from "@/i18n/routing";
+import { chapterMetadata } from "@/lib/chapter-metadata";
 import { PlumbingSceneLoader } from "@/scenes/chapter-01/PlumbingSceneLoader";
 import { VALUES } from "@/scenes/chapter-01/story";
 
@@ -15,8 +17,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
-  return { title: t("meta.ch01") };
+  return chapterMetadata(locale, "01", VALUES);
 }
 
 export default function ChapterOne({ params }: Props) {
@@ -45,6 +46,9 @@ export default function ChapterOne({ params }: Props) {
         </div>
         <p className="mt-8 text-sm text-ink-faint">{t("assumptions")}</p>
       </section>
+
+      <ChapterDoubts chapter="ch01" values={VALUES} />
+
 
       <ChapterNav current="01" />
     </main>

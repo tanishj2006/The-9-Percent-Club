@@ -88,4 +88,5 @@ export const VALUES: Record<string, string> = {
   tenCost: formatCost(TEN_TRIPS_COST),
   tenPct: ((TEN_TRIPS_COST / WALLET) * 100).toFixed(1),
   ten: String(TEN),
+  gapNoDp: formatGap(((you.cost - you.dp) / WALLET) * 100),
 };
