@@ -40,7 +40,7 @@ export default function ChapterSeven({ params }: Props) {
         <div className="eyebrow">{t("nextUp")}</div>
         <h2 className="mb-[1.2rem]">{t("outroH")}</h2>
         <p className="max-w-[34rem] text-[1.2rem] text-ink-soft">{t("outroP", VALUES)}</p>
-        <p className="mt-8 text-sm text-ink-faint">{t("assumptions")}</p>
+        <p className="mt-8 text-sm text-ink-faint">{t("assumptions", VALUES)}</p>
       </section>
 
       <ChapterDoubts chapter="ch07" values={VALUES} />
