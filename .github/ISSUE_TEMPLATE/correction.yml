@@ -1,0 +1,51 @@
+name: Correction
+description: Report a wrong number, a broken link or a mistake in the copy.
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking the arithmetic. Issues here are public, so please leave out anything personal, such as your own trades or account details.
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: Chapter
+      description: Where is the mistake?
+      options:
+        - "00 · The cold coffee cart"
+        - "01 · Who buys your token?"
+        - "02 · Who decides the price?"
+        - "03 · Reading a chart"
+        - "04 · What a trade really costs"
+        - "05 · Why ₹2,000 cannot trade"
+        - "06 · What losing looks like"
+        - "07 · The 91% number, FY25"
+        - "08 · What actually works"
+        - "About, Methodology, Terms or Privacy"
+        - "Something else"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - हिंदी
+        - Both
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong
+      description: Quote the sentence or number, and say what you think it should be.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A link to an official source, such as SEBI, NSE or BSE, that shows the correct figure.
+      placeholder: https://
+    validations:
+      required: false

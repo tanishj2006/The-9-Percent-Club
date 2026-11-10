@@ -1,0 +1,27 @@
+# Weekly dependency updates. Minor and patch bumps arrive as one grouped PR per
+# ecosystem; majors (Next 16, for example) arrive one at a time, because each
+# needs its own review against CLAUDE.md's locked stack.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Kolkata
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    labels: [dependencies]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Kolkata
+    groups:
+      actions:
+        patterns: ["*"]
+    labels: [dependencies]
