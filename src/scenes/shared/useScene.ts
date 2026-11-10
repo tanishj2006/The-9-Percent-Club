@@ -43,7 +43,9 @@ export function useScene(
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const lenis = new Lenis();
+        // anchors: in-page links like the hero's "Start chapter 00" glide on the
+        // same engine as the rest of the page, honouring scroll-margin-top.
+        const lenis = new Lenis({ anchors: true });
         lenis.on("scroll", ScrollTrigger.update);
         const raf = (time: number) => lenis.raf(time * 1000);
         gsap.ticker.add(raf);

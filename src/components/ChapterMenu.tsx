@@ -11,11 +11,8 @@ export function ChapterMenu() {
   const pathname = usePathname();
   const menu = useMenu();
 
-  const index = Math.max(
-    CHAPTERS.findIndex((c) => c.href === pathname),
-    0,
-  );
-  const current = CHAPTERS[index];
+  const index = CHAPTERS.findIndex((c) => c.href === pathname);
+  const current = index >= 0 ? CHAPTERS[index] : null;
 
   return (
     <nav
@@ -37,14 +34,20 @@ export function ChapterMenu() {
         data-header-item
         onClick={menu.toggle}
       >
-        <span className="chapter-trigger-number">{t("short", { number: current.number })}</span>
-        <span className="chapter-trigger-title">
-          <span aria-hidden="true"> · </span>
-          {t(current.titleKey)}
-        </span>
-        <span className="chapter-trigger-step">
-          {t("step", { current: index + 1, total: CHAPTERS.length })}
-        </span>
+        {current ? (
+          <>
+            <span className="chapter-trigger-number">{t("short", { number: current.number })}</span>
+            <span className="chapter-trigger-title">
+              <span aria-hidden="true"> · </span>
+              {t(current.titleKey)}
+            </span>
+            <span className="chapter-trigger-step">
+              {t("step", { current: index + 1, total: CHAPTERS.length })}
+            </span>
+          </>
+        ) : (
+          <span className="chapter-trigger-number">{t("label")}</span>
+        )}
         <Chevron />
       </button>
 

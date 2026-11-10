@@ -483,6 +483,418 @@
     }
   }
 
+  /* ---------- home hero ----------
+     The site's own first screen. The brand name is the largest type on it, and
+     Chapter 00's intro sits on a screen of its own below the chapter map. */
+  .hero {
+    min-height: calc(100svh - var(--header-h));
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: calc(var(--header-h) + 1rem) 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-areas: "brand figure";
+    column-gap: 3rem;
+    align-items: center;
+    align-content: center;
+    box-sizing: border-box;
+  }
+  .hero-brand {
+    grid-area: brand;
+  }
+  .hero-name {
+    margin: 0;
+    font-family: var(--font-instrument), Georgia, serif;
+    font-size: clamp(3.2rem, 13vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .hero-tagline {
+    margin: 0.7rem 0 0;
+    font-family: var(--font-instrument), Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.25rem, 3.6vw, 1.8rem);
+    line-height: 1.25;
+    color: var(--marigold-d);
+  }
+  :lang(hi) .hero-tagline {
+    font-family: var(--f-body);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .hero-meta {
+    margin: 1rem 0 0;
+    font-size: 0.95rem;
+    /* --ink-soft, not --ink-faint: the meta line must reach 4.5:1 in both themes */
+    color: var(--ink-soft);
+  }
+  .hero-start-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 2.75rem;
+    margin-top: 1.6rem;
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .hero-start-button:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+  .hero-start-button:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 3px;
+  }
+  .hero-figure {
+    grid-area: figure;
+    margin: 0;
+  }
+  .hero-figure svg {
+    display: block;
+    width: 100%;
+    max-width: 20rem;
+    height: auto;
+    margin-inline: auto;
+  }
+  /* The 91 are the mass, in muted ink. The 9 are outlines in neutral grey:
+     never marigold, never highlighted, because they are a count, not a goal. */
+  .hero-person[data-lost] {
+    fill: var(--ink-soft);
+  }
+  .hero-person:not([data-lost]) {
+    fill: none;
+    stroke: var(--ink-faint);
+    stroke-width: 1.2;
+  }
+  .hero-figure figcaption {
+    margin: 0.8rem auto 0;
+    max-width: 20rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  /* Chapter 00 starts on its own screen; the anchor lands below the header. */
+  #chapter-00 {
+    scroll-margin-top: var(--header-h);
+  }
+  /* Before the scene's chunk arrives there is no Lenis, so the browser glides
+     instead. Never with Lenis on the page (they would fight over every frame)
+     and never under reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "brand"
+        "figure";
+      row-gap: 1.6rem;
+      padding-block: calc(var(--header-h) + 1.25rem) 1.5rem;
+      align-content: start;
+    }
+    .hero-figure svg {
+      max-width: 13rem;
+    }
+    .hero-figure figcaption {
+      max-width: 22rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .chapter-map {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 1.5rem 3rem;
+  }
+  .chapter-map ol {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+    gap: 0.4rem;
+  }
+  .chapter-map a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.6rem;
+    background: var(--bg-raise);
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+  .chapter-map a:hover {
+    border-color: var(--marigold);
+  }
+  .chapter-map a:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+  }
+  .chapter-map a[aria-current="page"] {
+    border-color: var(--teal);
+  }
+  .chapter-map-number {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--ink-faint);
+  }
+
+
+  /* ---------- footer ---------- */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+  }
+  .footer-inner {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 2rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .footer-brand {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.6rem;
+    margin: 0;
+    max-width: none;
+  }
+  .footer-name {
+    font-family: var(--font-instrument), Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+  }
+  .footer-tagline {
+    color: var(--ink-soft);
+  }
+  .footer-disclaimer {
+    margin: 0.6rem 0 0;
+    max-width: 44rem;
+    line-height: 1.5;
+  }
+  .footer-inline,
+  .footer-links a,
+  .info a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 0.2em;
+  }
+  .footer-inline:hover,
+  .footer-links a:hover,
+  .info a:hover {
+    text-decoration-color: var(--marigold);
+  }
+  .footer-links {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.2rem;
+  }
+  .footer-links a,
+  .footer-inline {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem; /* a full touch target */
+  }
+  .footer-inline:focus-visible,
+  .footer-links a:focus-visible,
+  .info a:focus-visible,
+  .built-by:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.4rem 1rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-copyright {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  /* "Built by Tanish": the underline draws in left to right, the arrow nudges */
+  .built-by {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 2.75rem;
+    font-family: var(--font-instrument), Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .built-by-text {
+    background-image: linear-gradient(var(--marigold), var(--marigold));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    padding-bottom: 2px;
+    transition: background-size 0.3s ease;
+  }
+  .built-by-arrow {
+    display: inline-block;
+    color: var(--marigold-d);
+    transition: transform 0.25s ease;
+  }
+  .built-by:hover .built-by-text,
+  .built-by:focus-visible .built-by-text {
+    background-size: 100% 2px;
+  }
+  .built-by:hover .built-by-arrow,
+  .built-by:focus-visible .built-by-arrow {
+    transform: translate(2px, -2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .built-by-text,
+    .built-by-arrow {
+      transition: none;
+    }
+    .built-by:hover .built-by-arrow,
+    .built-by:focus-visible .built-by-arrow {
+      transform: none;
+    }
+  }
+
+  /* ---------- About, Methodology, Terms, Privacy ---------- */
+  .info {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-block: calc(var(--header-h) + 2.5rem) 3rem;
+  }
+  .info h1 {
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+    margin-top: 0.4rem;
+  }
+  .info h2 {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    margin: 2.2rem 0 0.6rem;
+  }
+  .info p {
+    color: var(--ink-soft);
+  }
+  .info-lede {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+  }
+  .info-links,
+  .info-studies,
+  .info-list {
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+    color: var(--ink-soft);
+  }
+  .info-studies {
+    list-style: none;
+    padding-left: 0;
+  }
+  .info-studies li {
+    border-left: 2px solid var(--rule);
+    padding: 0.2rem 0 0.2rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .info-studies p {
+    margin-bottom: 0.3rem;
+  }
+  .info-links a,
+  .info-studies a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  .info-footnotes {
+    margin: 0;
+  }
+  .info-footnotes > div {
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .info-footnotes dt {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .info-footnotes dd {
+    margin: 0.3rem 0 0;
+    color: var(--ink-soft);
+  }
+  .info code {
+    font-family: var(--f-mono);
+    font-size: 0.9em;
+  }
+  .info-updated {
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* not-found and error pages */
+  .safety {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-block: calc(var(--header-h) + 3rem) 2.5rem;
+  }
+  .safety h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    margin-top: 0.4rem;
+  }
+  .safety h2 {
+    font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+    margin-top: 2.2rem;
+  }
+  .safety-text {
+    margin-top: 0.9rem;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+  }
+  .safety-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
+  .safety-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--marigold);
+    background: var(--marigold);
+    color: #1a1a1f;
+    font-weight: 600;
+  }
+  .safety-link.safety-quiet {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--rule);
+  }
+  .safety-link:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 2px;
+  }
+
   /* intro */
   .intro {
     min-height: 86vh;
@@ -1294,6 +1706,16 @@
   .doubt p {
     color: var(--ink-soft);
     margin: 0 0 1rem;
+  }
+
+  /* A coin cursor on the two places that are about money changing hands, and
+     only where there is a real mouse. Touch screens never see it, and the
+     fallback is the ordinary pointer. */
+  @media (hover: hover) and (pointer: fine) {
+    .grid-wrap svg,
+    .gate-button {
+      cursor: url(/coin.svg) 16 16, pointer;
+    }
   }
 
   /* chapter pager */

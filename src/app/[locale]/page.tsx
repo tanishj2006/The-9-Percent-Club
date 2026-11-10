@@ -4,9 +4,11 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { use } from "react";
 import { ChapterDoubts } from "@/components/ChapterDoubts";
+import { ChapterIntro } from "@/components/ChapterIntro";
 import { ChapterMessages } from "@/components/ChapterMessages";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
+import { ChapterMap, HomeHero } from "@/components/HomeHero";
 import { routing } from "@/i18n/routing";
 import { chapterMetadata } from "@/lib/chapter-metadata";
 import { CoffeeCartSceneLoader } from "@/scenes/chapter-00/CoffeeCartSceneLoader";
@@ -28,17 +30,9 @@ export default function ChapterZero({ params }: Props) {
   return (
     <main>
       <ChapterStart />
-      <section className="intro gutter">
-        <div className="eyebrow">{t("ch")}</div>
-        <h1>{t.rich("title", { br: () => <br /> })}</h1>
-        <p className="mt-[1.4rem] max-w-[30rem] text-xl text-ink-soft">
-          {t("tagline")}
-        </p>
-        <div className="scroll-cue">
-          <span className="scroll-cue-bar" />
-          <span>{t("scrollCue")}</span>
-        </div>
-      </section>
+      <HomeHero />
+      <ChapterMap />
+      <ChapterIntro chapter="ch00" id="chapter-00" />
 
       <ChapterMessages chapter="ch00">
         <CoffeeCartSceneLoader />

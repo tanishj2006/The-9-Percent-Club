@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 import { usePathname } from "@/i18n/navigation";
 
 /**
@@ -21,15 +21,22 @@ export function useMenu() {
   const close = useCallback(() => setOpenOn(null), []);
   const toggle = () => setOpenOn(open ? null : pathname);
 
+  // Focus moves in a layout effect, in the same frame the menu opens. In a
+  // passive effect, a fast "down, down, Enter" could land its second key on
+  // the trigger before focus arrived, and close the menu instead of moving.
+  useLayoutEffect(() => {
+    if (!open) return;
+    // Start on the current choice, so the reader can see where they are.
+    const current = root.current?.querySelector<HTMLElement>('[aria-current="page"], [aria-checked="true"]');
+    (current ?? items()[0])?.focus();
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     const outside = (event: PointerEvent) => {
       if (!root.current?.contains(event.target as Node)) close();
     };
     document.addEventListener("pointerdown", outside);
-    // Start on the current choice, so the reader can see where they are.
-    const current = root.current?.querySelector<HTMLElement>('[aria-current="page"], [aria-checked="true"]');
-    (current ?? items()[0])?.focus();
     return () => document.removeEventListener("pointerdown", outside);
   }, [open, close]);
 
