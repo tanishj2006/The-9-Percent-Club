@@ -877,11 +877,13 @@
     "methodology": "Methodology and sources",
     "terms": "Disclaimer and terms",
     "privacy": "Privacy",
-    "feedback": "Feedback",
+    "feedback": "Found a mistake? Email me",
     "source": "Source on GitHub",
     "copyright": "© 2026 Tanish Jain",
     "builtBy": "Built by Tanish",
-    "newTab": "(opens in a new tab)"
+    "newTab": "(opens in a new tab)",
+    "feedbackIssue": "or open an issue on GitHub",
+    "support": "Support this project"
   },
   "about": {
     "metaTitle": "About | The 9% Club",
@@ -892,7 +894,10 @@
     "why": "Most beginners learn about the stock market from hype: reels, tips and screenshots of big wins. Very little of it shows the arithmetic underneath, like the charges taken from every trade, or what a real crash felt like for someone who held on.",
     "how": "This course tries to show that arithmetic instead. Every number on the site comes from a real cost model or from real historical data, and the methodology page says where each one comes from.",
     "not": "It is education, not advice. It will not tell you what to buy, and nothing here can put anyone among the 9 in 100 who made money. The aim is only to help you see the costs and risks clearly, before you decide anything for yourself.",
-    "methodologyLink": "Where every number comes from"
+    "methodologyLink": "Where every number comes from",
+    "contact": "Spotted something wrong?",
+    "contactEmail": "Email me",
+    "contactIssue": "or open an issue on GitHub"
   },
   "methodology": {
     "metaTitle": "Methodology and sources | The 9% Club",
@@ -921,8 +926,8 @@
     "simplificationsLede": "These are the footnotes from each chapter, shown here word for word.",
     "mistakeTitle": "Found a mistake?",
     "mistake": "If a number looks wrong, I would like to know.",
-    "mistakeEmail": "Send feedback",
-    "mistakeIssues": "Report it on GitHub"
+    "mistakeEmail": "Email me",
+    "mistakeIssues": "or open an issue on GitHub"
   },
   "terms": {
     "metaTitle": "Disclaimer and terms | The 9% Club",
@@ -962,7 +967,11 @@
       "title": "Law",
       "text": "These terms are governed by the laws of India."
     },
-    "updated": "Last updated: November 2026."
+    "updated": "Last updated: November 2026.",
+    "support": {
+      "title": "Support",
+      "text": "Support payments are voluntary and non-refundable. They buy no access, no advice and no influence over what this site says, and they are not related to any investment content."
+    }
   },
   "privacy": {
     "metaTitle": "Privacy | The 9% Club",
@@ -1004,9 +1013,29 @@
     "none": "There are no accounts, no forms and no ads. The calculators run in your browser and send nothing anywhere. Nothing is sold or shared.",
     "contactTitle": "Questions about your data",
     "contact": "If you have a question about any of this,",
-    "contactEmail": "send feedback",
-    "contactIssues": "open an issue on GitHub",
-    "contactIssuesWarning": "GitHub issues are public, so please do not include personal details there.",
-    "updated": "Last updated: November 2026."
+    "contactEmail": "Email me",
+    "contactIssues": "or open an issue on GitHub",
+    "contactIssuesWarning": "GitHub issues are public, so please do not put personal details in one.",
+    "updated": "Last updated: November 2026.",
+    "contactEmailPrivacy": "Email you send is read by the author only. The site itself stores nothing you send.",
+    "paymentsTitle": "Support payments",
+    "payments": "If you choose to chip in, the payment goes through your own UPI app and your bank. This site never sees or stores who paid, how much, or any account details."
+  },
+  "support": {
+    "metaTitle": "Support this project | The 9% Club",
+    "description": "The 9% Club is free and stays free. An optional way to chip in.",
+    "eyebrow": "Support",
+    "title": "Support this project",
+    "lede": "This site is free and stays free. If it helped, you can chip in. Nothing changes if you do not.",
+    "button": "Pay with a UPI app",
+    "qrAlt": "A QR code that opens a UPI payment to the author",
+    "qrCaption": "Scan with any UPI app.",
+    "idLabel": "UPI ID:",
+    "points": {
+      "voluntary": "It is voluntary.",
+      "refund": "It is non-refundable.",
+      "nothing": "It buys no access, no advice and no say in what the site says.",
+      "unrelated": "It is not related to any investment content on this site."
+    }
   }
 }

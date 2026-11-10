@@ -877,11 +877,13 @@
     "methodology": "तरीका और स्रोत",
     "terms": "Disclaimer और शर्तें",
     "privacy": "Privacy",
-    "feedback": "Feedback",
+    "feedback": "कोई गलती दिखी? मुझे email करें",
     "source": "GitHub पर source",
     "copyright": "© 2026 Tanish Jain",
     "builtBy": "तनिश द्वारा बनाया गया",
-    "newTab": "(नए tab में खुलेगा)"
+    "newTab": "(नए tab में खुलेगा)",
+    "feedbackIssue": "या GitHub पर issue खोलें",
+    "support": "इस project का साथ दें"
   },
   "about": {
     "metaTitle": "परिचय | The 9% Club",
@@ -892,7 +894,10 @@
     "why": "ज़्यादातर नए लोग share market के बारे में hype से सीखते हैं: reels, tips और बड़ी कमाई के screenshots। इनमें नीचे छुपा हिसाब शायद ही दिखता है, जैसे हर trade से कटने वाले charges, या किसी असली crash में रुके रहने वाले को कैसा लगा।",
     "how": "यह course वही हिसाब दिखाने की कोशिश करता है। इस site का हर number एक असली cost model या असली पुराने data से आता है, और तरीके वाला पन्ना बताता है कि कौन सा number कहाँ से आया।",
     "not": "यह education है, advice नहीं। यह नहीं बताता कि क्या खरीदें, और यहाँ का कुछ भी किसी को उन 100 में से 9 में नहीं पहुँचा सकता जिन्होंने पैसे कमाए। मकसद बस इतना है कि आप कोई भी फ़ैसला खुद लेने से पहले खर्च और जोखिम साफ़ देख सकें।",
-    "methodologyLink": "हर number कहाँ से आता है"
+    "methodologyLink": "हर number कहाँ से आता है",
+    "contact": "कुछ गलत दिखा?",
+    "contactEmail": "मुझे email करें",
+    "contactIssue": "या GitHub पर issue खोलें"
   },
   "methodology": {
     "metaTitle": "तरीका और स्रोत | The 9% Club",
@@ -921,8 +926,8 @@
     "simplificationsLede": "ये हर अध्याय के footnotes हैं, यहाँ शब्दशः दिखाए गए।",
     "mistakeTitle": "कोई गलती दिखी?",
     "mistake": "अगर कोई number गलत लगे, तो मुझे बताइए।",
-    "mistakeEmail": "Feedback भेजें",
-    "mistakeIssues": "GitHub पर बताएँ"
+    "mistakeEmail": "मुझे email करें",
+    "mistakeIssues": "या GitHub पर issue खोलें"
   },
   "terms": {
     "metaTitle": "Disclaimer और शर्तें | The 9% Club",
@@ -962,7 +967,11 @@
       "title": "कानून",
       "text": "ये शर्तें भारत के कानूनों के अधीन हैं।"
     },
-    "updated": "आखिरी बदलाव: नवंबर 2026।"
+    "updated": "आखिरी बदलाव: नवंबर 2026।",
+    "support": {
+      "title": "Support",
+      "text": "Support के payments अपनी मर्ज़ी से हैं और वापस नहीं होते। इनसे कोई access, कोई advice या site की बातों पर कोई असर नहीं मिलता, और इनका किसी investment content से कोई लेना-देना नहीं है।"
+    }
   },
   "privacy": {
     "metaTitle": "Privacy | The 9% Club",
@@ -1004,9 +1013,29 @@
     "none": "यहाँ कोई account नहीं, कोई form नहीं और कोई ad नहीं। Calculators आपके browser में चलते हैं और कहीं कुछ नहीं भेजते। कुछ भी बेचा या साझा नहीं किया जाता।",
     "contactTitle": "अपने data के बारे में सवाल",
     "contact": "अगर इनमें से किसी बात पर सवाल हो, तो",
-    "contactEmail": "feedback भेजें",
-    "contactIssues": "GitHub पर issue खोलें",
-    "contactIssuesWarning": "GitHub issues सबको दिखते हैं, इसलिए वहाँ अपनी निजी जानकारी न डालें।",
-    "updated": "आखिरी बदलाव: नवंबर 2026।"
+    "contactEmail": "मुझे email करें",
+    "contactIssues": "या GitHub पर issue खोलें",
+    "contactIssuesWarning": "GitHub issues सबको दिखते हैं, इसलिए उनमें अपनी निजी जानकारी न डालें।",
+    "updated": "आखिरी बदलाव: नवंबर 2026।",
+    "contactEmailPrivacy": "आपका भेजा email सिर्फ़ लेखक पढ़ते हैं। Site खुद आपका भेजा कुछ भी नहीं रखती।",
+    "paymentsTitle": "Support के payments",
+    "payments": "अगर आप कुछ देना चाहें, तो payment आपके अपने UPI app और bank से होता है। यह site कभी नहीं देखती और न रखती है कि किसने दिया, कितना दिया, या कोई account जानकारी।"
+  },
+  "support": {
+    "metaTitle": "इस project का साथ दें | The 9% Club",
+    "description": "The 9% Club मुफ़्त है और मुफ़्त रहेगी। साथ देने का एक वैकल्पिक तरीका।",
+    "eyebrow": "Support",
+    "title": "इस project का साथ दें",
+    "lede": "यह site मुफ़्त है और मुफ़्त ही रहेगी। अगर इससे मदद मिली, तो आप कुछ दे सकते हैं। न दें, तो भी कुछ नहीं बदलता।",
+    "button": "UPI app से pay करें",
+    "qrAlt": "एक QR code जो लेखक को UPI payment खोलता है",
+    "qrCaption": "किसी भी UPI app से scan करें।",
+    "idLabel": "UPI ID:",
+    "points": {
+      "voluntary": "यह पूरी तरह आपकी मर्ज़ी है।",
+      "refund": "यह वापस नहीं होता।",
+      "nothing": "इससे कोई access, कोई advice या site की बातों पर कोई असर नहीं मिलता।",
+      "unrelated": "इसका इस site के किसी investment content से कोई लेना-देना नहीं है।"
+    }
   }
 }
