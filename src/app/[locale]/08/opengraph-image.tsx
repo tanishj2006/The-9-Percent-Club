@@ -6,6 +6,8 @@ export const contentType = OG_TYPE;
 
 // Rendered once at build time, so previews are instant and no font files are
 // needed at runtime.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ogLocales();
 }

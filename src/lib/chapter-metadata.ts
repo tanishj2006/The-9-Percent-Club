@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { CHAPTERS, type ChapterNumber } from "./chapters";
-import { absoluteUrl, languageAlternates, SITE_NAME } from "./site";
+import { absoluteUrl, languageAlternates, SITE_NAME, type Href } from "./site";
 
 /** Title, description, canonical, hreflang and social tags for one chapter page. */
 export async function chapterMetadata(
@@ -14,7 +14,11 @@ export async function chapterMetadata(
 
   const title = t(number === "00" ? "meta.title" : `meta.${titleKey}`);
   const description = t(`${titleKey}.tagline`, values);
+  return routeMetadata(locale, href, title, description);
+}
 
+/** Canonical, hreflang and social tags for any page on the site. */
+export function routeMetadata(locale: string, href: Href, title: string, description: string): Metadata {
   return {
     title,
     description,

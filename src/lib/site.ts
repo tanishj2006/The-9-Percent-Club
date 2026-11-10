@@ -1,4 +1,5 @@
 import { CHAPTERS } from "./chapters";
+import { INFO_PAGES } from "./pages";
 import { routing } from "@/i18n/routing";
 
 /**
@@ -14,7 +15,10 @@ export const SITE_URL = (
 
 export const SITE_NAME = "The 9% Club";
 
-type Href = (typeof CHAPTERS)[number]["href"];
+/** Every page the site has: the nine chapters, then the four info pages. */
+export const SITE_HREFS = [...CHAPTERS.map((c) => c.href), ...INFO_PAGES.map((p) => p.href)];
+
+export type Href = (typeof SITE_HREFS)[number];
 
 /** `/en` for chapter 00, `/en/04` for the rest. */
 export const localizedPath = (locale: string, href: Href) =>

@@ -25,10 +25,19 @@ describe("hreflang", () => {
 describe("sitemap", () => {
   const entries = sitemap();
 
-  it("lists all 18 routes, once each", () => {
+  it("lists all 26 routes, once each: nine chapters and four info pages, in two languages", () => {
     expect(CHAPTERS).toHaveLength(9);
-    expect(entries).toHaveLength(18);
-    expect(new Set(entries.map((e) => e.url)).size).toBe(18);
+    expect(entries).toHaveLength(26);
+    expect(new Set(entries.map((e) => e.url)).size).toBe(26);
+  });
+
+  it("includes the four info pages in both languages", () => {
+    const urls = entries.map((e) => e.url.replace(SITE_URL, ""));
+    for (const locale of ["en", "hi"]) {
+      for (const page of ["about", "methodology", "terms", "privacy"]) {
+        expect(urls).toContain(`/${locale}/${page}`);
+      }
+    }
   });
 
   it("includes both roots and every chapter in both languages", () => {
@@ -86,6 +95,14 @@ describe("SITE_URL", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", undefined as unknown as string);
     vi.stubEnv("VERCEL_PROJECT_PRODUCTION_URL", undefined as unknown as string);
     expect(await load()).toBe("http://localhost:3000");
+  });
+
+  it("builds hreflang for info pages the same way as chapters", () => {
+    expect(languageAlternates("/privacy")).toEqual({
+      en: `${SITE_URL}/en/privacy`,
+      hi: `${SITE_URL}/hi/privacy`,
+      "x-default": `${SITE_URL}/en/privacy`,
+    });
   });
 
   it("keeps the absolute helper on the same base", () => {
