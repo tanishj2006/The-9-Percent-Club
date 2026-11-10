@@ -31,6 +31,13 @@ Chapters live at `/en`, `/en/01` to `/en/08`, with the same paths under `/hi`.
 
 `prototype/chapter-00.html` is the original standalone reference.
 
+## Deploying
+
+Set `NEXT_PUBLIC_SITE_URL` to the public address, for example
+`https://example.com`. Canonical links, hreflang, the sitemap and share cards all
+use it. Without it, Vercel builds fall back to the project's production URL and
+local builds to localhost.
+
 ## Approach
 
 Scroll scenes use GSAP ScrollTrigger through `useGSAP`, with Lenis for smooth
