@@ -24,7 +24,7 @@ export function MoneyHud() {
           : undefined;
 
   return (
-    <div className="hud" data-tone={tone} data-testid="hud">
+    <div className="hud" data-tone={tone} data-testid="hud" data-header-item>
       <div className="hud-label" data-testid="hud-label">
         {t(label ?? "hudLabel")}
       </div>

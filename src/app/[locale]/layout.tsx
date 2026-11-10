@@ -4,9 +4,8 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
-import { Controls } from "@/components/Controls";
 import { Footer } from "@/components/Footer";
-import { MoneyHud } from "@/components/MoneyHud";
+import { SiteHeader } from "@/components/SiteHeader";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
@@ -64,8 +63,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body>
         <ThemeProvider>
           <NextIntlClientProvider messages={{ site, nav }}>
-            <Controls />
-            <MoneyHud />
+            <SiteHeader />
             {children}
             <Footer />
           </NextIntlClientProvider>
