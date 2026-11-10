@@ -41,14 +41,21 @@ On Vercel:
    `https://example.com`, for Production. Canonical links, hreflang, the
    sitemap and share cards use it. Without it, Vercel falls back to the
    project's production URL, and local builds to localhost.
-3. **Turn on Web Analytics** in the project settings. `@vercel/analytics` only
+3. **Optionally set `NEXT_PUBLIC_UPI_ID` and `NEXT_PUBLIC_UPI_NAME`** to show
+   the Support page and its footer link. Without both, `/support` is a 404 and
+   the link is hidden. They are read at build time, so redeploy after changing
+   them.
+4. **Turn on Web Analytics** in the project settings. `@vercel/analytics` only
    renders when `VERCEL_ENV` is `production`, so previews and local runs send
    nothing.
-4. **Check the share cards on a preview deploy** before going live. Open
+5. **Check the share cards on a preview deploy** before going live. Open
    `/en/04/opengraph-image` and `/hi/05/opengraph-image` and look at them:
    the Hindi must read correctly, and ₹ must appear in the English titles.
    They are drawn with HarfBuzz (WebAssembly) and fonts read from
    `src/assets/fonts` with `fs`.
+
+Create a `correction` label in the GitHub repo, so issues opened from the
+correction template (`.github/ISSUE_TEMPLATE/correction.yml`) are labelled.
 
 The cards are rendered once, at build time, for the 18 real routes, and
 `dynamicParams = false` stops any other path from rendering one on request. So
