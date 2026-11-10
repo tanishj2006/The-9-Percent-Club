@@ -1,6 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { STORED } from "../src/lib/privacy";
+import { CONTACT_EMAIL } from "../src/lib/site";
 import { open, switchLanguage } from "./helpers";
+
+const MAILTO = new RegExp(`^mailto:${CONTACT_EMAIL.replace(/[.]/g, "\\.")}`);
 
 test.skip(process.env.E2E_DEV === "1", "production behaviour");
 
@@ -72,9 +75,13 @@ test.describe("footer", () => {
         if (href.startsWith("/")) {
           expect((await request.get(href)).status(), href).toBe(200);
         } else if (href.startsWith("mailto:")) {
-          expect(href).toBe("mailto:hello@e2e.example?subject=The%209%25%20Club");
+          expect(href).toBe(`mailto:${CONTACT_EMAIL}?subject=The%209%25%20Club%3A%20correction%20or%20feedback`);
         } else {
-          expect(["https://github.com/tanishj2006/The-9-Percent-Club", "https://tanishj-portfolio.vercel.app/?ref=9percentclub"]).toContain(href);
+          expect([
+            "https://github.com/tanishj2006/The-9-Percent-Club",
+            "https://github.com/tanishj2006/The-9-Percent-Club/issues/new?template=correction.yml&labels=correction",
+            "https://tanishj-portfolio.vercel.app/?ref=9percentclub",
+          ]).toContain(href);
         }
       }
       for (const page_ of ["about", "methodology", "terms", "privacy"]) {
@@ -83,11 +90,44 @@ test.describe("footer", () => {
     }
   });
 
-  test("Feedback and Source are there, in that order", async ({ page }) => {
+  test("the link row, then the two ways to report a mistake", async ({ page }) => {
     await page.goto("/en");
-    const labels = await page.getByTestId("site-footer").locator(".footer-links a").allTextContents();
-    expect(labels).toEqual(["About", "Methodology and sources", "Disclaimer and terms", "Privacy", "Feedback", "Source on GitHub"]);
+    const footer = page.getByTestId("site-footer");
+    const labels = await footer.locator(".footer-links a").allTextContents();
+    expect(labels).toEqual(["About", "Methodology and sources", "Disclaimer and terms", "Privacy", "Source on GitHub"]);
     await expect(page.getByTestId("source")).toHaveAttribute("href", "https://github.com/tanishj2006/The-9-Percent-Club");
+    const email = page.getByTestId("feedback");
+    await expect(email).toHaveText("Found a mistake? Email me");
+    const url = new URL((await email.getAttribute("href"))!);
+    expect(url.protocol).toBe("mailto:");
+    expect(url.pathname).toBe(CONTACT_EMAIL);
+    expect(url.searchParams.get("subject")).toBe("The 9% Club: correction or feedback");
+    const issue = page.getByTestId("feedback-issue");
+    await expect(issue).toHaveText("or open an issue on GitHub");
+    const issueUrl = new URL((await issue.getAttribute("href"))!);
+    expect(issueUrl.pathname).toBe("/tanishj2006/The-9-Percent-Club/issues/new");
+    expect(issueUrl.searchParams.get("labels")).toBe("correction");
+    expect(issueUrl.searchParams.get("template")).toBe("correction.yml");
+    const [emailSize, issueSize] = await Promise.all([email, issue].map((l) => l.evaluate((el) => parseFloat(getComputedStyle(el).fontSize))));
+    expect(issueSize, "the GitHub link is the smaller of the two").toBeLessThan(emailSize);
+  });
+
+  test("Hindi: the same two links, in Hindi", async ({ page }) => {
+    await page.goto("/hi");
+    await expect(page.getByTestId("feedback")).toHaveText("कोई गलती दिखी? मुझे email करें");
+    await expect(page.getByTestId("feedback-issue")).toHaveText("या GitHub पर issue खोलें");
+    await expect(page.getByTestId("feedback")).toHaveAttribute("href", new RegExp(`${MAILTO.source}\\?subject=`));
+  });
+
+  test("About, Methodology and Privacy use the same pair of links", async ({ page }) => {
+    for (const name of ["about", "methodology", "privacy"]) {
+      await page.goto(`/en/${name}`);
+      const main = page.getByTestId(name);
+      await expect(main.getByTestId("contact-email"), name).toHaveAttribute("href", `mailto:${CONTACT_EMAIL}?subject=The%209%25%20Club%3A%20correction%20or%20feedback`);
+      await expect(main.getByTestId("contact-issue"), name).toHaveAttribute("href", "https://github.com/tanishj2006/The-9-Percent-Club/issues/new?template=correction.yml&labels=correction");
+    }
+    await page.goto("/en/privacy");
+    await expect(page.getByTestId("privacy-email")).toHaveText("Email you send is read by the author only. The site itself stores nothing you send.");
   });
 
   for (const [locale, text] of [
@@ -220,7 +260,7 @@ test.describe("the pages say true things", () => {
     const links = await studies.locator("a").evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).href));
     expect(links.every((href) => href.startsWith("https://www.sebi.gov.in/sebi_data/attachdocs/"))).toBe(true);
     expect(links).toHaveLength(5);
-    await expect(page.getByTestId("contact-link")).toHaveAttribute("href", /^mailto:hello@e2e\.example/);
+    await expect(page.getByTestId("contact-email")).toHaveAttribute("href", MAILTO);
   });
 
   test("terms cover what they must, and name no licence", async ({ page }) => {
