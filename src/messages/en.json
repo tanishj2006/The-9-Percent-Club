@@ -16,7 +16,6 @@
     "disclaimer": "Everything on this site is education. Nothing is advice.",
     "hudTokens": "2 of 100 tokens",
     "toggleTheme": "Toggle theme",
-    "toggleLang": "Switch to Hindi",
     "hudLabel": "Your money",
     "hudTrade": "This trade",
     "hudFresh": "fresh start",
@@ -33,7 +32,9 @@
     "hudAtExchange": "order at the exchange",
     "hudInDemat": "shares in your demat",
     "hudInShares": "{amount} in 10 shares",
-    "hudSharesAt": "10 shares at {amount}"
+    "hudSharesAt": "10 shares at {amount}",
+    "home": "The 9% Club, home",
+    "language": "Language"
   },
   "ch00": {
     "ch": "Chapter 00",
@@ -125,7 +126,9 @@
     "ch08": "What actually works",
     "ch01": "Who buys your token?",
     "ch02": "Who decides the price?",
-    "ch03": "Reading a chart"
+    "ch03": "Reading a chart",
+    "short": "Ch {number}",
+    "step": "{current}/{total}"
   },
   "ch04": {
     "ch": "Chapter 04",

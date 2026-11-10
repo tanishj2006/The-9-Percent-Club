@@ -16,7 +16,6 @@
     "disclaimer": "इस site पर सब कुछ सिर्फ़ education के लिए है। यहाँ कुछ भी advice नहीं है।",
     "hudTokens": "100 में से 2 token",
     "toggleTheme": "Theme बदलें",
-    "toggleLang": "Switch to English",
     "hudLabel": "आपके पैसे",
     "hudTrade": "यह trade",
     "hudFresh": "नई शुरुआत",
@@ -33,7 +32,9 @@
     "hudAtExchange": "order exchange पर",
     "hudInDemat": "share demat में",
     "hudInShares": "10 share में {amount}",
-    "hudSharesAt": "10 share, {amount} पर"
+    "hudSharesAt": "10 share, {amount} पर",
+    "home": "The 9% Club, मुख्य पन्ना",
+    "language": "भाषा"
   },
   "ch00": {
     "ch": "अध्याय 00",
@@ -125,7 +126,9 @@
     "ch08": "असल में क्या काम करता है",
     "ch01": "आपका token कौन खरीदेगा?",
     "ch02": "कीमत कौन तय करता है?",
-    "ch03": "Chart पढ़ना"
+    "ch03": "Chart पढ़ना",
+    "short": "अध्याय {number}",
+    "step": "{current}/{total}"
   },
   "ch04": {
     "ch": "अध्याय 04",
