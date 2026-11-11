@@ -1,6 +1,8 @@
 # Weekly dependency updates. Minor and patch bumps arrive as one grouped PR per
-# ecosystem; majors (Next 16, for example) arrive one at a time, because each
-# needs its own review against CLAUDE.md's locked stack.
+# ecosystem. npm major versions (Next 16, ESLint 10, @types/node 26) are ignored
+# on purpose: each is a planned migration against CLAUDE.md's locked stack, not a
+# bot PR. Watch `npm audit` in security.yml, and remove the ignore block below
+# when you decide to take a major.
 version: 2
 updates:
   - package-ecosystem: npm
@@ -14,6 +16,9 @@ updates:
       minor-and-patch:
         update-types: [minor, patch]
     labels: [dependencies]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
