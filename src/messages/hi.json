@@ -987,7 +987,7 @@
     },
     "stored": {
       "theme": "Theme button इस्तेमाल करने के बाद light या dark mode याद रखता है। यह तब तक रहता है जब तक आप इस site का data साफ़ न करें।",
-      "locale": "Language बदलने के बाद English या हिंदी याद रखता है, ताकि site उसी भाषा में खुले। यह session cookie है, browser बंद करने पर हट जाती है।"
+      "locale": "आपकी भाषा (English या हिंदी) याद रखती है, ताकि site उसी भाषा में खुले। यह cookie तब set होती है जब आप कोई page उस भाषा में खोलते हैं जो आपके browser की पसंद की भाषा से अलग है, जैसे भाषा बदलने पर, और उसके बाद हर बार भाषा बदलने पर update होती है। यह session cookie है, browser बंद करते ही हट जाती है।"
     },
     "storedNothingElse": "इसके अलावा कोई cookie नहीं है और browser storage में कुछ और नहीं। Site के fonts इसी site से आते हैं, किसी third party से नहीं।",
     "analyticsTitle": "Analytics",

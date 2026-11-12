@@ -987,7 +987,7 @@
     },
     "stored": {
       "theme": "Remembers light or dark mode, after you use the theme button. It stays until you clear this site's data.",
-      "locale": "Remembers English or Hindi, after you switch language, so the site opens in that language. It is a session cookie, deleted when you close the browser."
+      "locale": "Remembers English or Hindi, so the site opens in your language. It is set when you open a page in a language other than the one your browser prefers, which includes switching language, and it is updated each time you switch after that. It is a session cookie, deleted when you close the browser."
     },
     "storedNothingElse": "There are no other cookies and nothing else in browser storage. The site's fonts are served from this site, not from a third party.",
     "analyticsTitle": "Analytics",
