@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, IBM_Plex_Mono, Mukta } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -82,6 +83,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Footer />
             {/* Production deploys only: previews, local builds and e2e never load it. */}
             {process.env.VERCEL_ENV === "production" && <Analytics />}
+            {process.env.VERCEL_ENV === "production" && <SpeedInsights />}
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
