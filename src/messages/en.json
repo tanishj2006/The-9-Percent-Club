@@ -853,6 +853,204 @@
       }
     ]
   },
+  "numbers": {
+    "heading": "In numbers",
+    "note": "The figures from this chapter, written out in full. This is education, not advice.",
+    "seeNumbers": "See the numbers",
+    "ch00": [
+      {
+        "label": "The business",
+        "text": "In this chapter's invented example, a coffee cart costs {cost} and is split into {tokens} tokens of {tokenPrice} each."
+      },
+      {
+        "label": "Your share",
+        "text": "In the invented example, {wallet} buys {yours} of the {tokens} tokens, which is {yoursPct}% of the cart."
+      },
+      {
+        "label": "Summer",
+        "text": "In the invented summer, the cart sells {summerCups} cups a day and clears about {profit}, so {yoursPct}% of it takes {wallet} to about {peak}."
+      },
+      {
+        "label": "Monsoon",
+        "text": "In the invented monsoon, sales fall to {monsoonCups} cups a day and the same {yoursPct}% falls to {dip}."
+      },
+      {
+        "label": "Year end",
+        "text": "The invented year ends with your {yoursPct}% worth {end}. The example shows that an owner carries both the good months and the bad ones."
+      }
+    ],
+    "ch01": [
+      {
+        "label": "Four stops",
+        "text": "In India, money for a share passes through {stops} stops: your bank (UPI or IMPS), a broker, an exchange (NSE or BSE), and a demat account held at a depository (CDSL or NSDL)."
+      },
+      {
+        "label": "Settlement",
+        "text": "Delivery trades on NSE and BSE settle on the next working day, so bought shares usually reach the demat account then."
+      },
+      {
+        "label": "Charges",
+        "text": "This chapter follows {wallet} with no charges applied. Charges are worked out in Chapter 04."
+      }
+    ],
+    "ch02": [
+      {
+        "label": "Best prices",
+        "text": "In this chapter's invented order book, the best buyer offers {bestBid} and the best seller asks {bestAsk}."
+      },
+      {
+        "label": "The spread",
+        "text": "The gap between them, the spread, is {spread}. In the example, nothing trades while it stays open."
+      },
+      {
+        "label": "The trade",
+        "text": "In the example, a seller drops to {match} and {qty} shares trade at {match}, so {deployed} of {wallet} goes into shares."
+      },
+      {
+        "label": "The rule",
+        "text": "On an exchange, a trade fills at the price of the order already waiting. In this example, a buyer who simply crosses the gap pays {bestAsk}, not {match}."
+      }
+    ],
+    "ch03": [
+      {
+        "label": "One day",
+        "text": "In this chapter's invented trading day, the price opens at {open}, falls to a low of {low}, rises to a high of {high} and closes at {close}."
+      },
+      {
+        "label": "Your shares",
+        "text": "In the example, {wallet} is {qty} shares plus cash. It is worth {lowMoney} at the low, {highMoney} at the high and {closeMoney} at the close, before charges."
+      },
+      {
+        "label": "A candle",
+        "text": "A candle summarises one period in four numbers: open, high, low and close. The chapter's row of {days} candles is invented."
+      }
+    ],
+    "ch04": [
+      {
+        "label": "Total charges",
+        "text": "A delivery round trip on NSE of {qty} shares at {price}, bought and sold at the same price, costs {total} in charges, at statutory rates checked in November 2026 and one discount broker's fees."
+      },
+      {
+        "label": "What comes back",
+        "text": "Of the {trade}, {kept} comes back. {lostPct}% is gone without the price moving."
+      },
+      {
+        "label": "DP charge",
+        "text": "The flat DP charge for taking shares out of the demat account on a sale is {dp}, which is {dpPct}% of a {trade} trade."
+      },
+      {
+        "label": "The rest",
+        "text": "The other charges on that round trip: brokerage {brokerage}, STT {stt}, GST {gst}, stamp duty {stamp}, exchange charge {exchange} and SEBI fee {sebi}."
+      },
+      {
+        "label": "No brokerage",
+        "text": "At a broker that charges no brokerage but keeps the same DP charge, the same round trip still costs {noBrokerage}."
+      }
+    ],
+    "ch05": [
+      {
+        "label": "Breakeven gap",
+        "text": "For one NSE delivery round trip, at statutory rates checked in November 2026 and one discount broker's fees, the price must rise {pct500}% on {c500}, {pct1000}% on {c1000}, {pct2000}% on {c2000}, {pct5000}% on {c5000}, {pct10000}% on {c10000} and {pct50000}% on {c50000}, just to get the money back."
+      },
+      {
+        "label": "Charges on {c2000}",
+        "text": "One round trip of {c2000} costs {cost2000} in charges. The flat DP charge of {dp} is {dpShare}% of that."
+      },
+      {
+        "label": "Ten round trips",
+        "text": "Ten round trips of {c2000}, with the price never moving, cost about {tenCost}: {tenPct}% of {wallet}."
+      },
+      {
+        "label": "What it is not",
+        "text": "The breakeven gap measures charges only. It says nothing about where any price will go."
+      }
+    ],
+    "ch06": [
+      {
+        "label": "The fall",
+        "text": "From {peakDate} to {troughDate}, an equal-weight basket of 49 large Indian companies fell {fallPct}% in {fallDays} days. On {wallet}, that left {bottom}."
+      },
+      {
+        "label": "The recovery",
+        "text": "The basket was back above its February 2020 high {recoverDays} days after the bottom, in {recoverMonth}."
+      },
+      {
+        "label": "By {endMonth}",
+        "text": "By {endMonth} the basket was more than {gainPct}% above its March 2020 bottom. Held, {bottom} became {final}. Sold at the bottom, it stayed {bottomRound}."
+      },
+      {
+        "label": "Limits",
+        "text": "Real prices, before charges and tax. The basket leaves out companies that failed, which flatters the gain. One past crash is not a rule, and past prices say nothing about future ones."
+      }
+    ],
+    "ch07": [
+      {
+        "label": "FY25",
+        "text": "In FY25 (April 2024 to March 2025), SEBI found that {lost} of every 100 individual F&O traders lost money after charges, according to its July 2025 study."
+      },
+      {
+        "label": "FY25 net loss",
+        "text": "Individual F&O traders' net loss in FY25 was {loss} crore, according to the same July 2025 SEBI study."
+      },
+      {
+        "label": "FY26",
+        "text": "SEBI's August 2026 study found that {fy26Pct}% of individual F&O traders lost money in FY26, with net losses of {fy26Loss} crore. SEBI notes that 20% fewer people traded that year."
+      },
+      {
+        "label": "FY25, revised",
+        "text": "SEBI's August 2026 study revises FY25 to {fy25RevisedPct}% and {fy25RevisedLoss} crore, after widening its sample of brokers."
+      },
+      {
+        "label": "Kept trading",
+        "text": "SEBI's September 2024 study, covering FY22 to FY24, found that more than {keptTrading}% of loss-making individual F&O traders kept trading after consecutive years of losses."
+      },
+      {
+        "label": "Scope",
+        "text": "These SEBI figures cover individual traders in equity derivatives (F&O) only, not all investing."
+      }
+    ],
+    "ch08": [
+      {
+        "label": "Put in",
+        "text": "An illustration: {monthly} a month for {years} years is {put10} put in."
+      },
+      {
+        "label": "Illustrative value",
+        "text": "At an assumed steady {rate}% a year, it would be about {value10} after {years} years: {growth10} of growth, or {growthShare10}% of the total."
+      },
+      {
+        "label": "Halfway",
+        "text": "Under the same assumption, after 5 years {put5} put in would be about {value5}. Most of the growth arrives in the later years."
+      },
+      {
+        "label": "The assumption",
+        "text": "The {rate}% a year is an assumption chosen to show the shape of compounding. It is not a forecast, a target or a measured return. Real returns are not steady and can be lower or negative. Fees, tax and inflation are left out."
+      }
+    ],
+    "table06": {
+      "caption": "{wallet} held in the basket of 49 large Indian companies, at key points from {peakDate} to {endMonth}. Real prices, before charges and tax.",
+      "date": "Date",
+      "point": "Point",
+      "value": "Value",
+      "change": "Since {peakDate}",
+      "kinds": {
+        "peak": "High before the 2020 fall",
+        "bottom": "Bottom",
+        "recovered": "Back above the 2020 high",
+        "yearEnd": "Last point of {year}",
+        "laterHigh": "High before a later fall",
+        "laterLow": "Low of that fall, {depth}% down, mostly from one holding grown too large in the basket",
+        "last": "Last point"
+      }
+    },
+    "table08": {
+      "caption": "{monthly} a month at an assumed steady {rate}% a year. An illustration, not a forecast.",
+      "year": "Year",
+      "putIn": "Put in",
+      "value": "Value",
+      "growth": "Growth"
+    }
+  },
   "home": {
     "meta": "9 chapters, about 4 minutes each, English and हिंदी",
     "gridCaption": "A count of what happened in FY25, not a target: {lost} of every 100 individual F&O traders lost money, by SEBI's count.",

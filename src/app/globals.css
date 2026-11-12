@@ -1795,6 +1795,96 @@
     margin: 0 0 1rem;
   }
 
+  /* In numbers: the scene's figures as plain server text. Always visible; it is
+     a recap for readers and the same text a crawler reads. Never hide it. */
+  .numbers {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: 0 4rem;
+  }
+  .numbers-note {
+    /* --ink-soft, not --ink-faint: this is content, so it must reach 4.5:1 */
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin: 0.4rem 0 1rem;
+  }
+  .numbers-list {
+    max-width: 44rem;
+    margin: 0 0 1.5rem;
+    border-left: 2px solid var(--marigold);
+    padding-left: 1.2rem;
+  }
+  .numbers-item {
+    padding-block: 0.6rem;
+  }
+  .numbers-item + .numbers-item {
+    border-top: 1px solid var(--rule);
+  }
+  .numbers-item dt {
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    /* --ink-soft: marigold text is under 4.5:1 on paper at this size */
+    color: var(--ink-soft);
+  }
+  .numbers-item dd {
+    margin: 0.15rem 0 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .numbers-details {
+    border-bottom: 1px solid var(--rule);
+  }
+  .numbers-scroll {
+    /* A safety net only: the table is sized to fit 390px without it. */
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  .numbers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+  .numbers-table caption {
+    caption-side: top;
+    text-align: left;
+    color: var(--ink-soft);
+    padding-bottom: 0.6rem;
+  }
+  .numbers-table th,
+  .numbers-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.4rem 0.5rem 0.4rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .numbers-table thead th {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-top: 0;
+  }
+  .numbers-table tbody th {
+    font-weight: 400;
+  }
+  .numbers-table .num {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 0;
+    padding-left: 0.5rem;
+  }
+  .numbers-table [data-kind="bottom"] .num,
+  .numbers-table [data-kind="laterLow"] .num {
+    color: var(--brick);
+  }
+
   /* A coin cursor on the two places that are about money changing hands, and
      only where there is a real mouse. Touch screens never see it, and the
      fallback is the ordinary pointer. */

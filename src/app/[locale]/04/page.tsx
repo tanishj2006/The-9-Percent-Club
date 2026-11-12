@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { use } from "react";
 import { ChapterDoubts } from "@/components/ChapterDoubts";
 import { ChapterMessages } from "@/components/ChapterMessages";
+import { ChapterNumbers } from "@/components/ChapterNumbers";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
 import { routing } from "@/i18n/routing";
@@ -57,6 +58,8 @@ export default function ChapterFour({ params }: Props) {
         </div>
         <p className="mt-8 text-sm text-ink-faint">{t("assumptions")}</p>
       </section>
+
+      <ChapterNumbers chapter="ch04" />
 
       <ChapterDoubts chapter="ch04" values={VALUES} />
 

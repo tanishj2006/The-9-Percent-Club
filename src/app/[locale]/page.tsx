@@ -6,6 +6,7 @@ import { use } from "react";
 import { ChapterDoubts } from "@/components/ChapterDoubts";
 import { ChapterIntro } from "@/components/ChapterIntro";
 import { ChapterMessages } from "@/components/ChapterMessages";
+import { ChapterNumbers } from "@/components/ChapterNumbers";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
 import { ChapterMap, HomeHero } from "@/components/HomeHero";
@@ -49,6 +50,8 @@ export default function ChapterZero({ params }: Props) {
           <p className="mt-[.8rem] text-ink-soft">{t("handoffP")}</p>
         </div>
       </section>
+
+      <ChapterNumbers chapter="ch00" />
 
       <ChapterDoubts chapter="ch00" />
 

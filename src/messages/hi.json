@@ -853,6 +853,204 @@
       }
     ]
   },
+  "numbers": {
+    "heading": "आँकड़ों में",
+    "note": "इस अध्याय के सारे आँकड़े, पूरे लिखे हुए। यह education है, advice नहीं।",
+    "seeNumbers": "आँकड़े देखें",
+    "ch00": [
+      {
+        "label": "Business",
+        "text": "इस अध्याय के काल्पनिक उदाहरण में, एक cold coffee cart {cost} का है और उसे {tokenPrice} वाले {tokens} tokens में बाँटा गया है।"
+      },
+      {
+        "label": "आपका हिस्सा",
+        "text": "काल्पनिक उदाहरण में, {wallet} से {tokens} में से {yours} tokens आते हैं, यानी cart का {yoursPct}%।"
+      },
+      {
+        "label": "गर्मी",
+        "text": "काल्पनिक गर्मी में cart रोज़ {summerCups} cups बेचता है और लगभग {profit} बचाता है, तो उसका {yoursPct}% आपके {wallet} को लगभग {peak} कर देता है।"
+      },
+      {
+        "label": "Monsoon",
+        "text": "काल्पनिक monsoon में बिक्री घटकर रोज़ {monsoonCups} cups रह जाती है, और वही {yoursPct}% गिरकर {dip} हो जाता है।"
+      },
+      {
+        "label": "साल के अंत में",
+        "text": "काल्पनिक साल के अंत में आपका {yoursPct}% {end} का है। यह उदाहरण दिखाता है कि मालिक अच्छे और बुरे, दोनों महीने झेलता है।"
+      }
+    ],
+    "ch01": [
+      {
+        "label": "चार stops",
+        "text": "India में share के लिए पैसा {stops} stops से गुज़रता है: आपका bank (UPI या IMPS), broker, exchange (NSE या BSE), और depository (CDSL या NSDL) में रखा demat account।"
+      },
+      {
+        "label": "Settlement",
+        "text": "NSE और BSE पर delivery trades अगले working day पर settle होते हैं, इसलिए खरीदे गए shares आमतौर पर तभी demat account में पहुँचते हैं।"
+      },
+      {
+        "label": "Charges",
+        "text": "यह अध्याय {wallet} को बिना किसी charge के follow करता है। Charges का हिसाब अध्याय 04 में है।"
+      }
+    ],
+    "ch02": [
+      {
+        "label": "सबसे अच्छी कीमतें",
+        "text": "इस अध्याय की काल्पनिक order book में सबसे अच्छा buyer {bestBid} दे रहा है और सबसे अच्छा seller {bestAsk} माँग रहा है।"
+      },
+      {
+        "label": "Spread",
+        "text": "दोनों के बीच का फ़र्क, यानी spread, {spread} है। उदाहरण में जब तक यह खुला है, कोई trade नहीं होता।"
+      },
+      {
+        "label": "Trade",
+        "text": "उदाहरण में एक seller {match} पर आ जाता है और {qty} shares {match} पर trade होते हैं, यानी {wallet} में से {deployed} shares में चला जाता है।"
+      },
+      {
+        "label": "नियम",
+        "text": "Exchange पर trade उस order की कीमत पर होता है जो पहले से इंतज़ार कर रहा है। इस उदाहरण में जो buyer सीधे gap पार करता है, वह {match} नहीं, {bestAsk} देता है।"
+      }
+    ],
+    "ch03": [
+      {
+        "label": "एक दिन",
+        "text": "इस अध्याय के काल्पनिक trading day में कीमत {open} पर खुलती है, {low} के low तक गिरती है, {high} के high तक चढ़ती है और {close} पर बंद होती है।"
+      },
+      {
+        "label": "आपके shares",
+        "text": "उदाहरण में {wallet} यानी {qty} shares और बाकी cash। Charges से पहले, low पर यह {lowMoney}, high पर {highMoney} और close पर {closeMoney} का है।"
+      },
+      {
+        "label": "Candle",
+        "text": "एक candle किसी एक समय को चार numbers में समेटती है: open, high, low और close। अध्याय की {days} candles वाली line काल्पनिक है।"
+      }
+    ],
+    "ch04": [
+      {
+        "label": "कुल charges",
+        "text": "NSE पर {price} के {qty} shares का delivery round trip, उसी कीमत पर खरीद और बिक्री, {total} के charges लेता है। Statutory rates नवंबर 2026 में जाँचे गए, और एक discount broker की fees ली गई है।"
+      },
+      {
+        "label": "कितना वापस आया",
+        "text": "{trade} में से {kept} वापस आते हैं। कीमत हिले बिना {lostPct}% चला गया।"
+      },
+      {
+        "label": "DP charge",
+        "text": "बेचते समय demat account से shares निकालने का flat DP charge {dp} है, जो {trade} के trade का {dpPct}% है।"
+      },
+      {
+        "label": "बाकी charges",
+        "text": "उसी round trip के बाकी charges: brokerage {brokerage}, STT {stt}, GST {gst}, stamp duty {stamp}, exchange charge {exchange} और SEBI fee {sebi}।"
+      },
+      {
+        "label": "Zero brokerage",
+        "text": "जो broker brokerage नहीं लेता पर वही DP charge रखता है, वहाँ भी यही round trip {noBrokerage} का पड़ता है।"
+      }
+    ],
+    "ch05": [
+      {
+        "label": "Breakeven gap",
+        "text": "NSE पर एक delivery round trip में, नवंबर 2026 में जाँचे गए statutory rates और एक discount broker की fees पर, सिर्फ़ पैसा वापस पाने के लिए कीमत को {c500} पर {pct500}%, {c1000} पर {pct1000}%, {c2000} पर {pct2000}%, {c5000} पर {pct5000}%, {c10000} पर {pct10000}% और {c50000} पर {pct50000}% चढ़ना होगा।"
+      },
+      {
+        "label": "{c2000} पर charges",
+        "text": "{c2000} का एक round trip {cost2000} के charges लेता है। उसमें {dp} का flat DP charge {dpShare}% है।"
+      },
+      {
+        "label": "दस round trips",
+        "text": "{c2000} के दस round trips, कीमत बिल्कुल न हिले, फिर भी लगभग {tenCost} लेते हैं: {wallet} का {tenPct}%।"
+      },
+      {
+        "label": "यह क्या नहीं है",
+        "text": "Breakeven gap सिर्फ़ charges नापता है। यह किसी भी कीमत के आगे जाने के बारे में कुछ नहीं बताता।"
+      }
+    ],
+    "ch06": [
+      {
+        "label": "गिरावट",
+        "text": "{peakDate} से {troughDate} तक, 49 बड़ी Indian companies की बराबर हिस्सों वाली basket {fallDays} दिनों में {fallPct}% गिरी। {wallet} पर, बचे {bottom}।"
+      },
+      {
+        "label": "Recovery",
+        "text": "Bottom के {recoverDays} दिन बाद, {recoverMonth} में, basket फ़रवरी 2020 के high से ऊपर लौट आई।"
+      },
+      {
+        "label": "{endMonth} तक",
+        "text": "{endMonth} तक basket मार्च 2020 के bottom से {gainPct}% से ज़्यादा ऊपर थी। Hold करने पर {bottom} बने {final}। Bottom पर बेचने पर {bottomRound} ही रहे।"
+      },
+      {
+        "label": "सीमाएँ",
+        "text": "असली prices, charges और tax से पहले। इस basket में डूबी हुई companies नहीं हैं, जिससे बढ़त बेहतर दिखती है। एक पुराना crash कोई नियम नहीं है, और पुरानी कीमतें आगे की कीमतों के बारे में कुछ नहीं बतातीं।"
+      }
+    ],
+    "ch07": [
+      {
+        "label": "FY25",
+        "text": "FY25 (अप्रैल 2024 से मार्च 2025) में, SEBI की जुलाई 2025 की study के मुताबिक, हर 100 individual F&O traders में से {lost} ने charges के बाद पैसे गँवाए।"
+      },
+      {
+        "label": "FY25 net loss",
+        "text": "उसी जुलाई 2025 की SEBI study के मुताबिक, FY25 में individual F&O traders का net loss {loss} करोड़ था।"
+      },
+      {
+        "label": "FY26",
+        "text": "SEBI की अगस्त 2026 की study के मुताबिक, FY26 में {fy26Pct}% individual F&O traders ने पैसे गँवाए, और net loss {fy26Loss} करोड़ रहा। SEBI बताता है कि उस साल 20% कम लोगों ने trade किया।"
+      },
+      {
+        "label": "FY25, बदला हुआ",
+        "text": "SEBI की अगस्त 2026 की study brokers का sample बढ़ाने के बाद FY25 को बदलकर {fy25RevisedPct}% और {fy25RevisedLoss} करोड़ करती है।"
+      },
+      {
+        "label": "Trading जारी रखी",
+        "text": "FY22 से FY24 पर SEBI की सितंबर 2024 की study के मुताबिक, loss में रहे {keptTrading}% से ज़्यादा individual F&O traders लगातार सालों के loss के बाद भी trade करते रहे।"
+      },
+      {
+        "label": "दायरा",
+        "text": "SEBI के ये आँकड़े सिर्फ़ equity derivatives (F&O) के individual traders के हैं, पूरी investing के नहीं।"
+      }
+    ],
+    "ch08": [
+      {
+        "label": "लगाया गया",
+        "text": "एक उदाहरण: {years} साल तक हर महीने {monthly}, यानी कुल {put10} लगाए गए।"
+      },
+      {
+        "label": "उदाहरण में value",
+        "text": "हर साल {rate}% की एक जैसी बढ़त मानें, तो {years} साल बाद यह लगभग {value10} होगा: {growth10} की बढ़त, यानी कुल का {growthShare10}%।"
+      },
+      {
+        "label": "आधे रास्ते पर",
+        "text": "इसी मान्यता पर, 5 साल बाद {put5} लगाकर लगभग {value5} होंगे। ज़्यादातर बढ़त बाद के सालों में आती है।"
+      },
+      {
+        "label": "मान्यता",
+        "text": "{rate}% सालाना सिर्फ़ compounding का आकार दिखाने के लिए माना गया है। यह न भविष्यवाणी है, न target, न कोई मापा हुआ return। असली returns एक जैसे नहीं होते और कम या negative भी हो सकते हैं। Fees, tax और महँगाई नहीं जोड़े गए हैं।"
+      }
+    ],
+    "table06": {
+      "caption": "49 बड़ी Indian companies की basket में रखे {wallet}, {peakDate} से {endMonth} तक के खास पड़ावों पर। असली prices, charges और tax से पहले।",
+      "date": "तारीख़",
+      "point": "पड़ाव",
+      "value": "Value",
+      "change": "{peakDate} से",
+      "kinds": {
+        "peak": "2020 की गिरावट से पहले का high",
+        "bottom": "Bottom",
+        "recovered": "2020 के high से फिर ऊपर",
+        "yearEnd": "{year} का आख़िरी point",
+        "laterHigh": "बाद की एक गिरावट से पहले का high",
+        "laterLow": "उस गिरावट का low, {depth}% नीचे, ज़्यादातर basket में एक holding के बहुत बड़ा हो जाने से",
+        "last": "आख़िरी point"
+      }
+    },
+    "table08": {
+      "caption": "हर महीने {monthly}, हर साल {rate}% की मानी हुई एक जैसी बढ़त पर। यह उदाहरण है, भविष्यवाणी नहीं।",
+      "year": "साल",
+      "putIn": "लगाया",
+      "value": "Value",
+      "growth": "बढ़त"
+    }
+  },
   "home": {
     "meta": "9 अध्याय, हर एक करीब 4 मिनट, English और हिंदी",
     "gridCaption": "यह FY25 में जो हुआ उसकी गिनती है, कोई लक्ष्य नहीं: SEBI के मुताबिक हर 100 individual F&O traders में से {lost} ने पैसे गँवाए।",

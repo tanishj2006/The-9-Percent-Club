@@ -6,6 +6,7 @@ import { use } from "react";
 import { ChapterIntro } from "@/components/ChapterIntro";
 import { ChapterDoubts } from "@/components/ChapterDoubts";
 import { ChapterMessages } from "@/components/ChapterMessages";
+import { ChapterNumbers } from "@/components/ChapterNumbers";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterStart } from "@/components/ChapterStart";
 import { routing } from "@/i18n/routing";
@@ -42,6 +43,8 @@ export default function ChapterSix({ params }: Props) {
         <p className="max-w-[34rem] text-[1.2rem] text-ink-soft">{t("outroP", VALUES)}</p>
         <p className="mt-8 text-sm text-ink-faint">{t("assumptions", VALUES)}</p>
       </section>
+
+      <ChapterNumbers chapter="ch06" />
 
       <ChapterDoubts chapter="ch06" values={VALUES} />
 
