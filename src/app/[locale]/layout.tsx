@@ -54,6 +54,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: t("meta.title"),
     description: t("site.tagline"),
+    // Google Search Console ownership. Keep it: Google re-checks it.
+    verification: { google: "wOUUdjFDEeGayMmyN0NC-mXAMcsW8YefMBUw31DQe24" },
     // Pages that set their own robots (Support) override this.
     ...(INDEXABLE ? {} : { robots: { index: false, follow: false } }),
   };
