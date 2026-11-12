@@ -1885,6 +1885,30 @@
     color: var(--brick);
   }
 
+  /* Narrow phones: tighten the table so it fits 390px with room to spare on any
+     machine's font metrics, not only the one it was first checked on. A table
+     that fits by 1px on one computer overflows by 6px on another. */
+  @media (max-width: 480px) {
+    .numbers-table {
+      font-size: 0.76rem;
+    }
+    .numbers-table thead th {
+      font-size: 0.64rem;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .numbers-table th,
+    .numbers-table td {
+      padding-right: 0.3rem;
+    }
+    .numbers-table .num {
+      padding-left: 0.3rem;
+    }
+    .numbers-table tbody th {
+      overflow-wrap: anywhere;
+    }
+  }
+
   /* A coin cursor on the two places that are about money changing hands, and
      only where there is a real mouse. Touch screens never see it, and the
      fallback is the ordinary pointer. */
