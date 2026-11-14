@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
+import { AdSense } from "@/components/AdSense";
 import { Footer } from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteJsonLd } from "@/components/SiteJsonLd";
@@ -77,6 +78,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body>
+        <AdSense />
         <SiteJsonLd locale={locale} description={tagline} />
         <ThemeProvider>
           <NextIntlClientProvider messages={{ site, nav, safety }}>

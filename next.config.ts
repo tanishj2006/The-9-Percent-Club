@@ -19,14 +19,46 @@ const withBundleAnalyzer = bundleAnalyzer({
 // gets either, so the strict policy stays where it matters.
 const isDev = process.env.NODE_ENV === "development";
 
+/**
+ * Google AdSense. Ads only load on the production deploy (see AdSense.tsx), but
+ * the policy is the same everywhere so that a preview behaves like production.
+ * Google does not publish a fixed domain list and ads are served from many
+ * hosts, so img-src has to take https: wholesale. That is the price of running
+ * ads: the policy is looser than it was.
+ */
+const ads = {
+  script: [
+    "https://pagead2.googlesyndication.com",
+    "https://partner.googleadservices.com",
+    "https://tpc.googlesyndication.com",
+    "https://www.googletagservices.com",
+    "https://adservice.google.com",
+    "https://fundingchoicesmessages.google.com",
+  ],
+  frame: [
+    "https://googleads.g.doubleclick.net",
+    "https://tpc.googlesyndication.com",
+    "https://www.google.com",
+  ],
+  connect: [
+    "https://pagead2.googlesyndication.com",
+    "https://googleads.g.doubleclick.net",
+    "https://ep1.adtrafficquality.google",
+    "https://ep2.adtrafficquality.google",
+  ],
+}; 
+
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${ads.script.join(" ")}${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  // Ad creatives come from hosts Google does not enumerate.
+  "img-src 'self' data: blob: https:",
   "font-src 'self'",
   // Vercel Web Analytics posts to /_vercel/insights on this origin.
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' ${ads.connect.join(" ")}${isDev ? " ws: wss:" : ""}`,
+  // Ads render inside iframes Google serves.
+  `frame-src ${ads.frame.join(" ")}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
